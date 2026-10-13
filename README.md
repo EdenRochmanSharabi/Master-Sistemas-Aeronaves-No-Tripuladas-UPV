@@ -6,6 +6,7 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-10-13 · [pre-commit](<.githooks/pre-commit>) · .githooks
 - 2026-10-13 · [S2_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany/S2_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany
 - 2026-10-13 · [S2_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%202%20-%20UAS%20Regulation%20in%20Germany/S2_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany
 - 2026-10-13 · [S2_Termografía nocturna de fachadas con dron_Eden_Rochman_Sharabi.pdf](<Operational Safety, Procedure Verification, and Technology Validation/Seminar 2 - SORA STS-01 Night Facade Thermography/S2_Termografía nocturna de fachadas con dron_Eden_Rochman_Sharabi.pdf>) · Operational Safety, Procedure Verification, and Technology Validation/Seminar 2 - SORA STS-01 Night Facade Thermography
