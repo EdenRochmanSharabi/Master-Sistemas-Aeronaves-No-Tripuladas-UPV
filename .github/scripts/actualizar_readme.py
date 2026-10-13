@@ -24,6 +24,26 @@ def archivos_recientes():
     return con_fecha[:MAX_ARCHIVOS]
 
 
+INICIO, FIN = "<!-- html:inicio -->", "<!-- html:fin -->"
+
+
+def enlaces_html_asignaturas(asignaturas):
+    """En el README de cada asignatura, sección autogenerada con sus HTML publicados."""
+    htmls = [f for f in git("-c", "core.quotepath=false", "ls-files", "-z", "*.html").split("\0") if f]
+    for a in asignaturas:
+        propios = sorted(f for f in htmls if f.startswith(a + "/"))
+        ruta = os.path.join(a, "README.md")
+        texto = open(ruta, encoding="utf8").read() if os.path.exists(ruta) else f"# {a}\n"
+        if INICIO in texto:
+            texto = texto[:texto.index(INICIO)].rstrip() + "\n" + texto[texto.index(FIN) + len(FIN):].lstrip("\n")
+        if propios:
+            filas = [f"- [{os.path.relpath(h, a)}]({PAGES}{quote(h)})" for h in propios]
+            bloque = "\n".join([INICIO, "## Ver en el navegador", "", *filas, FIN])
+            texto = texto.rstrip() + "\n\n" + bloque + "\n"
+        with open(ruta, "w", encoding="utf8") as fh:
+            fh.write(texto)
+
+
 def main():
     asignaturas = sorted((d for d in os.listdir(".") if os.path.isdir(d) and not d.startswith(".")), key=str.lower)
     recientes = archivos_recientes()
@@ -54,6 +74,7 @@ def main():
     ]
     with open("README.md", "w", encoding="utf8") as fh:
         fh.write("\n".join(lineas))
+    enlaces_html_asignaturas(asignaturas)
 
 
 if __name__ == "__main__":
