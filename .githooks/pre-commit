@@ -1,0 +1,5 @@
+#!/bin/sh
+# Revisa los archivos del commit antes de crearlo. Saltarlo (no recomendado): git commit --no-verify
+archivos=$(git -c core.quotepath=false diff --cached --name-only --diff-filter=ACM)
+[ -z "$archivos" ] && exit 0
+echo "$archivos" | tr '\n' '\0' | xargs -0 python3 .github/scripts/revisar_datos_personales.py

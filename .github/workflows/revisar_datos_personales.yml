@@ -1,0 +1,23 @@
+name: Revisar datos personales
+
+# Falla (y GitHub avisa por correo) si encuentra datos personales en el repositorio.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar lector de PDF
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: Revisar archivos
+        env:
+          DATOS_PERSONALES: ${{ secrets.DATOS_PERSONALES }}
+        run: python3 .github/scripts/revisar_datos_personales.py

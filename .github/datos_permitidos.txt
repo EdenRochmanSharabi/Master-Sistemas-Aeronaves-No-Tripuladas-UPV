@@ -1,0 +1,8 @@
+# Textos que no son datos personales aunque lo parezcan (uno por línea).
+# Correo público de ENAIRE citado en el seminario de SORA.
+drones.safety@enaire.es
+# Teléfonos institucionales del plan de emergencia del seminario de SORA.
+961 523 347
+961 598 628
+902 253 347
+669 883 166
