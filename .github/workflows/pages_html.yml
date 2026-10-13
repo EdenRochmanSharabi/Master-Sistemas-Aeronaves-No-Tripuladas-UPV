@@ -1,0 +1,42 @@
+name: Publicar HTML en GitHub Pages
+
+# Solo se publican los archivos .html; el resto del repositorio no va a GitHub Pages.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - ".github/workflows/pages_html.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copiar solo los HTML
+        run: |
+          mkdir _site
+          git ls-files -z '*.html' | while IFS= read -r -d '' f; do
+            mkdir -p "_site/$(dirname "$f")"
+            cp "$f" "_site/$f"
+          done
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: despliegue
+        uses: actions/deploy-pages@v4

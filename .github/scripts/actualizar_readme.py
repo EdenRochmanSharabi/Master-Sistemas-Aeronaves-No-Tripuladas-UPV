@@ -1,7 +1,9 @@
 """Regenera README.md: lista de últimos archivos subidos y de asignaturas."""
 import os
 import subprocess
+from urllib.parse import quote
 
+PAGES = "https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/"
 MAX_ARCHIVOS = 15  # ponytail: tope fijo; subirlo si se quiere ver más historial
 
 
@@ -26,7 +28,12 @@ def main():
     asignaturas = sorted((d for d in os.listdir(".") if os.path.isdir(d) and not d.startswith(".")), key=str.lower)
     recientes = archivos_recientes()
     if recientes:
-        filas = [f"- {dia} · [{os.path.basename(f)}](<{f}>) · {os.path.dirname(f) or 'raíz'}" for _, dia, f in recientes]
+        filas = []
+        for _, dia, f in recientes:
+            enlace = f"[{os.path.basename(f)}](<{f}>)"
+            if f.endswith(".html"):  # los HTML se abren publicados en GitHub Pages
+                enlace = f"[{os.path.basename(f)}]({PAGES}{quote(f)}) (se abre en el navegador)"
+            filas.append(f"- {dia} · {enlace} · {os.path.dirname(f) or 'raíz'}")
     else:
         filas = ["Todavía no hay archivos."]
     lineas = [
