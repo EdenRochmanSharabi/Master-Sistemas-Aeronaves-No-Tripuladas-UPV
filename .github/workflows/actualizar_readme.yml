@@ -1,0 +1,26 @@
+name: Actualizar README
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - README.md
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 .github/scripts/actualizar_readme.py
+      - name: Guardar README si ha cambiado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || (git commit -m "Actualizar lista de archivos del README" && git push)
