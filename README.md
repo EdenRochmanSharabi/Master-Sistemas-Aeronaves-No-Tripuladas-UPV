@@ -6,6 +6,8 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-10-14 · [presentacion_autonoma.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Research%20Group/presentacion_autonoma.html) (se abre en el navegador) · Research Group
+- 2026-10-14 · [presentacion.pdf](<Research Group/presentacion.pdf>) · Research Group
 - 2026-10-13 · [pre-commit](<.githooks/pre-commit>) · .githooks
 - 2026-10-13 · [S2_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany/S2_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany
 - 2026-10-13 · [S2_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%202%20-%20UAS%20Regulation%20in%20Germany/S2_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany
@@ -20,6 +22,7 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - [Aircraft Design](<Aircraft Design/>)
 - [Configuration of Unmanned Aircraft Systems (UAS)](<Configuration of Unmanned Aircraft Systems (UAS)/>)
 - [Operational Safety, Procedure Verification, and Technology Validation](<Operational Safety, Procedure Verification, and Technology Validation/>)
+- [Research Group](<Research Group/>)
 - [UAS Airspace Management](<UAS Airspace Management/>)
 - [UAS Certification and Maintenance](<UAS Certification and Maintenance/>)
 - [UAS Design and Manufacturing](<UAS Design and Manufacturing/>)
