@@ -6,8 +6,8 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
-- 2026-10-25 · [S4_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
-- 2026-10-25 · [S4_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20European%20U-space%20Framework%20%28Regulation%202021-664%29/S4_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
+- 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
+- 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20European%20U-space%20Framework%20%28Regulation%202021-664%29/S4_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
 - 2026-10-14 · [presentacion_autonoma.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Research%20Group/presentacion_autonoma.html) (se abre en el navegador) · Research Group
 - 2026-10-14 · [presentacion.pdf](<Research Group/presentacion.pdf>) · Research Group
 - 2026-10-13 · [pre-commit](<.githooks/pre-commit>) · .githooks
