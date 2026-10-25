@@ -482,7 +482,7 @@ body.guion .hoja .mini .slide.slide.slide{transform:none!important;zoom:.3125;op
    <div class="tarjeta r" style="border-top:5px solid var(--grismed)"><div class="et acento">En curso</div><ul class="lista" style="margin-top:10px"><li class="peq">Pruebas en Hamburgo</li><li class="peq">Fin previsto: <span data-valor="fin"></span></li></ul></div>
    <div class="tarjeta r" style="border-top:5px solid var(--rojo)"><div class="et acento">Falta</div><ul class="lista" style="margin-top:10px"><li class="peq">Designar un U-space</li><li class="peq">Pasar el reglamento europeo a la ley nacional</li><li class="peq">Designar un coordinador de U-space</li></ul></div>
   </div>
-  <p class="r" style="margin-top:110px;max-width:1500px;font-size:38px;line-height:1.3">El Centro Aeroespacial Alemán (DLR) escribía en abril de 2026 que el siguiente paso es trasponer el reglamento a la ley nacional y crear las estructuras organizativas.</p>
+  <div class="r regla" style="margin-top:70px;max-width:1500px"><div class="et">Centro Aeroespacial Alemán (DLR) · abril de 2026</div><p style="margin-top:10px;font-size:34px;line-height:1.3">El siguiente paso es trasponer el reglamento a la ley nacional y crear las estructuras organizativas.</p></div>
  </div>
  <aside class="notas">La estrategia del BMDV, el ministerio federal de transporte, es de febrero de 2023 y se apoya en el artículo 5a del reglamento alemán de reglas del aire. En las fuentes consultadas no consta ningún U-space designado. En abril de 2026 el DLR señalaba como pendientes la transposición a la ley nacional y la designación de un coordinador de U-space que apoye al BAF y al BMDV. Esto afecta a quién puede prestar los servicios.</aside>
 </section>
@@ -494,7 +494,7 @@ body.guion .hoja .mini .slide.slide.slide{transform:none!important;zoom:.3125;op
    <div class="r regla"><div class="et">USSP · servicios</div><p style="margin-top:10px">Cada U-space necesita al menos un proveedor de servicios U-space (USSP). La estrategia prevé que todos reciban la información en las mismas condiciones, sin discriminación.</p></div>
    <div class="r regla"><div class="et">CISP · información</div><p style="margin-top:10px">En cada U-space hay un único proveedor común de información (CISP), encargado por el BMDV y aprobado por el Bundesaufsichtsamt für Flugsicherung (BAF, autoridad de supervisión). En Hamburgo lo fue la DFS.</p></div>
   </div>
-  <p class="r" style="margin-top:110px;font-size:38px;line-height:1.3">Droniq, empresa conjunta de la DFS (51 %) y Deutsche Telekom (49 %), fue el USSP de Hamburgo.</p>
+  <div class="r regla" style="margin-top:56px;max-width:1500px"><div class="et">USSP de Hamburgo</div><p style="margin-top:10px;font-size:34px;line-height:1.3">Droniq, empresa conjunta de la DFS (51 %) y Deutsche Telekom (49 %).</p></div>
  </div>
  <aside class="notas">La estrategia alemana pide un único proveedor común de información en cada U-space, que reparte los datos a todos los proveedores de servicios por igual. Lo encarga el ministerio y lo aprueba el BAF. De proveedores de servicios debe haber al menos uno, y la estrategia habla de todos los proveedores en plural. En Hamburgo el proveedor de información fue la DFS y el de servicios, Droniq, empresa conjunta de la DFS y Deutsche Telekom. La siguiente pregunta es si están certificados.</aside>
 </section>
@@ -629,9 +629,9 @@ slides.forEach((s,i)=>{
   }
   if(s.dataset.iso){
     const nm=s.dataset.iso.split(' ')[0], vb=document.getElementById('iso-'+nm).viewBox.baseVal;
-    let x,y,W; if(nm.startsWith('b-')){W=1920;x=960;y=700+W*vb.height/vb.width/2;} else {[,x,y,W]=s.dataset.iso.split(' ').map((q,k)=>k?+q:q);}
+    let x,y,W; const Y0=+(s.dataset.iso.split(' ')[1]||645); if(nm.startsWith('b-')){W=1920;x=960;y=Y0+W*vb.height/vb.width/2;} else {[,x,y,W]=s.dataset.iso.split(' ').map((q,k)=>k?+q:q);}
     const H=W*vb.height/vb.width;
-    const gv=el('linearGradient',{id:'isoV'+i,gradientUnits:'userSpaceOnUse',x1:0,y1:nm.startsWith('b-')?700:860,x2:0,y2:nm.startsWith('b-')?1000:1010},defs);
+    const gv=el('linearGradient',{id:'isoV'+i,gradientUnits:'userSpaceOnUse',x1:0,y1:nm.startsWith('b-')?Y0:860,x2:0,y2:nm.startsWith('b-')?1000:1010},defs);
     if(nm.startsWith('b-')){el('stop',{offset:'0',style:'stop-color:#000'},gv);el('stop',{offset:'.3',style:'stop-color:#fff'},gv);el('stop',{offset:'.82',style:'stop-color:#fff'},gv);el('stop',{offset:'1',style:'stop-color:#111'},gv);}
     else{el('stop',{offset:'0',style:'stop-color:#fff'},gv);el('stop',{offset:'1',style:'stop-color:#222'},gv);}
     const mv=el('mask',{id:'isoMV'+i,maskUnits:'userSpaceOnUse',x:0,y:0,width:1920,height:1080},defs);
