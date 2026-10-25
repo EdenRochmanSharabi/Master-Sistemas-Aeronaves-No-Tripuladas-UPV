@@ -1,0 +1,23 @@
+name: clean-up
+
+# Último filtro: falla (y GitHub avisa por correo) si queda texto prohibido en archivos, nombres o commits.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 200
+      - name: Instalar lector de PDF
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: clean-up
+        run: python3 .github/scripts/clean_up.py
