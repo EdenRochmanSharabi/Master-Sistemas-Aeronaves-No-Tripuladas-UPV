@@ -13,6 +13,9 @@ def texto(ruta):
     ext = os.path.splitext(ruta)[1].lower()
     if ext == ".pdf":
         return subprocess.run(["pdftotext", "-q", ruta, "-"], capture_output=True, text=True).stdout + subprocess.run(["pdfinfo", ruta], capture_output=True, text=True).stdout
+    if ext == ".pptx":
+        import zipfile
+        with zipfile.ZipFile(ruta) as z: return "\n".join(z.read(n).decode("utf8", "ignore") for n in z.namelist() if n.endswith((".xml", ".rels")))
     if ext in TEXTO:
         return BASE64.sub("", open(ruta, encoding="utf8", errors="ignore").read())
     return ""
