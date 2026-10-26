@@ -13,6 +13,7 @@ Seminario 2: regulación de los UAS en Alemania.
 Seminario 4: marco normativo europeo del U-space (Reglamento de Ejecución (UE) 2021/664) y su aplicación en Alemania.
 
 - [PDF](<Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pdf>)
+- [PowerPoint con la animación](<Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pptx>)
 
 <!-- html:inicio -->
 ## Ver en el navegador
