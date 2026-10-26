@@ -6,6 +6,8 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-10-26 · [Apuntes_TNCA_T1-T8.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
+- 2026-10-26 · [Apuntes_Tecnologia_Aeroespacial.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial.pdf>) · Aerospace Technology
 - 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.pptx](<UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pptx>) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
 - 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
 - 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20European%20U-space%20Framework%20%28Regulation%202021-664%29/S4_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
