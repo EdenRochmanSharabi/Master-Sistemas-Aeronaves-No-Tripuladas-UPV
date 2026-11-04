@@ -6,6 +6,7 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-04 · [Apuntes_Tecnologia_Aeroespacial_Respuestas_Esenciales.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial_Respuestas_Esenciales.pdf>) · Aerospace Technology
 - 2026-11-03 · [Apuntes_Tecnologia_Aeroespacial.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial.pdf>) · Aerospace Technology
 - 2026-10-28 · [Apuntes_Tecnologia_Aeroespacial_Anexo.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial_Anexo.pdf>) · Aerospace Technology
 - 2026-10-28 · [Apuntes_TNCA_T1-T8.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
