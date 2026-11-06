@@ -1,0 +1,156 @@
+%% Procesar todos los archivos .dat de una carpeta, promediar por J y guardar .mat con D_m
+clc; clear; close all;
+
+% Carpeta origen con los .dat
+inputFolder = 'C:\Users\marco\OneDrive - UPV\2_Docencia\2025-2026\UAS_Propulsion\Trabajo_Academico\Resolucion\PC_Profiles\PERFILES2';
+dJ = 0.05; % paso de J
+inch2m = 0.0254; % conversión pulgadas a metros
+
+% Listar todos los .dat en la carpeta
+files = dir(fullfile(inputFolder, '*.dat'));
+if isempty(files)
+    error('No se encontraron archivos .dat en: %s', inputFolder);
+end
+
+% Funciones auxiliares
+isDataLine = @(s) ~isempty(s) && ~isempty(regexp(s,'^\s*[\+\-]?\d','once'));
+isHeaderV  = @(s) startsWith(strtrim(s),'V') && contains(s,'Cp');
+
+for f = 1:numel(files)
+    filename = fullfile(inputFolder, files(f).name);
+    fprintf('Procesando: %s\n', files(f).name);
+
+    fid = fopen(filename,'r');
+    if fid == -1
+        warning('No se pudo abrir: %s', filename);
+        continue;
+    end
+
+    % === 1) Extraer diámetro desde la primera línea
+    firstLine = '';
+    while isempty(strtrim(firstLine)) && ~feof(fid)
+        firstLine = fgetl(fid);
+    end
+    % Buscar patrón "<diam>x<resto>"
+    tok = regexp(firstLine,'([\d\.]+)x','tokens','once');
+    if isempty(tok)
+        warning('No se pudo extraer diámetro en %s', files(f).name);
+        D_m = NaN;
+    else
+        D_in = str2double(tok{1});
+        D_m = D_in * inch2m;
+    end
+
+    % Reiniciar lectura desde el principio
+    frewind(fid);
+
+    % === 2) Leer bloques por PROP RPM
+    J_blocks  = {};
+    Pe_blocks = {};
+    Ct_blocks = {};
+    Cp_blocks = {};
+
+    while ~feof(fid)
+        line = fgetl(fid);
+        if ~ischar(line), break; end
+
+        if contains(line,'PROP RPM') % inicio de bloque
+            % Avanzar hasta cabecera
+            while ~feof(fid)
+                h = fgetl(fid);
+                if ~ischar(h), break; end
+                if isHeaderV(h)
+                    if ~feof(fid), fgetl(fid); end % línea unidades
+                    break;
+                end
+            end
+
+            % Leer bloque
+            J_tmp = []; Pe_tmp = []; Ct_tmp = []; Cp_tmp = [];
+            while ~feof(fid)
+                pos = ftell(fid);
+                dline = fgetl(fid);
+                if ~ischar(dline), break; end
+                if isempty(strtrim(dline)) || ~isDataLine(dline)
+                    break;
+                end
+                vals = sscanf(dline,'%f');
+                if numel(vals) >= 5
+                    J_tmp(end+1,1)  = vals(2);
+                    Pe_tmp(end+1,1) = vals(3);
+                    Ct_tmp(end+1,1) = vals(4);
+                    Cp_tmp(end+1,1) = vals(5);
+                end
+            end
+
+            % Ordenar y promediar duplicados dentro del bloque
+            [J_u, ~, ic] = unique(J_tmp);
+            Pe_u = accumarray(ic, Pe_tmp, [], @mean);
+            Ct_u = accumarray(ic, Ct_tmp, [], @mean);
+            Cp_u = accumarray(ic, Cp_tmp, [], @mean);
+
+            [J_u, order] = sort(J_u);
+            Pe_u = Pe_u(order);
+            Ct_u = Ct_u(order);
+            Cp_u = Cp_u(order);
+
+            J_blocks{end+1}  = J_u;
+            Pe_blocks{end+1} = Pe_u;
+            Ct_blocks{end+1} = Ct_u;
+            Cp_blocks{end+1} = Cp_u;
+        end
+    end
+    fclose(fid);
+
+    nBlocks = numel(J_blocks);
+    if nBlocks == 0
+        warning('No se detectaron bloques en %s', files(f).name);
+        continue;
+    end
+
+    % === 3) Definir rejilla común J_grid
+    jmin_all = cellfun(@(x) min(x), J_blocks);
+    jmax_all = cellfun(@(x) max(x), J_blocks);
+%     jmin = ceil(max(jmin_all)/dJ)*dJ;
+    jmin = dJ;
+    jmax = floor(min(jmax_all)/dJ)*dJ;
+    if jmax < jmin
+        % No hay solape total → usar rango global
+        jmin = ceil(min(jmin_all)/dJ)*dJ;
+        jmax = floor(max(jmax_all)/dJ)*dJ;
+    end
+    J_grid = (jmin:dJ:jmax).';
+    if isempty(J_grid)
+        warning('La rejilla J está vacía en %s', files(f).name);
+        continue;
+    end
+
+    % === 4) Interpolación y promedio
+    Pe_I = nan(numel(J_grid), nBlocks);
+    Ct_I = nan(numel(J_grid), nBlocks);
+    Cp_I = nan(numel(J_grid), nBlocks);
+
+    for k = 1:nBlocks
+        Pe_I(:,k) = interp1(J_blocks{k}, Pe_blocks{k}, J_grid, 'linear', NaN);
+        Ct_I(:,k) = interp1(J_blocks{k}, Ct_blocks{k}, J_grid, 'linear', NaN);
+        Cp_I(:,k) = interp1(J_blocks{k}, Cp_blocks{k}, J_grid, 'linear', NaN);
+    end
+
+    Pe_avg = mean(Pe_I, 2, 'omitnan');
+    Ct_avg = mean(Ct_I, 2, 'omitnan');
+    Cp_avg = mean(Cp_I, 2, 'omitnan');
+
+    % === 5) Guardar archivo .mat en carpeta actual
+    [~, nameOnly, ~] = fileparts(files(f).name);
+    outName = sprintf('%s_avg.mat', nameOnly);
+
+    J = J_grid; %#ok<NASGU>
+    eta_avg = Pe_avg;
+    CT_avg = Ct_avg;
+    CP_avg = 
+    save(outName, 'J', 'eta_avg', 'Ct_avg', 'Cp_avg', 'D_m');
+
+    fprintf('  → Guardado: %s (D = %.3f m)\n', outName, D_m);
+end
+
+disp('Procesamiento completado.');
