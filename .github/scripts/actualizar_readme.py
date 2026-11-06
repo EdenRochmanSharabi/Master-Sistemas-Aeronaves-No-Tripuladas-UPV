@@ -13,7 +13,7 @@ def git(*args):
 
 def archivos_recientes():
     ficheros = [f for f in git("-c", "core.quotepath=false", "ls-files", "-z").split("\0")
-                if f and not f.startswith(".github/") and os.path.basename(f) != "README.md"]
+                if f and not f.startswith((".github/", ".githooks/")) and os.path.basename(f) != "README.md"]
     con_fecha = []
     for f in ficheros:
         fecha = git("log", "-1", "--format=%cs|%ct", "--", f).strip()
