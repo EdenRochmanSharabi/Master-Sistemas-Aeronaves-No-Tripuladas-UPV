@@ -6,12 +6,12 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-06 · [PL_UASProp_Lab1_2026.pdf](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.pdf>) · UAS Propulsion/PL1
+- 2026-11-06 · [PL_UASProp_Lab1_2026.docx](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.docx>) · UAS Propulsion/PL1
 - 2026-11-06 · [vi_calc.m](<UAS Propulsion/PL1/vi_calc.m>) · UAS Propulsion/PL1
 - 2026-11-06 · [main.m](<UAS Propulsion/PL1/main.m>) · UAS Propulsion/PL1
 - 2026-11-06 · [fig_sensibilidad_MTOM.png](<UAS Propulsion/PL1/fig_sensibilidad_MTOM.png>) · UAS Propulsion/PL1
 - 2026-11-06 · [fig_helices_crucero.png](<UAS Propulsion/PL1/fig_helices_crucero.png>) · UAS Propulsion/PL1
-- 2026-11-06 · [PL_UASProp_Lab1_2026.pdf](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.pdf>) · UAS Propulsion/PL1
-- 2026-11-06 · [PL_UASProp_Lab1_2026.docx](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.docx>) · UAS Propulsion/PL1
 - 2026-11-06 · [zin_9x6_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_9x6_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
 - 2026-11-06 · [zin_11x7_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_11x7_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
 - 2026-11-06 · [vp_140x45_avg.mat](<UAS Propulsion/PL1/DatabaseProp/vp_140x45_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
