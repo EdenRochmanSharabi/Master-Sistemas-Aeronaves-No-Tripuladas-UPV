@@ -1,0 +1,6 @@
+#!/bin/sh
+# Valida el mensaje de commit. Saltarlo (no recomendado): git commit --no-verify
+if grep -Eiq 'co-authored-by:.*(claude|anthropic)|generated with.*claude|noreply@anthropic\.com' "$1"; then
+  echo "Commit rechazado: el mensaje incluye una atribucion no permitida. Quita esa linea." >&2
+  exit 1
+fi
