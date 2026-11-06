@@ -6,21 +6,21 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
-- 2026-11-06 · [Apuntes_TNCA_T1-T8.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-04 · [Apuntes_Tecnologia_Aeroespacial_Respuestas_Esenciales.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial_Respuestas_Esenciales.pdf>) · Aerospace Technology
-- 2026-11-03 · [Apuntes_Tecnologia_Aeroespacial.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial.pdf>) · Aerospace Technology
-- 2026-10-28 · [Apuntes_Tecnologia_Aeroespacial_Anexo.pdf](<Aerospace Technology/Apuntes_Tecnologia_Aeroespacial_Anexo.pdf>) · Aerospace Technology
-- 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.pptx](<UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pptx>) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
-- 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)/S4_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
-- 2026-10-26 · [S4_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20European%20U-space%20Framework%20%28Regulation%202021-664%29/S4_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - European U-space Framework (Regulation 2021-664)
-- 2026-10-14 · [presentacion_autonoma.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Research%20Group/presentacion_autonoma.html) (se abre en el navegador) · Research Group
-- 2026-10-14 · [presentacion.pdf](<Research Group/presentacion.pdf>) · Research Group
-- 2026-10-13 · [pre-commit](<.githooks/pre-commit>) · .githooks
-- 2026-10-13 · [S2_Alemania_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany/S2_Alemania_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany
-- 2026-10-13 · [S2_Alemania_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%202%20-%20UAS%20Regulation%20in%20Germany/S2_Alemania_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 2 - UAS Regulation in Germany
-- 2026-10-13 · [S2_Termografía nocturna de fachadas con dron_Eden_Rochman_Sharabi.pdf](<Operational Safety, Procedure Verification, and Technology Validation/Seminar 2 - SORA STS-01 Night Facade Thermography/S2_Termografía nocturna de fachadas con dron_Eden_Rochman_Sharabi.pdf>) · Operational Safety, Procedure Verification, and Technology Validation/Seminar 2 - SORA STS-01 Night Facade Thermography
-- 2026-10-13 · [S2_Termografía nocturna de fachadas con dron_Eden_Rochman_Sharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Operational%20Safety%2C%20Procedure%20Verification%2C%20and%20Technology%20Validation/Seminar%202%20-%20SORA%20STS-01%20Night%20Facade%20Thermography/S2_Termograf%C3%ADa%20nocturna%20de%20fachadas%20con%20dron_Eden_Rochman_Sharabi.html) (se abre en el navegador) · Operational Safety, Procedure Verification, and Technology Validation/Seminar 2 - SORA STS-01 Night Facade Thermography
-- 2026-10-13 · [Apuntes_Propulsion_UAS_T1-T3_noche.pdf](<UAS Propulsion/Apuntes_Propulsion_UAS_T1-T3_noche.pdf>) · UAS Propulsion
+- 2026-11-06 · [vi_calc.m](<UAS Propulsion/PL1/vi_calc.m>) · UAS Propulsion/PL1
+- 2026-11-06 · [main.m](<UAS Propulsion/PL1/main.m>) · UAS Propulsion/PL1
+- 2026-11-06 · [fig_sensibilidad_MTOM.png](<UAS Propulsion/PL1/fig_sensibilidad_MTOM.png>) · UAS Propulsion/PL1
+- 2026-11-06 · [fig_helices_crucero.png](<UAS Propulsion/PL1/fig_helices_crucero.png>) · UAS Propulsion/PL1
+- 2026-11-06 · [PL_UASProp_Lab1_2026.pdf](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.pdf>) · UAS Propulsion/PL1
+- 2026-11-06 · [PL_UASProp_Lab1_2026.docx](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.docx>) · UAS Propulsion/PL1
+- 2026-11-06 · [zin_9x6_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_9x6_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [zin_11x7_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_11x7_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [vp_140x45_avg.mat](<UAS Propulsion/PL1/DatabaseProp/vp_140x45_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [union_u80_avg.mat](<UAS Propulsion/PL1/DatabaseProp/union_u80_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [rusp_11x4_avg.mat](<UAS Propulsion/PL1/DatabaseProp/rusp_11x4_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [pl_triturbo_avg.mat](<UAS Propulsion/PL1/DatabaseProp/pl_triturbo_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [pl_57x20_avg.mat](<UAS Propulsion/PL1/DatabaseProp/pl_57x20_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [pl_100x80_avg.mat](<UAS Propulsion/PL1/DatabaseProp/pl_100x80_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
+- 2026-11-06 · [mit_5x4_avg.mat](<UAS Propulsion/PL1/DatabaseProp/mit_5x4_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
 
 ## Asignaturas
 
