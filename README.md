@@ -6,6 +6,8 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-09 · [P2_medidas.csv](<UAS Systems and Subsystems/P2 - Propulsion Systems/P2_medidas.csv>) · UAS Systems and Subsystems/P2 - Propulsion Systems
+- 2026-11-09 · [P2_analisis.py](<UAS Systems and Subsystems/P2 - Propulsion Systems/P2_analisis.py>) · UAS Systems and Subsystems/P2 - Propulsion Systems
 - 2026-11-09 · [S4_Espana_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20Spanish%20U-space%20Framework%20%28Royal%20Decree%20517-2024%29/S4_Espana_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
 - 2026-11-09 · [S4_Espana_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)/S4_Espana_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
 - 2026-11-07 · [Apuntes_TNCA_T1-T8.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
@@ -19,8 +21,6 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - 2026-11-06 · [fig_helices_crucero.png](<UAS Propulsion/PL1/fig_helices_crucero.png>) · UAS Propulsion/PL1
 - 2026-11-06 · [zin_9x6_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_9x6_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
 - 2026-11-06 · [zin_11x7_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_11x7_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
-- 2026-11-06 · [vp_140x45_avg.mat](<UAS Propulsion/PL1/DatabaseProp/vp_140x45_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
-- 2026-11-06 · [union_u80_avg.mat](<UAS Propulsion/PL1/DatabaseProp/union_u80_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
 
 ## Asignaturas
 
