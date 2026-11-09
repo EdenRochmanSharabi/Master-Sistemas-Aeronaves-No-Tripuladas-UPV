@@ -36,8 +36,6 @@
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-\newcommand{\Uoc}{U_{\mathrm{OC}}}
-
 \begin{document}
 \thispagestyle{plain}
 \begin{center}
@@ -57,7 +55,7 @@ Se caracteriza un motor eléctrico sin hélice. Una Raspberry Pi Pico 2 genera l
 \section{Parte 1: subsistemas}
 \begin{table}[h]
   \centering
-  \caption{Características de los subsistemas.}
+  \caption{Características de los subsistemas (motor: datos de tiendas).}
   \begin{tabular}{l l r}
     \toprule
     Subsistema & Magnitud & Valor \\
@@ -75,6 +73,7 @@ Se caracteriza un motor eléctrico sin hélice. Una Raspberry Pi Pico 2 genera l
     Motor F2004 & Tipo & brushless outrunner \\
                & Configuración & 12N14P (12 ranuras, 14 polos) \\
                & Constante $K_v$ & \SI{1700}{rpm/\volt} \\
+               & rpm en vacío ($1700\times 24{,}8$) & \SI{42160}{rpm} \\
                & Tensión recomendada & 6S \\
                & Intensidad máxima & \SI{21.2}{\ampere} \\
                & $P_{max}$ (\SI{60}{\second}) & \SI{503}{\watt} \\
@@ -84,11 +83,12 @@ Se caracteriza un motor eléctrico sin hélice. Una Raspberry Pi Pico 2 genera l
     \bottomrule
   \end{tabular}
 \end{table}
-El motor es un T-Motor F2004 KV1700; el modelo se lee en la campana del motor. La configuración y la masa coinciden en las tiendas consultadas; la intensidad y potencia máximas, la resistencia y la corriente en vacío proceden de fichas de distribuidores, no de una hoja oficial de T-Motor, que no he podido consultar. La rotulación del ESC no es legible en las fotos, así que sus datos son los del grupo.
+El motor es un T-Motor F2004 KV1700; el modelo se lee en la campana del motor. No he podido consultar una hoja de datos oficial de T-Motor, así que el resto de datos del motor (configuración, masa, tensión, intensidad y potencia máximas, resistencia y corriente en vacío) procede de fichas de tiendas y distribuidores y debe tomarse como orientativo; la configuración y la masa coinciden en todas las tiendas consultadas. Las rpm en vacío son la estimación teórica $K_v\,V_{bat}$. La rotulación del ESC no es legible en las fotos, así que sus datos son los del grupo.
 
 \clearpage
 \section{Parte 2: señales en el osciloscopio}
-Las figuras muestran la salida PWM de la Pico a 20, 40 y \SI{60}{\percent}: pulsos de \SI{3.3}{\volt} con periodo de \SI{20}{\milli\second}, es decir \SI{50}{\hertz}. El ancho del pulso crece con el porcentaje, que mueve el pulso dentro del intervalo de 1 a \SI{2}{\milli\second}.
+Las figuras muestran la salida PWM de la Pico a 20, 40 y \SI{60}{\percent}: pulsos de unos \SI{3.3}{\volt} con un periodo de \SI{20}{\milli\second}, es decir, \SI{50}{\hertz}. El porcentaje fija el ancho del pulso dentro del intervalo de \SIrange{1}{2}{\milli\second}: en las capturas pasa de aproximadamente \SI{1.3}{\milli\second} al \SI{20}{\percent} a \SI{1.7}{\milli\second} al \SI{60}{\percent} (lectura sobre la cuadrícula de \SI{10}{\milli\second}).
+
 \begin{figure}[h]
   \centering
   \includegraphics[page=1,width=0.49\textwidth]{pwm_20}\hfill
@@ -96,7 +96,8 @@ Las figuras muestran la salida PWM de la Pico a 20, 40 y \SI{60}{\percent}: puls
   \includegraphics[page=1,width=0.49\textwidth]{pwm_60}
   \caption{Señal PWM de control a 20, 40 y \SI{60}{\percent}.}
 \end{figure}
-La tensión entre fases y su transformada de Fourier se resumen en $f_{osc}$ (tabla de la Parte 3) y $f_{Fourier}$ (no está en la tabla; la FFT está en el Excel del grupo) ambas coinciden en menos de un \SI{11}{\percent}, y al \SI{20}{\percent} en un \SI{1}{\percent}. Las capturas de las fases no se han facilitado, así que no se incluyen sus figuras.
+
+De la tensión entre dos fases el grupo anotó dos frecuencias: $f_{osc}$, leída en la señal temporal (tabla de la Parte 3), y $f_{Fourier}$, la del primer armónico de la transformada de Fourier (\numlist[list-separator={;\ }]{1.29;1.85;2.34;2.87;3.34;3.84;4.30}\,\si{\kilo\hertz} de 20 a \SI{80}{\percent}). Ambas coinciden con diferencias de entre el \SI{0.8}{\percent} (al \SI{20}{\percent}) y el \SI{10.5}{\percent} (al \SI{50}{\percent}). Las capturas de las fases no se han facilitado, así que no se incluyen sus figuras.
 
 \section{Parte 3: motor en vacío}
 La frecuencia de la señal conmutada es la eléctrica. Con $p$ pares de polos, $\mathrm{rpm} = 60 f / p$. La corriente sale de la caída media en la shunt y la potencia de $P = I\,V_{bat}$ con $V_{bat}=\SI{24.8}{\volt}$:
@@ -128,9 +129,9 @@ El cociente $60f/\mathrm{rpm}_{Jeti}$ vale \num{7.09}, \num{6.91} y \num{6.91} a
   \caption{rpm y potencia en vacío frente al PWM.}
 \end{figure}
 \begin{itemize}
-  \item El osciloscopio reproduce al Jeti con un error de $\pm\SI{1.3}{\percent}$ (20--\SI{40}{\percent}), lo que valida $p=7$. A \SI{24.8}{\volt} y $K_v=\SI{1700}{rpm/\volt}$ el motor giraría a $\approx$\,\SI{42000}{rpm} en vacío al 100\,\%; al \SI{80}{\percent} se estiman \SI{38400}{rpm}, el \SI{91}{\percent} de ese valor.
-  \item Las rpm crecen casi linealmente con el PWM; la potencia, en cambio, tiende a saturar (\SI{12.9}{\watt} al 50\,\% frente a \SI{14.4}{\watt} al 80\,\%): sin carga solo se vencen las pérdidas.
-  \item La tensión en la shunt es de unos \SI{1}{\milli\volt} a \SI{3}{\milli\volt}, con la resolución de 8 bits del PicoScope en el límite, así que la potencia a bajo régimen es solo orientativa.
+  \item El osciloscopio reproduce al Jeti con un error de $\pm\SI{1.3}{\percent}$ (\SIrange{20}{40}{\percent}), lo que valida $p=7$. A \SI{24.8}{\volt} y $K_v=\SI{1700}{rpm/\volt}$ el motor giraría a $\approx$\,\SI{42000}{rpm} en vacío al \SI{100}{\percent}; al \SI{80}{\percent} se estiman \SI{38400}{rpm}, el \SI{91}{\percent} de ese valor.
+  \item Las rpm crecen de forma aproximadamente lineal con el PWM (ajuste lineal con $R^2=\num{0.99}$ y desviaciones de hasta el \SI{6.4}{\percent}). La potencia crece más despacio por encima del \SI{50}{\percent} (\SI{12.9}{\watt} al \SI{50}{\percent} frente a \SI{14.4}{\watt} al \SI{80}{\percent}), pero cada paso es de solo \SI{0.1}{\milli\volt} en la shunt, del orden de la resolución de la lectura, así que no puede afirmarse que se sature. Sin carga solo se vencen las pérdidas (rozamiento, hierro y cobre), que aumentan con el régimen.
+  \item La tensión en la shunt es de solo \SIrange{1.25}{2.9}{\milli\volt} y el PicoScope es de 8 bits; aunque el enunciado indica promediar la señal para reducir el ruido, la corriente y la potencia en vacío son solo orientativas.
   \item Se usó \SI{24.8}{\volt} fijos; con la batería descargada (\SI{24.5}{\volt}) la potencia baja un \SI{1.2}{\percent}.
   \item El Jeti solo se midió hasta el \SI{40}{\percent}; de 50 a \SI{80}{\percent} las rpm son estimadas con $p=7$.
 \end{itemize}
