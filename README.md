@@ -6,6 +6,12 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-09 · [memoria_P2.tex](<UAS Systems and Subsystems/P2 - Propulsion Systems/memoria_P2.tex>) · UAS Systems and Subsystems/P2 - Propulsion Systems
+- 2026-11-09 · [memoria_P2.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/memoria_P2.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems
+- 2026-11-09 · [pwm_60.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_60.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
+- 2026-11-09 · [pwm_40.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_40.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
+- 2026-11-09 · [pwm_20.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_20.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
+- 2026-11-09 · [fig_motor.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/fig_motor.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
 - 2026-11-09 · [P2_medidas.csv](<UAS Systems and Subsystems/P2 - Propulsion Systems/P2_medidas.csv>) · UAS Systems and Subsystems/P2 - Propulsion Systems
 - 2026-11-09 · [P2_analisis.py](<UAS Systems and Subsystems/P2 - Propulsion Systems/P2_analisis.py>) · UAS Systems and Subsystems/P2 - Propulsion Systems
 - 2026-11-09 · [S4_Espana_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20Spanish%20U-space%20Framework%20%28Royal%20Decree%20517-2024%29/S4_Espana_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
@@ -15,12 +21,6 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - 2026-11-07 · [Apuntes_Propulsion_UAS_T1-T3.pdf](<UAS Propulsion/Apuntes_Propulsion_UAS_T1-T3.pdf>) · UAS Propulsion
 - 2026-11-06 · [PL_UASProp_Lab1_2026.pdf](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.pdf>) · UAS Propulsion/PL1
 - 2026-11-06 · [PL_UASProp_Lab1_2026.docx](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.docx>) · UAS Propulsion/PL1
-- 2026-11-06 · [vi_calc.m](<UAS Propulsion/PL1/vi_calc.m>) · UAS Propulsion/PL1
-- 2026-11-06 · [main.m](<UAS Propulsion/PL1/main.m>) · UAS Propulsion/PL1
-- 2026-11-06 · [fig_sensibilidad_MTOM.png](<UAS Propulsion/PL1/fig_sensibilidad_MTOM.png>) · UAS Propulsion/PL1
-- 2026-11-06 · [fig_helices_crucero.png](<UAS Propulsion/PL1/fig_helices_crucero.png>) · UAS Propulsion/PL1
-- 2026-11-06 · [zin_9x6_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_9x6_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
-- 2026-11-06 · [zin_11x7_avg.mat](<UAS Propulsion/PL1/DatabaseProp/zin_11x7_avg.mat>) · UAS Propulsion/PL1/DatabaseProp
 
 ## Asignaturas
 
