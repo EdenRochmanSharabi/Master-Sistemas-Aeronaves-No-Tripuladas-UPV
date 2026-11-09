@@ -236,7 +236,7 @@ body.captura .slide.activa .r{animation:none!important}
 
 /* ========== interfaz: progreso, ayuda, notas, pendientes y guion ========== */
 #progreso{position:fixed;left:0;top:0;height:3px;background:var(--rojo);width:0;z-index:50;transition:width .4s ease}
-#ayuda{position:fixed;right:14px;bottom:10px;font:500 12px var(--tec);letter-spacing:.08em;color:#8795a1;z-index:40;opacity:.7}
+#ayuda{position:fixed;right:14px;bottom:10px;font:500 12px var(--tec);letter-spacing:.04em;color:#dfe5ea;background:rgba(12,17,22,.78);padding:2px 8px;border-radius:4px;z-index:40}
 #notasPanel{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);width:min(1100px,92vw);max-height:40vh;overflow:auto;background:rgba(17,23,29,.96);color:#eef1f3;border-top:3px solid var(--rojo);padding:18px 24px;border-radius:4px;font:400 18px/1.5 var(--sans);z-index:60;display:none;box-shadow:0 10px 40px rgba(0,0,0,.4)}
 #notasPanel h4{font:600 13px var(--tec);letter-spacing:.14em;text-transform:uppercase;color:#a9b5bf;margin-bottom:6px}
 body.vernotas #notasPanel{display:block}
@@ -333,7 +333,7 @@ body.guion .hoja .mini .slide.slide.slide{transform:none!important;zoom:.3125;op
    Colores: ../../../Colores/colores.json, grupo «espana».
    ===================================================================== */
 .slide{background:radial-gradient(1300px 900px at 14% 8%,#FBF7EE 0%,#F6F0E4 55%,#EDE3D0 100%);
-  --oro:var(--cv);--linea:#E0D4BE;--rej:#9A7B4A;--rejop:.07;--dron:#6B6258;--tarjeta:#FCF9F2;--papelfill:#F6F0E4;
+  --txt2:#4F5A62;--oro:var(--cv);--linea:#E0D4BE;--rej:#9A7B4A;--rejop:.07;--dron:#6B6258;--tarjeta:#FCF9F2;--papelfill:#F6F0E4;
   --lom1:#EFE1CA;--lom2:#E6D2B1;--lom3:#DCC397}
 .slide.noche{background:radial-gradient(1400px 900px at 78% 20%,#2E2218 0%,#1C1611 62%);
   --txt2:#BDB09C;--linea:#43372B;--tarjeta:#241C14;--rej:#E8A93F;--rejop:.06;--dron:#D8C7A6;--papelfill:#1C1611;
@@ -417,15 +417,20 @@ body.captura .sale,body.guion .sale{animation:none!important}
 .slide.activa .pieza .p-drones{animation:baja 1.1s cubic-bezier(.2,.9,.3,1) 1.9s both}
 .slide.activa .pieza .p-volumen{animation:v-revela 1.1s cubic-bezier(.4,0,.2,1) 1.1s both}
 .slide.activa .pieza .p-fantasma{animation:v-revela 1.3s cubic-bezier(.4,0,.2,1) 1.6s both}
-.etq{font-size:22px}
+.etq{font-size:22px;fill:var(--txt2)}
+/* oro para texto sobre papel: el oro de línea no llega a 3:1 */
+.slide{--orotxt:#B07516}
 
 /* atmósfera: un resplandor cálido donde vive el visual de cada diapositiva */
 .slide:not(.noche):not(.portada){background:
   radial-gradient(1000px 760px at var(--luzx,76%) var(--luzy,62%),rgba(240,186,96,.22) 0%,rgba(240,186,96,0) 70%),
   radial-gradient(1300px 900px at 14% 8%,#FBF7EE 0%,#F6F0E4 55%,#EDE3D0 100%)}
-.slide.noche{background:
-  radial-gradient(1000px 420px at var(--luzx,74%) var(--luzy,56%),rgba(226,120,44,.30) 0%,rgba(226,120,44,0) 70%),
-  radial-gradient(1400px 900px at 78% 20%,#2E2218 0%,#1C1611 62%)}
+.slide.noche{background:var(--luz,none),radial-gradient(1400px 900px at 78% 20%,#2E2218 0%,#1C1611 62%)}
+/* formación: el ocaso sube desde el horizonte, detrás de la ciudad */
+#formacion{--luz:linear-gradient(158deg,rgba(226,120,44,0) 42%,rgba(226,120,44,.14) 68%,rgba(226,120,44,.34) 100%)}
+/* aeropuerto: el haz del radar sale de la pista (1400,626) */
+#aeropuerto{--luz:conic-gradient(from 20deg at 72.92% 57.96%,
+  rgba(226,120,44,0) 0deg,rgba(226,120,44,.09) 60deg,rgba(226,120,44,.26) 105deg,rgba(226,120,44,0) 105.6deg)}
 
 /* portada: panel de ocaso con la ciudad en 3D, el volumen, los docks y los drones que siguen al objetivo */
 .portada{background:radial-gradient(1200px 900px at 20% 30%,#FBF7EE 0%,#F4EDDF 60%,#EADFC9 100%)}
@@ -436,7 +441,7 @@ body.captura .sale,body.guion .sale{animation:none!important}
 
 /* operación: el mapa pasa a pantalla táctica oscura y los tres pasos se encienden por turno */
 #operacion .tarjeta{background:#1C1611;border-color:#4a3d2f;--mapa-papel:#1C1611;--mapa-txt:#F1E7D6;--mapa-txt2:#BDB09C;
-  box-shadow:0 26px 54px -20px rgba(70,46,10,.6)}
+  box-shadow:0 26px 54px -20px rgba(0,0,0,.5)}
 #operacion .mapa2 .esc,#operacion .mapa2 [stroke="#5B6770"]{stroke:#BDB09C}
 #operacion .mapa2 [fill="#5B6770"]{fill:#BDB09C}
 #operacion .mapa2 .ctx{fill-opacity:.07;stroke-opacity:.34}
@@ -636,17 +641,17 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
   <g class="crece" style="--d:1.5s" text-anchor="middle" font-family="Dosis" font-weight="600">
    <rect x="1150" y="446" width="240" height="78" rx="10" fill="var(--rojo)"/><rect x="1150" y="518" width="240" height="6" fill="var(--rojoosc)"/>
    <text x="1270" y="481" font-size="27" fill="#fff" letter-spacing="3">CAPÍTULO II</text>
-   <text x="1270" y="510" font-size="22" font-weight="500" fill="#FFE2E0">operador civil</text>
+   <text x="1270" y="510" font-size="22" font-weight="500" fill="#fff">operador civil</text>
   </g>
   <g class="crece" style="--d:1.9s" text-anchor="middle" font-family="Dosis" font-weight="600">
    <rect x="1520" y="472" width="240" height="78" rx="10" fill="var(--tarjeta)" stroke="var(--oro)" stroke-width="2.4" stroke-dasharray="9 6"/>
-   <text x="1640" y="507" font-size="27" fill="var(--oro)" letter-spacing="3">CAPÍTULO III</text>
+   <text x="1640" y="507" font-size="27" fill="var(--orotxt)" letter-spacing="3">CAPÍTULO III</text>
    <text x="1640" y="536" font-size="22" font-weight="500" fill="var(--txt2)">la policía</text>
   </g>
   <g class="ap" style="--d:2.4s">
    <path class="marcha" d="M1392,500 Q1455,476 1518,506" fill="none" stroke="var(--txt2)" stroke-width="2" stroke-dasharray="3 8" stroke-linecap="round"/>
    <circle class="pulso" cx="1455" cy="490" r="17" fill="var(--tarjeta)" stroke="var(--oro)" stroke-width="2.4"/>
-   <text x="1455" y="499" font-family="Dosis" font-size="26" font-weight="600" text-anchor="middle" fill="var(--oro)">?</text>
+   <text x="1455" y="499" font-family="Dosis" font-size="26" font-weight="600" text-anchor="middle" fill="var(--orotxt)">?</text>
   </g>
   <line class="traza" pathLength="1" style="--d:2.1s;--t:.5s" x1="1270" y1="526" x2="1256" y2="560" stroke="var(--rojo)" stroke-width="3" marker-end="url(#flechaR)"/>
   <line class="ap" style="--d:2.4s" x1="1640" y1="552" x2="1630" y2="670" stroke="var(--oro)" stroke-width="2.4" stroke-dasharray="6 7"/>
@@ -827,7 +832,7 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
    </g>
   </g>
   <g class="ap" style="--d:1.9s" font-family="Dosis" font-weight="600">
-   <text x="1052" y="420" font-size="23" fill="var(--acento)">hasta 900 m</text>
+   <text x="1052" y="420" font-size="23" fill="#F26A63">hasta 900 m</text>
    <text x="1180" y="500" font-size="23" fill="#FFB1A8">hasta 45 m</text>
    <text x="1400" y="664" font-size="20" text-anchor="middle" fill="var(--txt)" letter-spacing="3">PISTA</text>
    <g stroke="var(--txt)" stroke-width="2" fill="none">
@@ -1162,7 +1167,7 @@ slides.forEach((s,i)=>{
   const c={s:der,svg:g,defs:g.ownerSVGElement.querySelector('defs'),i:'portada'};fondosEspana(c);piezasEspana(c);})();
 
 /* ========== pie: logo, «viene de / lleva a» y contador ========== */
-const nPrincipal=slides.filter(s=>!s.dataset.anexo).length;
+const nPrincipal=slides.length;
 const nn=i=>String(i+1).padStart(2,'0');
 slides.forEach((s,i)=>{
   if(s.classList.contains('portada')) return;
@@ -1212,7 +1217,7 @@ const GRADOS_POR_RADIAN = 180 / Math.PI;
   const vuela=el('g',{class:'ruta-dron',style:`offset-path:path('${d}')`},gE);
   el('use',{href:'#dron',x:-DRON_LADO/MITAD,y:-DRON_LADO/MITAD,width:DRON_LADO,height:DRON_LADO},el('g',{transform:`rotate(90) scale(${V.dron})`},vuela));
   const EST={paso:['#424A50','#424A50','#fff','#C9D1D7','none','artículo o grupo'],noche:['#1b242d','#1b242d','#fff','#A9B5BF','none','paso de otro carril'],
-    clave:['#D73333','#D73333','#fff','#FFE2E0','none','plazo que condiciona la salida'],evid:['#fff','#5B6770','#424A50','#5B6770','7 5','evidencia propia'],
+    clave:['#D73333','#D73333','#fff','#fff','none','plazo que condiciona la salida'],evid:['#fff','#5B6770','#424A50','#5B6770','7 5','evidencia propia'],
     doc:['#FCF9F2','#C9861A','#424A50','#5B6770','none','punto de partida'],rojo:['#fff','#D73333','#A40E0E','#D73333','7 5','bucle de revisión']};
   const usados=new Set();
   for(const k in N){
@@ -1224,13 +1229,13 @@ const GRADOS_POR_RADIAN = 180 / Math.PI;
     el('text',{x:x-W/MITAD+V.tit.dx,y:y+V.tit.dy,'font-family':'Jost','font-size':V.tit.tam,'font-weight':500,fill:e[2]},a,tit);
     el('text',{x:x+W/MITAD+V.num.dx,y:y+V.num.dy,'text-anchor':'end','font-family':'Dosis','font-size':V.num.tam,'font-weight':600,fill:e[3]},a,'→ '+nn(j));
   }
-  const L=V.leyenda, lg=el('g',{'font-family':'Dosis','font-weight':600,'font-size':L.tam,fill:'#5B6770'},svg);
+  const L=V.leyenda, lg=el('g',{'font-family':'Dosis','font-weight':600,'font-size':L.tam,fill:'var(--txt2)'},svg);
   [...usados].forEach((t,i)=>{const e=EST[t],y=L.y+i*L.paso;
     el('rect',{x:L.x,y,width:L.caja[0],height:L.caja[1],rx:4,fill:e[0],stroke:e[1],'stroke-width':2},lg);el('text',{x:L.x+L.texto,y:y+L.caja[1]-MITAD},lg,e[5]);});
   const C=V.claves;
-  el('text',{x:V.xDer,y:V.notaY,'text-anchor':'end','font-family':'Dosis','font-weight':600,'font-size':C.tam,fill:'#5B6770'},svg,MAPA.nota);
-  const cl=el('g',{'font-family':'Dosis','font-weight':600,'font-size':C.tam,fill:'#5B6770'},svg);
-  el('text',{x:0,y:C.rotuloY,'letter-spacing':'2.5',fill:'#8a949b'},cl,'CLAVES');
+  el('text',{x:V.xDer,y:V.notaY,'text-anchor':'end','font-family':'Dosis','font-weight':600,'font-size':C.tam,fill:'var(--txt2)'},svg,MAPA.nota);
+  const cl=el('g',{'font-family':'Dosis','font-weight':600,'font-size':C.tam,fill:'var(--txt2)'},svg);
+  el('text',{x:0,y:C.rotuloY,'letter-spacing':'2.5',fill:'var(--gris)'},cl,'CLAVES');
   MAPA.claves.forEach(([a,b],i)=>{el('text',{x:C.x[i],y:C.y,fill:'#424A50'},cl,a);el('text',{x:C.x[i]+C.sep,y:C.y},cl,b);});
 })();
 
