@@ -6,6 +6,9 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-10 · [state.md](<notas/aerotech/state.md>) · notas/aerotech
+- 2026-11-10 · [CODEMAP.md](<notas/aerotech/CODEMAP.md>) · notas/aerotech
+- 2026-11-10 · [BITACORA.md](<notas/aerotech/BITACORA.md>) · notas/aerotech
 - 2026-11-09 · [memoria_P2.tex](<UAS Systems and Subsystems/P2 - Propulsion Systems/memoria_P2.tex>) · UAS Systems and Subsystems/P2 - Propulsion Systems
 - 2026-11-09 · [memoria_P2.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/memoria_P2.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems
 - 2026-11-09 · [pwm_60.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_60.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
@@ -18,9 +21,6 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - 2026-11-09 · [S4_Espana_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)/S4_Espana_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
 - 2026-11-07 · [Apuntes_TNCA_T1-T8.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
 - 2026-11-07 · [Apuntes_Propulsion_UAS_T1-T3_Guiado.pdf](<UAS Propulsion/Apuntes_Propulsion_UAS_T1-T3_Guiado.pdf>) · UAS Propulsion
-- 2026-11-07 · [Apuntes_Propulsion_UAS_T1-T3.pdf](<UAS Propulsion/Apuntes_Propulsion_UAS_T1-T3.pdf>) · UAS Propulsion
-- 2026-11-06 · [PL_UASProp_Lab1_2026.pdf](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.pdf>) · UAS Propulsion/PL1
-- 2026-11-06 · [PL_UASProp_Lab1_2026.docx](<UAS Propulsion/PL1/PL_UASProp_Lab1_2026.docx>) · UAS Propulsion/PL1
 
 ## Asignaturas
 
@@ -28,6 +28,7 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - [Air Transport, Air Navigation, and Air Traffic Management](<Air Transport, Air Navigation, and Air Traffic Management/>)
 - [Aircraft Design](<Aircraft Design/>)
 - [Configuration of Unmanned Aircraft Systems (UAS)](<Configuration of Unmanned Aircraft Systems (UAS)/>)
+- [notas](<notas/>)
 - [Operational Safety, Procedure Verification, and Technology Validation](<Operational Safety, Procedure Verification, and Technology Validation/>)
 - [Research Group](<Research Group/>)
 - [UAS Airspace Management](<UAS Airspace Management/>)
