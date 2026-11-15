@@ -6,3 +6,5 @@
 - [Versión narrada: los temas 1, 2 y 3 contados de seguido](Apuntes_Propulsion_UAS_T1-T3_Narrado.pdf): se lee como un libro, desde la física sencilla hasta cada fórmula, sin saltar entre páginas.
 - [Versión guiada: descubre los temas 1, 2 y 3 con preguntas](Apuntes_Propulsion_UAS_T1-T3_Guiado.pdf): preguntas para pensar antes de seguir, con el razonamiento debajo.
 - [Práctica PL1](PL1)
+- [Exámenes de test: preguntas y respuestas razonadas](Examenes_Propulsion_UAS.pdf): las preguntas primero y las respuestas al final, con enlaces de ida y vuelta.
+- [Exámenes de test: respuestas esenciales](Examenes_Propulsion_UAS_Respuestas_Esenciales.pdf): la opción correcta y la idea mínima (enlaza con el anterior, deben estar en la misma carpeta).
