@@ -91,8 +91,7 @@ const VALORES = {
   aviso_dias: {v:'cinco días naturales', estado:'confirmado', fuente:'BOE-A-2024-11377, art. 40.3.a'},
   pista_ext:  {v:'6 km', estado:'confirmado', fuente:'BOE-A-2024-11377, art. 41.1.a'},
   pista_lado: {v:'5 km', estado:'confirmado', fuente:'BOE-A-2024-11377, art. 41.1.a'},
-  plazo_coord:{v:'un mes', estado:'confirmado', fuente:'BOE-A-2024-11377, art. 43.3 y 43.8'},
-  perdida:    {v:'15 días', estado:'confirmado', fuente:'BOE-A-2024-11377, art. 56'}
+  plazo_coord:{v:'un mes', estado:'confirmado', fuente:'BOE-A-2024-11377, art. 43.3 y 43.8'}
 };
 
 /* =====================================================================
@@ -111,7 +110,7 @@ const MAPA = {
     for: [3,0,'Arts. 23 a 31','Formación','formacion','paso'],
     urb: [3,1,'Art. 40','Zona urbana','urbana','clave'],
     esp: [2,1,'Arts. 41 a 43','Espacio aéreo','aeropuerto','clave'],
-    rgl: [1,1,'Arts. 53 a 56','Registro y lagunas','registro','paso']
+    rgl: [1,1,'Arts. 53 a 58 anulados','Registro y lagunas','registro','paso']
   },
   aristas: [['ope','reg'],['reg','aut'],['aut','for'],['for','urb'],['urb','esp'],['esp','rgl']],
   claves: [['AESA','Agencia Estatal de Seguridad Aérea'],['ENAIRE','gestor de la navegación aérea'],['BVLOS','vuelo más allá del alcance visual']],
@@ -325,7 +324,7 @@ body.guion .hoja .mini .slide.slide.slide{transform:none!important;zoom:.3125;op
 /* referencias en dos columnas */
 .refs{columns:2;column-gap:60px}
 .refs p{font-size:23px;line-height:1.35;margin-bottom:10px;break-inside:avoid}
-.refs h5{font-family:var(--tec);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);margin:4px 0 8px}
+.refs h5{font-family:var(--tec);font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);margin:4px 0 8px;break-after:avoid}
 
 /* =====================================================================
    TEMA ESPAÑA (Valencia) · cal cálida, oro y el rojo UPV de acento.
@@ -619,13 +618,13 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
 </section>
 
 <section class="slide" id="mapa" data-corto="Índice" data-viene="operacion" data-lleva="regimen" data-fondo="rejilla" data-cenefa data-pieza-fondo="horizonte 960 1052 1500">
- <header class="cab"><div class="kicker r"><span class="paso">Índice</span><span class="sep"></span><span class="preg">¿Cómo lo contamos?</span></div><h2 class="r">Siete bloques llevan de la operación a las lagunas</h2><p class="sub r">Primero el régimen que nos toca, luego los cuatro trámites con plazo, después el registro de cada dron y, al final, lo que el real decreto no regula.</p></header>
+ <header class="cab"><div class="kicker r"><span class="paso">Índice</span><span class="sep"></span><span class="preg">¿Cómo lo contamos?</span></div><h2 class="r">Siete bloques llevan de la operación a las lagunas</h2><p class="sub r">Primero el régimen que nos toca, luego los cuatro trámites con plazo, después el registro de Interior, hoy anulado, y, al final, lo que el real decreto no regula.</p></header>
  <!-- lamina:mapa -->
  <!-- /lamina:mapa -->
  <div class="cuerpo">
   <svg id="svgMapa" class="r" width="1680" height="640" viewBox="0 0 1680 640" style="overflow:visible"></svg>
  </div>
- <aside class="notas">El índice sigue siete bloques, de izquierda a derecha y luego de derecha a izquierda. Arriba, la operación, el régimen que nos toca, la autorización de AESA y la formación de los pilotos. Abajo, la zona urbana, el espacio aéreo con ENAIRE y el registro, con las lagunas. Los recuadros rojos son los que tienen un plazo que condiciona la salida de los drones. Empiezo por el régimen.</aside>
+ <aside class="notas">El índice sigue siete bloques, de izquierda a derecha y luego de derecha a izquierda. Arriba, la operación, el régimen que nos toca, la autorización de AESA y la formación de los pilotos. Abajo, la zona urbana, el espacio aéreo con ENAIRE y el registro de Interior, que el Tribunal Supremo anuló, con las lagunas. Los recuadros rojos son los que tienen un plazo que condiciona la salida de los drones. Empiezo por el régimen.</aside>
 </section>
 
 <section class="slide" id="regimen" data-corto="Régimen" data-viene="mapa" data-lleva="autorizacion" data-fondo="rejilla" data-olas="0 0 1920 1080" data-cenefa data-pieza="civil 1270 940 540 Nuestro caso; estado 1640 940 300 Si fuera la policía">
@@ -862,8 +861,8 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
  <aside class="notas">En el artículo 41, un aeródromo civil de uso público tiene una zona prohibida de <span data-valor="pista_ext"></span> desde cada extremo de pista y <span data-valor="pista_lado"></span> a cada lado hasta 45 metros, y más ancha hasta 900 metros. El espacio aéreo controlado también es zona general, según el artículo 42. La única excepción, volar a la vista hasta 60 metros, no nos sirve porque volamos más allá del alcance visual y hasta 120 metros. Según el artículo 43, sin una respuesta afirmativa expresa de ENAIRE y del gestor no se puede volar en ningún caso, y responden en un mes. Por eso hay que acordar antes un procedimiento de coordinación de tipo. El artículo 44, para operaciones policiales directas, no nos sirve. Si cada barrio cae en estas zonas se confirma con el mapa de ENAIRE. Queda el registro y lo que no está regulado.</aside>
 </section>
 
-<section class="slide" id="registro" data-corto="Registro y lagunas" data-viene="aeropuerto" data-lleva="referencias" data-fondo="rejilla" data-olas="0 0 1920 1080" data-cenefa data-pieza="dock_d 330 930 300 Drones guardados en el dock">
- <header class="cab"><div class="kicker r"><span class="paso">Arts. 53 a 56</span><span class="sep"></span><span class="preg">¿Qué se registra y qué falta?</span></div><h2 class="r">Cada dron se inscribe y quedan lagunas</h2><p class="sub r">Cada dron se inscribe en el registro de Interior y una pérdida se comunica en 15 días; el real decreto no regula el vuelo autónomo ni el enjambre.</p></header>
+<section class="slide" id="registro" data-corto="Registro anulado y lagunas" data-viene="aeropuerto" data-lleva="referencias" data-fondo="rejilla" data-olas="0 0 1920 1080" data-cenefa data-pieza="dock_d 330 930 300 Drones guardados en el dock">
+ <header class="cab"><div class="kicker r"><span class="paso">Arts. 53 a 58 · anulados</span><span class="sep"></span><span class="preg">¿Qué se registra y qué falta?</span></div><h2 class="r">ANULADO el registro de Interior: no se inscribe cada dron</h2><p class="sub r">La Sentencia del Tribunal Supremo de 19 de junio de 2025 anuló la sección 3.ª del capítulo VI: ya no se inscribe cada dron en ese registro ni se comunica su pérdida en 15 días.</p></header>
  <!-- lamina:registro -->
 <svg class="lamina" viewBox="0 0 1920 1080" aria-hidden="true">
   <defs>
@@ -872,6 +871,7 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
     <rect x="-42" y="60" width="84" height="32" rx="5" fill="var(--tarjeta)" stroke="var(--oro)" stroke-width="2.2"/>
     <circle cx="-30" cy="76" r="3.5" fill="var(--rojo)"/>
     <path d="M-20,71 H30 M-20,81 H14" stroke="var(--txt2)" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M-48,98 L48,54" stroke="var(--rojo)" stroke-width="4" stroke-linecap="round"/>
    </g>
   </defs>
   <path class="ap marcha" style="--d:.8s" d="M430,820 C580,740 860,740 1085,810" fill="none" stroke="var(--oro)" stroke-width="2.6" stroke-dasharray="4 10" stroke-linecap="round"/>
@@ -889,16 +889,23 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
    <g transform="translate(1216 826) scale(.14)" style="color:var(--grisosc)"><use href="#dron" x="-620" y="-620" width="1240" height="1240"/></g>
    <g font-family="Dosis">
     <text x="1338" y="768" font-size="28" font-weight="600" fill="var(--txt)">N.º de serie y registro</text>
-    <text x="1338" y="804" font-size="23" font-weight="500" fill="var(--txt2)">Ministerio del Interior · art. 53</text>
+    <text x="1338" y="804" font-size="23" font-weight="500" fill="var(--txt2)">Ministerio del Interior · arts. 53 a 58</text>
     <text x="1338" y="836" font-size="22" font-weight="500" fill="var(--txt2)">uno por cada dron del enjambre</text>
    </g>
    <path d="M1338,862 V906 M1346,862 V906 M1351,862 V906 M1362,862 V906 M1368,862 V906 M1380,862 V906 M1385,862 V906 M1397,862 V906 M1408,862 V906 M1413,862 V906 M1425,862 V906 M1436,862 V906 M1442,862 V906 M1454,862 V906 M1465,862 V906 M1470,862 V906 M1482,862 V906 M1490,862 V906 M1501,862 V906 M1507,862 V906 M1519,862 V906 M1530,862 V906" stroke="var(--grisosc)" stroke-width="3.4"/>
-   <g class="sello" style="--d:3s"><circle cx="1662" cy="884" r="26" fill="var(--rojo)"/><path d="M1650,885 L1659,894 L1675,875" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+   <path class="traza" pathLength="1" style="--d:2.9s;--t:.5s" d="M1122,726 L1688,914" stroke="var(--rojo)" stroke-width="6" stroke-opacity=".85" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(1585 914) rotate(-6)"><g class="sello" style="--d:3.3s">
+   <rect x="-160" y="-52" width="320" height="104" rx="10" fill="#FFFDF8" fill-opacity=".94" stroke="var(--rojo)" stroke-width="6"/>
+   <rect x="-150" y="-42" width="300" height="84" rx="6" fill="none" stroke="var(--rojo)" stroke-width="2"/>
+   <text y="8" font-size="50" font-weight="700" letter-spacing="7" text-anchor="middle" fill="var(--rojo)">ANULADO</text>
+   <text y="32" font-family="Dosis" font-size="20" font-weight="600" letter-spacing="1" text-anchor="middle" fill="var(--rojoosc)">Tribunal Supremo · 2025</text>
   </g></g>
+  </g>
  </svg>
 <!-- /lamina:registro -->
  <div class="cuerpo">
-  <div class="col" style="width:800px"><div class="r regla "><div class="et"><span class="art">Arts. 53 a 56</span> Registro de aeronaves</div><p>Se inscribe toda aeronave de 250 g o más, o con un sensor que pueda captar datos personales. El EVO Max 4T pesa <span data-valor="masa"></span> y lleva cámaras: cumple las dos.</p></div><div class="r regla "><div class="et"><span class="art">Art. 56</span> Pérdida</div><p>La pérdida, el extravío o la inutilidad de un dron se comunican en <span data-valor="perdida"></span>.</p></div><p class="r peq muted">Art. 15: el operador civil no puede volar sin identificación remota. Disposición final séptima: se notifican los sucesos de una operación específica fuera de escenario estándar con riesgo significativo.</p></div>
+  <div class="col" style="width:800px"><div class="r regla "><div class="et"><span class="art">Arts. 53 a 58</span> Anulados</div><p>Cae el registro de aeronaves de Interior y el de comercialización y venta. El resto del real decreto sigue vigente.</p></div><div class="r regla "><div class="et">Sigue vigente y nos afecta</div><p>Art. 15: identificación remota. Disposición final séptima: notificación de sucesos. Art. 40.3.a: aviso a Interior (diapositiva 7).</p></div><p class="r peq muted"><b>Fuente:</b> Sentencia del TS de 19 de junio de 2025, BOE de 11 de julio de 2025 (BOE-A-2025-14308); el texto consolidado marca los arts. 53 a 58 como anulados.</p></div>
   <div class="r tarjeta" style="position:absolute;left:840px;top:0;width:840px;border-top:5px solid var(--rojo)">
    <div class="et acento">Lo que el real decreto no regula</div>
    <ul class="lista" style="margin-top:14px">
@@ -909,10 +916,10 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
    </ul>
   </div>
  </div>
- <aside class="notas">Según los artículos 53 a 56, se inscribe en el registro de aeronaves del Ministerio del Interior toda aeronave de 250 gramos o más, o con un sensor que pueda captar datos personales. El Autel EVO Max 4T, de <span data-valor="masa"></span> y con cámaras, cumple las dos, así que cada dron del enjambre se inscribe, y su pérdida se comunica en <span data-valor="perdida"></span>. En pequeño, el artículo 15 obliga al civil a llevar identificación remota y la disposición final séptima exige notificar ciertos sucesos. Lo que el real decreto no regula es el vuelo autónomo, el enjambre con relevo entre docks, el pilotaje desde un centro de la policía y la protección de datos, que remite a su normativa. Esas lagunas se consultan con AESA. Cierro con las referencias.</aside>
+ <aside class="notas">El real decreto creaba un registro de aeronaves en el Ministerio del Interior, en los artículos 53 a 58, pero la Sentencia del Tribunal Supremo de 19 de junio de 2025, publicada en el BOE el 11 de julio de 2025, anuló esa sección entera: el registro de aeronaves de Interior y el de comercialización y venta. El resto del real decreto sigue vigente. Por eso ya no hay que inscribir cada dron del enjambre en ese registro ni comunicar su pérdida en 15 días. Lo que sí sigue y nos afecta: el artículo 15 obliga al civil a llevar identificación remota, la disposición final séptima exige notificar ciertos sucesos y el artículo 40.3.a mantiene el aviso previo a Interior que vimos en la zona urbana. Si queda algún otro registro aplicable a cada dron, se consulta con AESA. Lo que el real decreto no regula es el vuelo autónomo, el enjambre con relevo entre docks, el pilotaje desde un centro de la policía y la protección de datos, que remite a su normativa. Esas lagunas se consultan con AESA. Cierro con las referencias.</aside>
 </section>
 
-<section class="slide" id="referencias" data-corto="Anexo A · referencias" data-viene="registro" data-anexo="A" data-fondo="rejilla" data-olas="0 570 1920 260" data-pieza-fondo="horizonte 960 1075 1920" data-lomas="96" data-cenefa data-enjambre="1240 704" style="--dronop:.55">
+<section class="slide" id="referencias" data-corto="Anexo A · referencias" data-viene="registro" data-anexo="A" data-fondo="rejilla" data-olas="0 570 1920 260" data-pieza-fondo="horizonte 960 1075 1920" data-lomas="96" data-cenefa data-enjambre="200 732" style="--dronop:.55">
  <header class="cab"><div class="kicker r"><span class="paso">Anexo A</span><span class="sep"></span><span class="preg">Fuentes</span></div><h2 class="r">Referencias principales</h2></header>
  <!-- lamina:referencias -->
  <!-- /lamina:referencias -->
@@ -920,6 +927,7 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
   <div class="refs r">
    <h5>Normativa</h5>
    <p>Real Decreto 517/2024, de 4 de junio, por el que se desarrolla el régimen jurídico para la utilización civil de sistemas de aeronaves no tripuladas. BOE núm. 136, de 5 de junio de 2024, BOE-A-2024-11377. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-11377">Texto consolidado en el BOE</a>.</p>
+   <p>Sentencia de 19 de junio de 2025, de la Sala Tercera del Tribunal Supremo, que declara la nulidad de la sección 3.ª del capítulo VI del Real Decreto 517/2024 (arts. 53 a 58). BOE de 11 de julio de 2025, BOE-A-2025-14308. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2025-14308">Texto en el BOE</a>.</p>
    <p>Reglamento de Ejecución (UE) 2019/947 de la Comisión, de 24 de mayo de 2019, relativo a las normas y los procedimientos aplicables a la utilización de aeronaves no tripuladas. Solo como contexto: el real decreto lo completa y su texto no está en él.</p>
    <h5>La operación</h5>
    <p>UAS Operational Procedures and Certification, máster de la UPV: ConOps con área operacional, 6 de noviembre de 2026 (SORA 2.5). Fuente de la operación y de los datos del Autel EVO Max 4T.</p>
@@ -931,7 +939,7 @@ body.captura .slide *,body.guion .slide *{animation:none!important}
    <p>UPV, <i>Guía de comunicación UPV</i>. Tipografías Jost y Dosis (SIL Open Font License). El dron dibujado es un esquema genérico.</p>
   </div>
  </div>
- <aside class="notas">Estas son las fuentes. El real decreto en el BOE, con su texto consolidado, es la única base del contenido legal. El Reglamento de Ejecución 2019/947 aparece solo como contexto. La operación procede del ConOps del máster. Para confirmar si cada barrio cae en zona de aeródromo se consulta el mapa de zonas de ENAIRE, y las lagunas se consultan con AESA.</aside>
+ <aside class="notas">Estas son las fuentes. El real decreto en el BOE, con su texto consolidado, es la única base del contenido legal, junto con la Sentencia del Tribunal Supremo de 19 de junio de 2025, que anuló el registro de aeronaves de Interior. El Reglamento de Ejecución 2019/947 aparece solo como contexto. La operación procede del ConOps del máster. Para confirmar si cada barrio cae en zona de aeródromo se consulta el mapa de zonas de ENAIRE, y las lagunas se consultan con AESA.</aside>
 </section>
 
 </main>
