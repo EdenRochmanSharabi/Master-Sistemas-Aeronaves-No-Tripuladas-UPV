@@ -6,6 +6,8 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-16 · [S4_Espana_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20Spanish%20U-space%20Framework%20%28Royal%20Decree%20517-2024%29/S4_Espana_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
+- 2026-11-16 · [S4_Espana_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)/S4_Espana_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
 - 2026-11-15 · [Apuntes_TNCA_T1-T8_Esencial.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8_Esencial.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
 - 2026-11-15 · [Apuntes_TNCA_T1-T8_Narrado.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8_Narrado.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
 - 2026-11-15 · [Examenes_Propulsion_UAS_Respuestas_Esenciales.pdf](<UAS Propulsion/Examenes_Propulsion_UAS_Respuestas_Esenciales.pdf>) · UAS Propulsion
@@ -19,8 +21,6 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - 2026-11-09 · [pwm_60.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_60.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
 - 2026-11-09 · [pwm_40.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_40.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
 - 2026-11-09 · [pwm_20.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/pwm_20.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
-- 2026-11-09 · [fig_motor.pdf](<UAS Systems and Subsystems/P2 - Propulsion Systems/figuras/fig_motor.pdf>) · UAS Systems and Subsystems/P2 - Propulsion Systems/figuras
-- 2026-11-09 · [P2_medidas.csv](<UAS Systems and Subsystems/P2 - Propulsion Systems/P2_medidas.csv>) · UAS Systems and Subsystems/P2 - Propulsion Systems
 
 ## Asignaturas
 
