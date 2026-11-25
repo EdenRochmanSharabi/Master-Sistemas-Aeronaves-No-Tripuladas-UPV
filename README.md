@@ -6,6 +6,8 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-25 · [SID_8.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LEMD/SID_8.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LEMD
+- 2026-11-25 · [SID_7.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LEMD/SID_7.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LEMD
 - 2026-11-25 · [LEMDLLBG_XML_1793965869.xml](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/simbrief/LEMDLLBG_XML_1793965869.xml>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/simbrief
 - 2026-11-25 · [enroute-sinviento.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-sinviento.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
 - 2026-11-25 · [enroute-sinviento.kml](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-sinviento.kml>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
@@ -19,8 +21,6 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - 2026-11-25 · [VERTICAL-MRC.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-MRC.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
 - 2026-11-25 · [SID-NANDO3R.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/SID-NANDO3R.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
 - 2026-11-25 · [SID-NANDO3R.kml](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/SID-NANDO3R.kml>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
-- 2026-11-25 · [SID-NANDO3R-vertical.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/SID-NANDO3R-vertical.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
-- 2026-11-25 · [LLEGADA-vertical.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/LLEGADA-vertical.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
 
 ## Asignaturas
 
