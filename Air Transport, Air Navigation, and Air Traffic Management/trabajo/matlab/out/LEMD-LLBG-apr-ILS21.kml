@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>/Users/edenrochman/Library/Mobile Documents/com~apple~CloudDocs/Universidad de Valencia/Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/LEMD-LLBG-apr-ILS21.kml</name>
+<Style id="inline0">
+	<LineStyle>
+		<color>88333333</color>
+		<width>1</width>
+	</LineStyle>
+	<IconStyle>
+		<scale>1</scale>
+		<Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>
+	</IconStyle>
+	<LabelStyle>
+		<color>ffffeeee</color>
+		<scale>1</scale>
+	</LabelStyle>
+</Style>
+<Style id="inline1">
+	<LineStyle>
+		<color>88333333</color>
+		<width>1</width>
+	</LineStyle>
+	<IconStyle>
+		<scale>0.5</scale>
+		<Icon><href>http://maps.google.com/mapfiles/kml/shapes/triangle.png</href></Icon>
+	</IconStyle>
+	<LabelStyle>
+		<color>fffffffff</color>
+		<scale>0.8</scale>
+	</LabelStyle>
+</Style>
+<Placemark>
+	<name>LLBG ILS 21 aproximacion</name>
+	<styleUrl>#inline0</styleUrl>
+	<MultiGeometry>
+		<Point>
+			<altitudeMode>absolute</altitudeMode>
+			<coordinates>34.990100,32.157044,0.000000</coordinates>
+		</Point>
+		<LineString>
+			<extrude>0</extrude>
+			<tessellate>1</tessellate>
+			<altitudeMode>absolute</altitudeMode>
+			<coordinates>
+			35.051806,32.252167,0.000000 
+			34.990000,32.156944,0.000000 
+			34.970542,32.126892,0.000000 
+			34.900225,32.018125,0.000000 
+			</coordinates>
+		</LineString>
+	</MultiGeometry>
+</Placemark>
+<Placemark>
+	<name>TOPPU</name>
+	<description>TF 209.0T (min 4000); then ATC / comm failure: direct GALGA</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>35.051806,32.252167,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>GALGA</name>
+	<description>IF ILS 21 (min 2600)</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.990000,32.156944,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>BG074</name>
+	<description>FAP ILS 21 (7.4 DME BN)</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.970542,32.126892,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>THR21</name>
+	<description>RWY 21 threshold</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.900225,32.018125,0.000000 </coordinates>
+	</Point>
+</Placemark>
+</Document>
+</kml>
