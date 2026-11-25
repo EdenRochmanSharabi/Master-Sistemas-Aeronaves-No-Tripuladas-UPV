@@ -9,3 +9,11 @@
 - [Respuestas esenciales de los exámenes pasados](Examenes_Pasados_TNCA_Respuestas_Esenciales.pdf): las respuestas reducidas a lo que hay que saber.
 - [Guía para el primer examen](Guia_Examen1.pdf)
 - [Guía para el segundo examen](Guia_Examen2.pdf)
+
+<!-- html:inicio -->
+## Ver en el navegador
+
+- [trabajo/cartas/LLBG/idx.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Air%20Transport%2C%20Air%20Navigation%2C%20and%20Air%20Traffic%20Management/trabajo/cartas/LLBG/idx.html)
+- [trabajo/cartas/LLBG/menu-en-GB.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Air%20Transport%2C%20Air%20Navigation%2C%20and%20Air%20Traffic%20Management/trabajo/cartas/LLBG/menu-en-GB.html)
+- [trabajo/cartas/LLBG/menu2.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Air%20Transport%2C%20Air%20Navigation%2C%20and%20Air%20Traffic%20Management/trabajo/cartas/LLBG/menu2.html)
+<!-- html:fin -->
