@@ -6,21 +6,21 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
-- 2026-11-19 · [Guia_Examen2.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Guia_Examen2.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-19 · [Guia_Examen1.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Guia_Examen1.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-19 · [Examenes_Pasados_TNCA_Respuestas_Esenciales.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Examenes_Pasados_TNCA_Respuestas_Esenciales.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-19 · [Examenes_Pasados_TNCA.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Examenes_Pasados_TNCA.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-16 · [S4_Espana_EdenRochmanSharabi.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/UAS%20Regulation%20and%20Legislation/Seminar%204%20-%20Spanish%20U-space%20Framework%20%28Royal%20Decree%20517-2024%29/S4_Espana_EdenRochmanSharabi.html) (se abre en el navegador) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
-- 2026-11-16 · [S4_Espana_EdenRochmanSharabi.pdf](<UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)/S4_Espana_EdenRochmanSharabi.pdf>) · UAS Regulation and Legislation/Seminar 4 - Spanish U-space Framework (Royal Decree 517-2024)
-- 2026-11-15 · [Apuntes_TNCA_T1-T8_Esencial.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8_Esencial.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-15 · [Apuntes_TNCA_T1-T8_Narrado.pdf](<Air Transport, Air Navigation, and Air Traffic Management/Apuntes_TNCA_T1-T8_Narrado.pdf>) · Air Transport, Air Navigation, and Air Traffic Management
-- 2026-11-15 · [Examenes_Propulsion_UAS_Respuestas_Esenciales.pdf](<UAS Propulsion/Examenes_Propulsion_UAS_Respuestas_Esenciales.pdf>) · UAS Propulsion
-- 2026-11-15 · [Examenes_Propulsion_UAS.pdf](<UAS Propulsion/Examenes_Propulsion_UAS.pdf>) · UAS Propulsion
-- 2026-11-11 · [Apuntes_Propulsion_UAS_T1-T3_Narrado.pdf](<UAS Propulsion/Apuntes_Propulsion_UAS_T1-T3_Narrado.pdf>) · UAS Propulsion
-- 2026-11-10 · [state.md](<notas/aerotech/state.md>) · notas/aerotech
-- 2026-11-10 · [CODEMAP.md](<notas/aerotech/CODEMAP.md>) · notas/aerotech
-- 2026-11-10 · [BITACORA.md](<notas/aerotech/BITACORA.md>) · notas/aerotech
-- 2026-11-09 · [memoria_P2.tex](<UAS Systems and Subsystems/P2 - Propulsion Systems/memoria_P2.tex>) · UAS Systems and Subsystems/P2 - Propulsion Systems
+- 2026-11-25 · [todo.md](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/todo.md>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo
+- 2026-11-25 · [xlsx2csv.m](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/xlsx2csv.m>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
+- 2026-11-25 · [tab_vert_num.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_vert_num.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_vert_def.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_vert_def.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_sid.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_sid.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_rnp.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_rnp.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_llegada.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_llegada.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_ils.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_ils.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_frustrada.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_frustrada.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_enr_sinviento.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_enr_sinviento.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_enr_conviento.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_enr_conviento.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_enr_comp.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_enr_comp.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_consumo.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_consumo.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [tab_comprobacion.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_comprobacion.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-25 · [nums.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/nums.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
 
 ## Asignaturas
 
