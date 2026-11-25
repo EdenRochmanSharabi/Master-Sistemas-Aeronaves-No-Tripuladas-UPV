@@ -1,0 +1,41 @@
+\begingroup\scriptsize\setlength{\tabcolsep}{2.8pt}
+\begin{longtable}{lll>{\raggedright\arraybackslash}p{2.5cm}ll>{\raggedright\arraybackslash}p{4.3cm}}
+\caption{Definición de los tramos del perfil vertical (\texttt{VERTICAL-tramos.xlsx}): tipo (SPD/PTH), segundo grado de libertad (subtipo), variables conocidas e incógnitas y configuración aerodinámica BADA.}\label{tab:vdef}\\
+\toprule
+Tramo & Tipo & Subtipo & Conocidas & Incógnitas & Config. & Descripción\\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\small\itshape (continuación)}\\
+\toprule
+Tramo & Tipo & Subtipo & Conocidas & Incógnitas & Config. & Descripción\\
+\midrule
+\endhead
+\midrule
+\multicolumn{7}{r}{\small\itshape continúa}\\
+\endfoot
+\bottomrule
+\endlastfoot
+C1 & SPD & Tr fijo & IAS o Mach, Tr & VS (ROCD), FPA & takeoff & \scriptsize Ascenso inicial a V2+20 = 172 kt, empuje de despegue, flaps TO\\
+C2 & SPD & Tr fijo & IAS o Mach, Tr & VS (ROCD), FPA & initialclimb & \scriptsize V2+20 con empuje de ascenso (reducción por ruido), flaps 1\\
+C3.1 & SPD & Tr fijo + ESF & Tr, ESF=0.3 & VS, dV/dt (aceleración) & climb & \scriptsize Aceleración 172 $\rightarrow$ 220 kt IAS a empuje de ascenso (ESF 0,3)\\
+C3.2 & SPD & Tr fijo & IAS o Mach, Tr & VS (ROCD), FPA & climb & \scriptsize Ascenso a IAS constante 220 kt (límite de velocidad hasta MD048)\\
+C3.3 & SPD & Tr fijo + ESF & Tr, ESF=0.3 & VS, dV/dt (aceleración) & climb & \scriptsize Aceleración 220 $\rightarrow$ 240 kt IAS a empuje de ascenso (ESF 0,3)\\
+C3.4 & SPD & Tr fijo & IAS o Mach, Tr & VS (ROCD), FPA & climb & \scriptsize Ascenso a IAS constante 240 kt (límite de velocidad hasta MD824)\\
+C3.5 & SPD & Tr fijo + ESF & Tr, ESF=0.3 & VS, dV/dt (aceleración) & climb & \scriptsize Aceleración 240 $\rightarrow$ 300 kt IAS a empuje de ascenso (ESF 0,3)\\
+C4 & SPD & Tr fijo & IAS o Mach, Tr & VS (ROCD), FPA & climb & \scriptsize Ascenso a IAS constante 300 kt hasta la altitud de cruce\\
+C5 & SPD & Tr fijo & IAS o Mach, Tr & VS (ROCD), FPA & climb & \scriptsize Ascenso a Mach constante 0.78 hasta la altitud de crucero\\
+K1 & PTH & Tr fijo & FPA, Tr & dV/dt & cruise & \scriptsize Deceleración en nivel M0.78 $\rightarrow$ M0.752 (MRC), ralentí\\
+K2 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & cruise & \scriptsize Crucero a 34982 ft y Mach 0.752 constante (MRC) hasta el K3 / TOD\\
+K3 & PTH & Tr fijo & FPA, Tr & dV/dt & cruise & \scriptsize Aceleración en nivel M0.752 $\rightarrow$ M0.78 de descenso\\
+D4.1 & SPD & Tr ralentí & IAS o Mach, Tr = ralentí (BADA) & VS (ROD), FPA & descent & \scriptsize Descenso en ralentí a Mach constante 0.78 hasta la altitud de cruce\\
+D4.2 & SPD & Tr ralentí & IAS o Mach, Tr = ralentí (BADA) & VS (ROD), FPA & descent & \scriptsize Descenso en ralentí a IAS constante 290 kt hasta ZUKKO (13000 ft)\\
+D3 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & descent & \scriptsize PTH decelerando 290 $\rightarrow$ 250 kt hasta KONFO (10000-11000 ft)\\
+D2.1 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & descent & \scriptsize PTH KONFO $\rightarrow$ ERREZ (@9000 ft)\\
+D2.2 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & descent & \scriptsize tramo plano a 9000 ft ERREZ-IVONA-RAPIV-ALIQA-LEGOH\\
+D2.3 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & descent & \scriptsize PTH LEGOH $\rightarrow$ ANOZA (mín. 5000 ft)\\
+D2.4 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & descent & \scriptsize PTH ANOZA $\rightarrow$ TOPPU (mín. 4000 ft)\\
+D2.5 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & approach & \scriptsize PTH TOPPU $\rightarrow$ GALGA (IF, 2600 ft), IAS $\le$ 185 kt (límite de la carta en el segmento intermedio), flaps 15\\
+D2.6 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & approach & \scriptsize segmento intermedio a 2600 ft hasta el FAP, deceleración a la velocidad de aproximación final\\
+D1 & PTH & dV/dr fijo & FPA, dV/dr (IAS inicial y final) & Tr & landing & \scriptsize senda ILS 3 grados hasta el umbral (183 ft), Vref, flaps 30\\
+\end{longtable}
+\endgroup
