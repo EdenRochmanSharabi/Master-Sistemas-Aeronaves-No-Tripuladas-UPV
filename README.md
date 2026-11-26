@@ -6,21 +6,21 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
-- 2026-11-25 · [menu2.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Air%20Transport%2C%20Air%20Navigation%2C%20and%20Air%20Traffic%20Management/trabajo/cartas/LLBG/menu2.html) (se abre en el navegador) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [menu.js](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/menu.js>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [menu-en-GB.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Air%20Transport%2C%20Air%20Navigation%2C%20and%20Air%20Traffic%20Management/trabajo/cartas/LLBG/menu-en-GB.html) (se abre en el navegador) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [idx.html](https://edenrochmansharabi.github.io/Master-Sistemas-Aeronaves-No-Tripuladas-UPV/Air%20Transport%2C%20Air%20Navigation%2C%20and%20Air%20Traffic%20Management/trabajo/cartas/LLBG/idx.html) (se abre en el navegador) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
 - 2026-11-25 · [LL_AD_2_LLBG_TRANS-21-26-1.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_TRANS-21-26-1.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_STAR-30-2_V1_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_STAR-30-2_V1_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
 - 2026-11-25 · [LL_AD_2_LLBG_STAR-21-26-1_V2_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_STAR-21-26-1_V2_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_STAR-12-30-1_V3_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_STAR-12-30-1_V3_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_STAR-12-1_V1_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_STAR-12-1_V1_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_STAR-08-1_V1_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_STAR-08-1_V1_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
 - 2026-11-25 · [LL_AD_2_LLBG_IAC_RNPY21_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_IAC_RNPY21_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_IAC_ILS08-2_v2_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_IAC_ILS08-2_v2_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_IAC_30RNPZ_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_IAC_30RNPZ_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_IAC_30RNPX_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_IAC_30RNPX_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
-- 2026-11-25 · [LL_AD_2_LLBG_IAC_30ILS-1_v2_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_IAC_30ILS-1_v2_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
+- 2026-11-25 · [LL_AD_2_LLBG_IAC_21-4_V3_en.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG/LL_AD_2_LLBG_IAC_21-4_V3_en.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LLBG
+- 2026-11-25 · [SID_7.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LEMD/SID_7.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas/LEMD
+- 2026-11-25 · [LEMDLLBG_XML_1793965869.xml](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/simbrief/LEMDLLBG_XML_1793965869.xml>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/simbrief
+- 2026-11-25 · [enroute-sinviento.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-sinviento.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [enroute-sinviento.kml](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-sinviento.kml>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [enroute-conviento.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-conviento.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [enroute-conviento.kml](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-conviento.kml>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [VERTICAL-tramos.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-tramos.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [VERTICAL-perfil-fases.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-perfil-fases.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [VERTICAL-perfil-completo.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-perfil-completo.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [VERTICAL-consumo.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-consumo.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-25 · [VERTICAL-comprobacion.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-comprobacion.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
 
 ## Asignaturas
 
