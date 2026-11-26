@@ -172,7 +172,7 @@ La tabla~\ref{tab:enr0} reproduce \m{enroute-sinviento.xlsx}. La distancia total
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{enroute-mapa.png}
-\caption{Fase en-ruta: fijos planificados (azul) y posiciones reales alcanzadas al final de cada tramo volando a rumbo constante con el viento previsto (rojo), calculadas con \m{computeWT}; el recuadro amplía el tramo NANDO--LASPO. Las coordenadas son las de \m{enroute-sinviento.xlsx} y \m{enroute-conviento.kml}. La representación en Google Earth se entrega en los ficheros KML.}
+\caption{Fase en-ruta: fijos planificados (azul) y posiciones reales alcanzadas al final de cada tramo volando a rumbo constante con el viento previsto (rojo), calculadas con \m{computeWT}; el panel derecho amplía el tramo NANDO--LASPO (recuadro gris del mapa). Las coordenadas son las de \m{enroute-sinviento.xlsx} y \m{enroute-conviento.kml}; la figura la genera \m{main\_enroute.m} (\m{plot\_enroute\_map}). La representación en Google Earth se entrega en los ficheros KML.}
 \label{fig:mapa}
 \end{figure}
 
@@ -278,7 +278,7 @@ La tabla~\ref{tab:llegada} reproduce \m{LLEGADA-ERREZ1A.xlsx}. Las distancias ca
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=0.85\linewidth]{LLEGADA-vertical.png}
-\caption{Transición ERREZ1A: altitud mínima y máxima en cada fijo frente a la distancia volada desde ZUKKO (\m{LLEGADA-vertical.png}).}
+\caption{Transición ERREZ1A: altitud mínima y máxima en cada fijo frente a la distancia volada desde ZUKKO (\m{LLEGADA-vertical.png}). ZUKKO no tiene altitud mínima en la carta: solo se dibuja su máxima (13\,000~ft).}
 \label{fig:llegv}
 \end{figure}
 
@@ -445,13 +445,13 @@ La figura~\ref{fig:fases} muestra el perfil calculado junto con las altitudes m�
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{VERTICAL-perfil-fases.png}
-\caption{Perfil vertical BADA (azul) frente a las altitudes mínima (verde) y máxima (rojo) de cada fase: salida, en-ruta y llegada + ILS 21. Las líneas punteadas verticales son el TOC y el TOD. Las altitudes máximas «sin límite» (40\,000 ft) no se dibujan. Fichero \m{VERTICAL-perfil-fases.png}.}
+\caption{Perfil vertical BADA (azul) frente a las altitudes mínima (verde) y máxima (rojo) de cada fase: salida, en-ruta y llegada + ILS 21. Las líneas punteadas verticales son el TOC y el TOD. Los límites que la carta no da (mínimo 0~ft, máximo 40\,000~ft) no se dibujan; por eso ZUKKO solo lleva su máxima. Fichero \m{VERTICAL-perfil-fases.png}.}
 \label{fig:fases}
 \end{figure}
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{VERTICAL-perfil-completo.png}
-\caption{Ruta completa: altitud (con TOC y TOD), IAS/TAS/Mach, y empuje relativo y velocidad vertical frente a la distancia desde el DER 36R. Fichero \m{VERTICAL-perfil-completo.png}.}
+\caption{Ruta completa, de arriba abajo: altitud (con TOC y TOD), IAS/TAS/Mach, empuje relativo y velocidad vertical frente a la distancia desde el DER 36R. Los saltos estrechos del empuje junto al TOC y al TOD son los tramos cortos K1 (ajuste de Mach en ralentí) y K3 (cambio de Mach antes del TOD) de la tabla~\ref{tab:vnum}. Fichero \m{VERTICAL-perfil-completo.png}.}
 \label{fig:completo}
 \end{figure}
 
@@ -500,7 +500,7 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 \subsection*{A.1 Programas principales}
 
 \begin{description}[style=nextline]
-\item[\m{main\_enroute.m}] Importa NANDO--ZUKKO del plan LIDO (\m{read\_enroute\_wp}), añade los campos \m{alt\_min}/\m{alt\_max} (límites de aerovía, pendientes), calcula distancias (\m{route\_distances}), tiempos sin y con viento (\m{route\_time\_nowind}, \m{route\_time\_wind}) y escribe \m{enroute-sinviento.kml/.xlsx} y \m{enroute-conviento.kml/.xlsx} (este último con las posiciones reales).
+\item[\m{main\_enroute.m}] Importa NANDO--ZUKKO del plan LIDO (\m{read\_enroute\_wp}), añade los campos \m{alt\_min}/\m{alt\_max} (límites de aerovía, pendientes), calcula distancias (\m{route\_distances}), tiempos sin y con viento (\m{route\_time\_nowind}, \m{route\_time\_wind}) y escribe \m{enroute-sinviento.kml/.xlsx}, \m{enroute-conviento.kml/.xlsx} (este último con las posiciones reales); \m{plot\_enroute\_map} dibuja el mapa de la figura~\ref{fig:mapa}.
 \item[\m{main\_sid.m}] Contiene la tabla \m{P} de la SID NANDO3R (nombre, coordenadas de la carta, altitud mínima, IAS máxima, descripción), la elevación y la pendiente mínima; calcula el punto CA2500, las distancias y las restricciones (\m{apply\_restrictions}) y escribe \m{SID-NANDO3R.kml/.xlsx} y la gráfica de límites.
 \item[\m{main\_star\_app.m}] Contiene las tablas \m{P} (ERREZ1A + ILS 21), \m{M} (frustrada) y \m{PR} (RNP Y 21, con los puntos del arco RF de \m{add\_arc\_points}); calcula distancias restantes (\m{to\_remaining\_dist}) y límites (\m{apply\_chart\_limits}) y escribe los cuatro KML, las cuatro tablas y las tres gráficas.
 \item[\m{main\_vertical.m}] Carga el B738 de BADA, lee las tablas de las fases (\m{load\_phase\_table}), define los parámetros \m{P} (TOW de SimBrief, V$_2$, alturas de reducción de empuje y aceleración, velocidades APF, altitud de crucero y de cruce) y el programa de descenso \m{D}; calcula la MRC (\m{cruise\_speeds}) en dos pasadas, construye el perfil (\m{build\_profile}), lo comprueba (\m{check\_profile}), escribe \m{VERTICAL-tramos.xlsx}, \m{VERTICAL-comprobacion.xlsx}, \m{VERTICAL-consumo.xlsx} y las figuras, y repite el perfil para 2 altitudes $\times$ 2 velocidades.
@@ -576,7 +576,17 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 \funcion{plot\_vertical\_limits(wp, ttl, pngfile)}
 {\m{wp} = vector de struct con \m{alt\_min}, \m{alt\_max}, \m{Total\_dist} (m); \m{ttl} = string, título; \m{pngfile} = string, fichero de salida}
 {Fichero PNG con la gráfica distancia/altitud mínima y máxima, con el nombre de cada fijo}
-{Dibuja las dos curvas (sin representar las máximas «sin límite», 40\,000 ft) y exporta la figura con \m{exportgraphics} (figura invisible con tema claro, apta para ejecución por lotes).}
+{Dibuja las dos curvas con \m{plot\_fix\_limits} y exporta la figura con \m{exportgraphics} (figura invisible con tema claro, apta para ejecución por lotes).}
+
+\funcion{plot\_fix\_limits(d, amin, amax, names)}
+{\m{d} = distancias (NM); \m{amin}, \m{amax} = altitudes mínima y máxima (ft); \m{names} = cell array con los nombres de los fijos}
+{\m{h} = manejadores de las dos curvas, para la leyenda}
+{Dibuja sobre los ejes actuales la altitud mínima (verde) y máxima (roja) de cada fijo sin representar los valores «sin límite» que usan \m{apply\_chart\_limits} y los programas principales (mínimo 0~ft, máximo 40\,000~ft), y rotula cada fijo encima de su límite; si dos fijos están más cerca que el 3\,\% del eje, alterna el rótulo arriba/abajo. La usan \m{plot\_vertical\_limits} y \m{plot\_vertical\_profile}.}
+
+\funcion{plot\_enroute\_map(w0, w1, detailTo, pngfile)}
+{\m{w0} = ruta planificada (name, lat, lon); \m{w1} = caso con viento (\m{lat\_real}, \m{lon\_real}); \m{detailTo} = string, último fijo del detalle; \m{pngfile} = string, fichero de salida}
+{Fichero PNG con el mapa en-ruta (figura~\ref{fig:mapa})}
+{Dos paneles sin solape: el mapa completo (con un recuadro gris en la zona ampliada) y el detalle desde el primer fijo hasta \m{detailTo}; límites de los ejes calculados a partir de las coordenadas.}
 
 \subsection*{A.3 Funciones del perfil vertical}
 
@@ -612,8 +622,8 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 
 \funcion{plot\_vertical\_profile(tr, F, R, dPhase, file1, file2)}
 {\m{tr} = traza (SI); \m{F} = fijos (d, alt\_min, alt\_max); \m{R} = resultados (\m{r\_toc}, \m{r\_tod}); \m{dPhase} = [distancia final de la SID, distancia final del en-ruta] (NM); \m{file1}, \m{file2} = ficheros PNG}
-{\m{file1}: perfil por fases con altitudes mínima/máxima; \m{file2}: altitud, velocidades y $T_r$/VS de toda la ruta}
-{Dibuja tres subgráficas por fase (sin representar las máximas «sin límite») con el TOC y el TOD, y otra figura con la altitud, IAS/TAS/Mach y empuje/velocidad vertical.}
+{\m{file1}: perfil por fases con altitudes mínima/máxima; \m{file2}: altitud, velocidades, $T_r$ y VS de toda la ruta}
+{Dibuja tres paneles, uno por fase, con los límites de \m{plot\_fix\_limits}, el TOC y el TOD y una leyenda común debajo; y otra figura de cuatro paneles con el mismo eje de distancias: altitud, IAS/TAS/Mach, empuje relativo y velocidad vertical.}
 
 % ------------------------------------------------------------
 \section{Modificaciones necesarias para calcular una ruta diferente}\label{ap:otra-ruta}
