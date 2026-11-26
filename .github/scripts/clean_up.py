@@ -20,11 +20,19 @@ def texto(ruta):
         return BASE64.sub("", open(ruta, encoding="utf8", errors="ignore").read())
     return ""
 
+CONTEXTO = 30
+FALSOS = ".github/falsos_positivos_clean_up.txt"
+PERMITIDOS = set()
+if os.path.exists(FALSOS):
+    for l in open(FALSOS, encoding="utf8").read().split("\n"):
+        if l.strip() and not l.startswith("#") and "\t" in l: PERMITIDOS.add(tuple(l.split("\t", 1)))
+
 def revisa(donde, t, hall):
     for rx in (CI, CS):
-        m = rx.search(t)
-        if m:
-            a = max(0, m.start() - 30); hall.append("%s: «%s»" % (donde, t[a:m.end() + 30].replace("\n", " "))); break
+        for m in rx.finditer(t):
+            a = max(0, m.start() - CONTEXTO); frag = t[a:m.end() + CONTEXTO].replace("\n", " ")
+            if (donde, frag) in PERMITIDOS: continue
+            hall.append("%s: «%s»" % (donde, frag)); return
 
 os.chdir(git("rev-parse", "--show-toplevel").strip())
 hall = []

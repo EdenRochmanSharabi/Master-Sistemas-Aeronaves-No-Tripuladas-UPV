@@ -1,0 +1,4 @@
+# Falsos positivos de clean_up.py: «ruta<TAB>fragmento exacto» (el que imprime el script).
+# Solo se acepta esa pareja; cualquier otro hallazgo, aunque sea en el mismo archivo, sigue bloqueando.
+# "IA" es una etiqueta de espacio aéreo del texto de la carta oficial LLBG STAR 21-26 (eAIP Israel).
+Air Transport, Air Navigation, and Air Traffic Management/trabajo/cartas_marcadas/LLBG_STAR_ZUKKO-KONFO_marcada.pdf	E 2019  ZUKKO  ZUKKO  !  FIR  IA  ICO S  IR  VF  34°25'  D  12
