@@ -41,25 +41,29 @@ hcross_mo    = CrossOverAltitude(ac.envelope.Vmo, ac.envelope.Mmo, P.h_cruise);
 P.sid = sid; P.dt = 1;
 % Descent schedule: lower envelope of the STAR / ILS limits (main_star_app),
 % 250 kt below FL100, approach speeds for category C (PANS-OPS: final approach 115-160 kt)
-v_ref = round(1.3*ac.aero.landing.Vstall + 5);          % kt, Vref = 1.3 Vstall(LD) + 5 (course formula)
-v_fap = 150;                                            % kt, final approach range cat C 115-160 (>= Vref)
+% Vat (threshold, sets the category) and Vapp = Vat + 5 are set in the landing-mass loop below
 D = {'ZUKKO', 13000, P.cas_des, 'descent',  'D4',   'fin del descenso en ralentí (ZUKKO máx. 13000 ft)'; ...
-     'KONFO', 10000, 250,       'descent',  'D3',   'PTH decelerando 290 → 250 kt hasta KONFO (10000-11000 ft)'; ...
+     'KONFO', 11000, 250,       'descent',  'D3',   'PTH decelerando 290 → 250 kt hasta KONFO (11000 ft, ventana 10000-11000 ft)'; ...
      'ERREZ',  9000, 250,       'descent',  'D2.1', 'PTH KONFO → ERREZ (@9000 ft)'; ...
      'LEGOH',  9000, 250,       'descent',  'D2.2', 'tramo plano a 9000 ft ERREZ-IVONA-RAPIV-ALIQA-LEGOH'; ...
      'ANOZA',  5000, 250,       'descent',  'D2.3', 'PTH LEGOH → ANOZA (mín. 5000 ft)'; ...
      'TOPPU',  4000, 250,       'descent',  'D2.4', 'PTH ANOZA → TOPPU (mín. 4000 ft)'; ...
      'GALGA',  2600, 185,       'approach', 'D2.5', 'PTH TOPPU → GALGA (IF, 2600 ft), IAS ≤ 185 kt (límite de la carta en el segmento intermedio), flaps 15'; ...
-     'BG074',  2600, v_fap,     'approach', 'D2.6', 'segmento intermedio a 2600 ft hasta el FAP, deceleración a la velocidad de aproximación final'; ...
-     'THR21',   183, v_ref,     'landing',  'D1',   'senda ILS 3 grados hasta el umbral (183 ft), Vref, flaps 30'};
+     'BG074',  2600, NaN,       'approach', 'D2.6', 'segmento intermedio a 2600 ft hasta el FAP, deceleración a Vapp = Vat + 5 kt'; ...
+     'THR21',   183, NaN,       'landing',  'D1',   'senda ILS 3 grados hasta el umbral (183 ft), deceleración Vapp → Vat, flaps 30'};
 P.des = [D(:,1), cellfun(dof, D(:,1), 'UniformOutput', false), D(:,2:end)];
+i_fap = strcmp(P.des(:,1), 'BG074'); i_thr = strcmp(P.des(:,1), 'THR21');
 
-% --- Cruise speed (MRC, 6.3.1) at the mean cruise mass: two passes ----------
+% --- MRC at the mean cruise mass, Vat at the landing mass: two passes ---------
 m_cru = P.m_tow - 2500;
+m_ldg = str2double(fp.OFP.weights.est_ldw.Text);       % kg, SimBrief estimate for the first pass
 for pass = 1:2
+    v_at = round(1.3*ac.aero.landing.Vstall*sqrt(m_ldg/ac.mass.m_ref));   % kt, BADA Vstall(LD), mass-corrected
+    v_app = v_at + 5;
+    P.des{i_fap,4} = v_app; P.des{i_thr,4} = v_at;
     C = cruise_speeds(ac, P.h_cruise, m_cru); P.M_cruise = C.M_mrc;
     [legs, tr, R] = build_profile(ac, P);
-    m_cru = (R.m_toc + R.m_tod)/2;
+    m_cru = (R.m_toc + R.m_tod)/2; m_ldg = R.m_ldg;
 end
 chk = check_profile(tr, fix);
 
@@ -82,6 +86,8 @@ fprintf('TOC a %.1f NM | TOD a %.1f NM (%.1f NM antes de ZUKKO, %.1f NM del umbr
     R.r_toc, R.r_tod, dof('ZUKKO') - R.r_tod, d_total - R.r_tod, d_total);
 fprintf('Combustible: ascenso %.0f + crucero %.0f + descenso %.0f = %.0f kg | tiempo %.2f h | masa aterrizaje %.0f kg\n', ...
     R.fuel_climb, R.fuel_cruise, R.fuel_descent, R.fuel_total, R.t_total/3600, R.m_ldg);
+fprintf('Vstall(LD) %.1f kt  m_ref %.0f kg  Vat %d kt (cat. C 121-140)  Vapp %d kt (final 115-160)\n', ...
+    ac.aero.landing.Vstall, ac.mass.m_ref, v_at, v_app);
 fprintf('\n%-5s %-4s %-12s %7s %7s %5s %5s %6s %6s %6s %6s %6s %6s %s\n', 'Tramo','Tipo','Subtipo','h_ini','h_fin','IASi','IASf','TASf','VSmed','Tr%','FPA','dist','fuel','nota');
 for i = 1:numel(legs), s = legs(i);
     fprintf('%-5s %-4s %-12s %7.0f %7.0f %5.0f %5.0f %6.0f %6.0f %6.1f %6.2f %6.1f %6.0f %s\n', s.tramo, s.tipo, s.subtipo, ...

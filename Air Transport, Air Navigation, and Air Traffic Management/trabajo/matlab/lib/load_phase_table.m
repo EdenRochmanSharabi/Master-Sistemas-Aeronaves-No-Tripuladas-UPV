@@ -7,8 +7,8 @@ function F = load_phase_table(file, d0)
 %         ias_max (kt; NaN when the table has no IAS column)
 c = readcell(file); hdr = string(c(1,:)); c = c(2:end,:);
 col = @(s) find(contains(hdr, s, 'IgnoreCase', true), 1);
-iN = col('Nombre'); iMin = col('Altitud minima'); iMax = col('Altitud maxima');
-iIas = col('IAS maxima'); iTot = col('Distancia total'); iRem = col('restante');
+iN = col('Nombre'); iMin = col('Altitud mínima'); iMax = col('Altitud máxima');
+iIas = col('IAS máxima'); iTot = col('Distancia total'); iRem = col('restante');
 n = size(c,1);
 num = @(v) ifelse(ismissing_(v), NaN, v);
 for i = 1:n

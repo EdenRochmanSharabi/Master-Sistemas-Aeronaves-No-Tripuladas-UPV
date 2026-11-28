@@ -29,7 +29,7 @@ attr.label = 'LEMD-LLBG en-ruta con viento (posiciones reales)';
 wreal = w1; for i=1:numel(wreal), wreal(i).lat = w1(i).lat_real; wreal(i).lon = w1(i).lon_real; end
 kmlwrite_polyline(wreal, fullfile(out,'enroute-conviento.kml'), attr);
 export_route_table(fullfile(out,'enroute-sinviento'), w0);
-export_route_table(fullfile(out,'enroute-conviento'), w1);
+export_route_table(fullfile(out,'enroute-conviento'), w1, w0);
 plot_enroute_map(w0, w1, 'LASPO', fullfile(out,'enroute-mapa.png'));
 
 fprintf('Fixes: %d | Distancia planificada: %.1f NM\n', numel(wp), w0(end).Total_dist/1852);

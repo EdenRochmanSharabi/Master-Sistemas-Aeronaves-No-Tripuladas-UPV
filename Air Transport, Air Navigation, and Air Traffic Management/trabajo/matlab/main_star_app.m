@@ -32,9 +32,26 @@ wp_llegada = wp(1:iT);                    % STAR/transition phase
 wp_apr     = wp(iT:end);                  % approach phase (from TOPPU)
 cum = wpCum; for i=1:numel(cum), cum(i).alt_min = wp(i).alt_min; cum(i).alt_max = wp(i).alt_max; end
 
-% --- Missed approach (chart): CA 204 to 1000 ft, DF GEMDA @5000, max 190 ----
-M = {'THR21','320105.25N','0345400.81E',183,NaN,'MAPt',NaN; ...
-     'GEMDA','320326N','0345948E',5000,190,'DF, missed approach, @5000',5000};
+% --- Missed approach (chart): course 204M to 1000 ft at 4.5 %, then LEFT turn
+% (max 190 KIAS) to GEMDA @5000 and hold. 204M (VAR 5E) = final approach track.
+MA_GRAD = 0.045; MA_TURN_ALT = 1000; MA_IAS = 190; MA_BANK = 25; MA_STEP = 10;
+G = 9.80665; KTS2MPS = 1852/3600; FT2M = 0.3048;
+thr = P(strcmp(P(:,1),'THR21'),:);
+gem = {'GEMDA','320326N','0345948E',5000,MA_IAS,'DF, missed approach, @5000, hold',5000};
+crs = wpCum(end).track;
+dCA = (MA_TURN_ALT - thr{4}) / MA_GRAD * FT2M;
+[aLat, aLon] = orto_reckon(wpCum(end).lat, wpCum(end).lon, dCA, crs);
+rTurn = (MA_IAS*KTS2MPS)^2 / (G*tand(MA_BANK));
+[cLat, cLon] = orto_reckon(aLat, aLon, rTurn, mod(crs-90, 360));
+[dG, bG] = orto_distazi(cLat, cLon, dms2deg(gem{2}), dms2deg(gem{3}));
+bExit = mod(bG + acosd(rTurn/dG), 360);   % centre bearing where the tangent hits GEMDA
+[tLat, tLon] = orto_reckon(cLat, cLon, rTurn, bExit);
+TURN = add_arc_points(cLat, cLon, rTurn/1852, mod(crs+90, 360), bExit, false, MA_STEP, 'MAT', MA_TURN_ALT, MA_IAS);
+TURN(:,6) = strrep(TURN(:,6), 'RF arc aux', 'Left turn aux');
+M = [ thr(1:5), {'MAPt', NaN}; ...
+      {'CA1000', aLat, aLon, MA_TURN_ALT, NaN, 'CA 204M to 1000 ft (4.5 %), turn LEFT', NaN}; ...
+      [TURN, repmat({NaN}, size(TURN,1), 1)]; ...
+      {'MATEND', tLat, tLon, MA_TURN_ALT, MA_IAS, 'End of left turn, DF GEMDA', NaN}; gem ];
 wp_missed = route_distances(apply_chart_limits(build_procedure(M),40000,350));
 
 % --- Outputs ------------------------------------------------------------------
@@ -51,7 +68,9 @@ plot_vertical_limits(cum(iT:end),'ILS 21 - perfil vertical mín./máx.',        
 fprintf('Total ZUKKO->THR21: %.1f NM | llegada %.1f NM\n', wpCum(end).Total_dist/1852, wpCum(iT).Total_dist/1852);
 for i=1:numel(wp), fprintf('%-6s trk %6.1f  d %5.1f NM  rest %5.1f  alt %5d-%5d  IAS<=%d\n', ...
    wp(i).name, wp(i).track, wp(i).dist/1852, wp(i).Total_dist/1852, wp(i).alt_min, wp(i).alt_max, wp(i).ias_max); end
-fprintf('Frustrada THR21->GEMDA: %.1f NM\n', wp_missed(2).dist/1852);
+fprintf('Frustrada THR21->GEMDA: %.1f NM\n', wp_missed(end).Total_dist/1852);
+for i=1:numel(wp_missed), fprintf('%-6s trk %6.1f  d %5.2f NM  tot %5.2f  alt %5d  IAS<=%d\n', wp_missed(i).name, ...
+   wp_missed(i).track, wp_missed(i).dist/1852, wp_missed(i).Total_dist/1852, wp_missed(i).alt_min, wp_missed(i).ias_max); end
 
 % ============================ RNP Y RWY 21 (non-precision) ===================
 % Link TOPPU -> GINTU (IAF) is NOT published: ATC instructions are assumed.
