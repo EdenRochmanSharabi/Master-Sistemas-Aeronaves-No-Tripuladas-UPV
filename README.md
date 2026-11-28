@@ -6,21 +6,21 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
-- 2026-11-26 · [main.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/main.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
-- 2026-11-26 · [main.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/main.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
-- 2026-11-26 · [enroute-mapa.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/enroute-mapa.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [VERTICAL-perfil-fases.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/VERTICAL-perfil-fases.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [VERTICAL-perfil-completo.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/VERTICAL-perfil-completo.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [VERTICAL-MRC.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/VERTICAL-MRC.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [SID-NANDO3R-vertical.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/SID-NANDO3R-vertical.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [LLEGADA-vertical.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/LLEGADA-vertical.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [APR-RNPY21-vertical.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/APR-RNPY21-vertical.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [APR-ILS21-vertical.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/APR-ILS21-vertical.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-26 · [enroute-sinviento.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-sinviento.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
-- 2026-11-26 · [enroute-mapa.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-mapa.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
-- 2026-11-26 · [enroute-conviento.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/enroute-conviento.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
-- 2026-11-26 · [VERTICAL-tramos.xlsx](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-tramos.xlsx>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
-- 2026-11-26 · [VERTICAL-perfil-fases.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/VERTICAL-perfil-fases.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out
+- 2026-11-28 · [tab_vert_num.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_vert_num.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_vert_def.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_vert_def.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_sid.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_sid.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_rnp.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_rnp.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_llegada.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_llegada.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_ils.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_ils.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_frustrada.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_frustrada.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_consumo.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_consumo.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [tab_comprobacion.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_comprobacion.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [nums.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/nums.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
+- 2026-11-28 · [main.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/main.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
+- 2026-11-28 · [main.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/main.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
+- 2026-11-28 · [gen_tablas.py](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/gen_tablas.py>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
+- 2026-11-28 · [osm-sid-nando3r.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/osm-sid-nando3r.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
+- 2026-11-28 · [osm-ruta-completa.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/osm-ruta-completa.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
 
 ## Asignaturas
 
