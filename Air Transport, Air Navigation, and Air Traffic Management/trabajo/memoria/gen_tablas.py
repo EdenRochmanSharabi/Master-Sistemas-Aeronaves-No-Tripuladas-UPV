@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 """Tablas LaTeX (tablas/*.tex) y macros (tablas/nums.tex) a partir de csv/ (volcado de matlab/out/*.xlsx)."""
-import csv, math, os
+import csv, math, os, re, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CSV = os.path.join(HERE, 'csv'); OUT = os.path.join(HERE, 'tablas')
 os.makedirs(OUT, exist_ok=True)
+with open(os.path.join(HERE, 'descripciones_es.csv'), newline='', encoding='utf-8') as fh:
+    ES = [(re.compile(r['patron']), r['reemplazo']) for r in csv.DictReader(fh)]
+
+def es(s):
+    """Texto de las salidas MATLAB en español (pares de descripciones_es.csv, en orden)."""
+    for pat, rep in ES: s = pat.sub(rep, s)
+    return s
+print(time.strftime('%H:%M:%S') + ' [devlog] gen_tablas.es.load pairs=%d' % len(ES), file=sys.stderr)
 
 def rd(name):
     with open(os.path.join(CSV, name + '.csv'), newline='', encoding='utf-8') as f:
@@ -58,9 +66,9 @@ N = {}
 
 # ---------------------------------------------------------------- en-ruta
 e0 = rd('enroute-sinviento'); e1 = rd('enroute-conviento'); ex = rd('enroute-viento-extra')
-rows = [[r['Numero'], r['Nombre'], f(r['Latitud'], 4), f(r['Longitud'], 4), f(r['Derrota'], 1),
+rows = [[r['Número'], r['Nombre'], f(r['Latitud (°)'], 4), f(r['Longitud (°)'], 4), f(r['Derrota (°)'], 1),
          f(r['Distancia (NM)'], 2), f(r['Distancia total (NM)'], 2),
-         i0(r['Direccion viento']) + '/' + i0(r['Velocidad viento']), i0(r['GS']),
+         i0(r['Dirección del viento (°)']) + '/' + i0(r['Velocidad del viento (kt)']), i0(r['GS (kt)']),
          i0(r['Tiempo total (s)']), hms(num(r['Tiempo total (s)']))] for r in e0]
 write('tab_enr_sinviento', longtable(
     ['N.º', 'Fijo', 'Lat (°)', 'Lon (°)', 'Derrota (°)', '$d$ (NM)', '$D$ (NM)', 'Viento (°/kt)', 'GS (kt)', '$t$ (s)', '$t$ (h:m:s)'],
@@ -71,7 +79,7 @@ write('tab_enr_sinviento', longtable(
 rows = []
 for r, x in zip(e1, ex):
     assert r['Nombre'] == x['Nombre']
-    rows.append([r['Numero'], r['Nombre'], f(x['Rumbo'], 1), f(r['Derrota'], 1), f(r['GS'], 1),
+    rows.append([r['Número'], r['Nombre'], f(x['Rumbo'], 1), f(r['Derrota (°)'], 1), f(x['GS'], 1),
                  f(r['Distancia (NM)'], 2), f(r['Distancia total (NM)'], 2), f(x['Desv_NM'], 2),
                  i0(r['Tiempo total (s)']), i0(x['t_dGS_s'])])
 write('tab_enr_conviento', longtable(
@@ -82,7 +90,7 @@ write('tab_enr_conviento', longtable(
 
 D0 = num(e0[-1]['Distancia total (NM)']); T0 = num(e0[-1]['Tiempo total (s)'])
 D1 = num(e1[-1]['Distancia total (NM)']); T1 = num(e1[-1]['Tiempo total (s)']); T1g = num(ex[-1]['t_dGS_s'])
-gs1 = [num(r['GS']) for r in e1[1:]]
+gs1 = [num(x['GS']) for x in ex[1:]]
 N.update(enrFijos=len(e0), enrDist=f(D0, 1), enrTnoW=hms(T0), enrTnoWh=f(T0/3600, 2),
          enrDistW=f(D1, 1), enrTW=hms(T1), enrTWh=f(T1/3600, 2), enrTWg=hms(T1g), enrTWgh=f(T1g/3600, 2),
          enrGSmin=f(min(gs1), 0), enrGSmax=f(max(gs1), 0), enrGSmed=f(D1/(T1g/3600), 0),
@@ -90,6 +98,42 @@ N.update(enrFijos=len(e0), enrDist=f(D0, 1), enrTnoW=hms(T0), enrTnoWh=f(T0/3600
          enrDevMaxFix=max(ex, key=lambda x: num(x['Desv_NM']))['Nombre'],
          enrDevZukko=f(ex[-1]['Desv_NM'], 2), enrDiffW=f((T0-T1)/60, 0), enrDiffWg=f((T0-T1g)/60, 0),
          enrDeltaD=f(D0-D1, 1), enrWcaMax=f(max(abs(num(x['WCA_equiv'])) for x in ex), 1))
+R_EARTH = 6371000.0; NM_M = 1852.0   # m, mismo radio que orto_reckon
+LOX_CHECK_NM = 0.01
+
+def gc_dest(la, lo, d, az):
+    la, lo, az = map(math.radians, (la, lo, az)); s = d / R_EARTH
+    la2 = math.asin(math.sin(la)*math.cos(s) + math.cos(la)*math.sin(s)*math.cos(az))
+    return la2, lo + math.atan2(math.sin(az)*math.sin(s)*math.cos(la), math.cos(s) - math.sin(la)*math.sin(la2))
+
+def rhumb_dest(la, lo, d, az):
+    la, lo, az = map(math.radians, (la, lo, az)); s = d / R_EARTH
+    la2 = la + s*math.cos(az)
+    dpsi = math.log(math.tan(math.pi/4 + la2/2) / math.tan(math.pi/4 + la/2))
+    q = (la2 - la) / dpsi if abs(dpsi) > 1e-12 else math.cos(la)
+    return la2, lo + s*math.sin(az)/q
+
+def sep_m(a, b):
+    h = math.sin((b[0]-a[0])/2)**2 + math.cos(a[0])*math.cos(b[0])*math.sin((b[1]-a[1])/2)**2
+    return 2*R_EARTH*math.asin(math.sqrt(h))
+
+def lox_separation(ex):
+    """(NM volados, NM entre final ortodrómico y loxodrómico, tramo), de mayor a menor."""
+    out = []
+    for p, c in zip(ex, ex[1:]):
+        d = num(c['GS']) * (num(c['t_dTAS_s']) - num(p['t_dTAS_s'])) / 3600 * NM_M
+        a = (num(p['Lat_real']), num(p['Lon_real']), d, num(c['Derrota_real']))
+        real = (math.radians(num(c['Lat_real'])), math.radians(num(c['Lon_real'])))
+        assert sep_m(gc_dest(*a), real) < LOX_CHECK_NM * NM_M, 'gc_dest no reproduce computeWT en ' + c['Nombre']
+        out.append((d / NM_M, sep_m(gc_dest(*a), rhumb_dest(*a)) / NM_M, p['Nombre'] + '--' + c['Nombre']))
+    print(time.strftime('%H:%M:%S') + ' [devlog] gen_tablas.lox_separation.done legs=%d max_sep_nm=%.2f'
+          % (len(out), max(x[1] for x in out)), file=sys.stderr)
+    return sorted(out, reverse=True)
+
+lox = lox_separation(ex)
+N.update(loxDA=f(lox[0][0], 0), loxA=f(lox[0][1], 1), loxLegA=lox[0][2], loxDB=f(lox[1][0], 0), loxB=f(lox[1][1], 1),
+         loxLegB=lox[1][2], loxRestD=f(lox[2][0], 0), loxRest=f(max(x[1] for x in lox[2:]), 1))
+
 rows = [['Distancia recorrida (NM)', f(D0, 1), f(D1, 1), f(D1, 1)],
         ['Velocidad usada en el tiempo', 'TAS = 450 kt', 'TAS = 450 kt', 'GS (%s--%s kt)' % (f(min(gs1), 0), f(max(gs1), 0))],
         ['Tiempo NANDO--ZUKKO', hms(T0), hms(T1), hms(T1g)],
@@ -102,11 +146,11 @@ write('tab_enr_comp', tabular(['', 'Sin viento', 'Con viento, $t=d/\\mathrm{TAS}
 def proc_table(name, label, caption, distcol, pend=True):
     rows = []
     for r in rd(name):
-        slope = r.get('Pendiente min (%)', '')
-        row = [r['Numero'], r['Nombre'], f(r['Latitud'], 4), f(r['Longitud'], 4), i0(r['Altitud minima (ft)']),
-               i0(r['Altitud maxima (ft)']), i0(r['IAS maxima (kt)']), f(r['Derrota'], 1), f(r['Distancia (NM)'], 2), f(r[distcol], 2)]
+        slope = r.get('Pendiente mínima (%)', '')
+        row = [r['Número'], r['Nombre'], f(r['Latitud (°)'], 4), f(r['Longitud (°)'], 4), i0(r['Altitud mínima (ft)']),
+               i0(r['Altitud máxima (ft)']), i0(r['IAS máxima (kt)']), f(r['Derrota (°)'], 1), f(r['Distancia (NM)'], 2), f(r[distcol], 2)]
         if pend: row.append(f(slope, 2) if slope else '--')
-        row.append(r'\scriptsize ' + tex(r['Descripcion']))
+        row.append(r'\scriptsize ' + tex(es(r['Descripción'])))
         rows.append(row)
     cols = ['N.º', 'Fijo', 'Lat (°)', 'Lon (°)', r'\makecell{Alt mín\\(ft)}', r'\makecell{Alt máx\\(ft)}', r'\makecell{IAS máx\\(kt)}',
             r'\makecell{Derrota\\(°)}', r'\makecell{$d$\\(NM)}', r'\makecell{$D$\\(NM)}' if pend else r'\makecell{$D_{\mathrm{rest}}$\\(NM)}']
@@ -127,13 +171,17 @@ write('tab_rnp', proc_table('APR-RNPY21', 'tab:rnp',
     'Aproximación de no precisión RNP Y RWY 21 desde TOPPU (\\texttt{APR-RNPY21.xlsx}). ARC1 y ARC2 son puntos auxiliares del arco RF BG217--BG216 (centro BG999, radio 2,55 NM, paso 10°).',
     'Distancia restante a THR21 (NM)', pend=False))
 write('tab_frustrada', proc_table('FRUSTRADA-ILS21', 'tab:frustrada',
-    'Aproximación frustrada ILS RWY 21 (\\texttt{FRUSTRADA-ILS21.xlsx}), común a la RNP Y 21. $D$: distancia acumulada desde THR21. Se modela solo el tramo THR21 $\\rightarrow$ GEMDA (suposición~17).',
+    'Aproximación frustrada ILS RWY 21 (\\texttt{FRUSTRADA-ILS21.xlsx}), común a la RNP Y 21. $D$: distancia acumulada desde THR21. CA1000: fin del ascenso en derrota 204°M (verdadera en la columna «Derrota») hasta 1\\,000 ft con el gradiente del 4,5\\,\\%; MAT1--MAT17 y MATEND: puntos auxiliares del viraje a la izquierda a 190 kt, cada 10°; MATEND $\\rightarrow$ GEMDA: directo al fijo de espera (suposición~17).',
     'Distancia total desde THR21 (NM)'))
 
 sid = rd('SID-NANDO3R'); arr = rd('LLEGADA-ERREZ1A'); ils = rd('APR-ILS21'); rnp = rd('APR-RNPY21')
+mis = {r['Nombre']: r for r in rd('FRUSTRADA-ILS21')}
+N.update(misCAtrk=f(mis['CA1000']['Derrota (°)'], 1), misCAdist=f(mis['CA1000']['Distancia (NM)'], 2),
+         misTurn=f(num(mis['MATEND']['Distancia total desde THR21 (NM)']) - num(mis['CA1000']['Distancia total desde THR21 (NM)']), 2),
+         misDF=f(mis['GEMDA']['Distancia (NM)'], 2))
 N.update(sidDist=f(sid[-1]['Distancia total (NM)'], 1), sidN=len(sid), sidCA=f(sid[1]['Distancia (NM)'], 2),
-         sidMDVIIIIIIValt=i0(sid[5]['Altitud minima (ft)']), sidMDOIVVIIalt=i0(sid[2]['Altitud minima (ft)']),
-         sidMDOIVVIIIalt=i0(sid[3]['Altitud minima (ft)']), sidMDOIVIXalt=i0(sid[4]['Altitud minima (ft)']),
+         sidMDVIIIIIIValt=i0(sid[5]['Altitud mínima (ft)']), sidMDOIVVIIalt=i0(sid[2]['Altitud mínima (ft)']),
+         sidMDOIVVIIIalt=i0(sid[3]['Altitud mínima (ft)']), sidMDOIVIXalt=i0(sid[4]['Altitud mínima (ft)']),
          sidMDVIIIIIIVD=f(sid[5]['Distancia total (NM)'], 1),
          arrDist=f(num(arr[0]['Distancia restante a THR21 (NM)']) - num(arr[-1]['Distancia restante a THR21 (NM)']), 1),
          arrTotal=f(arr[0]['Distancia restante a THR21 (NM)'], 1), arrToppuRest=f(arr[-1]['Distancia restante a THR21 (NM)'], 1),
@@ -146,8 +194,8 @@ N.update(sidDist=f(sid[-1]['Distancia total (NM)'], 1), sidN=len(sid), sidCA=f(s
 
 # ---------------------------------------------------------------- vertical
 tr = rd('VERTICAL-tramos')
-rows = [[tex(r['tramo']), r['tipo'], tex(r['subtipo']), tex(r['conocidas']), tex(r['incognitas']), tex(r['config']),
-         r'\scriptsize ' + tex(r['descripcion'])] for r in tr]
+rows = [[tex(r['tramo']), r['tipo'], tex(es(r['subtipo'])), tex(es(r['conocidas'])), tex(es(r['incognitas'])), tex(es(r['config'])),
+         r'\scriptsize ' + tex(es(r['descripcion']))] for r in tr]
 write('tab_vert_def', longtable(['Tramo', 'Tipo', 'Subtipo', 'Conocidas', 'Incógnitas', 'Config.', 'Descripción'],
     r'lll>{\raggedright\arraybackslash}p{2.5cm}ll>{\raggedright\arraybackslash}p{4.3cm}', rows,
     'Definición de los tramos del perfil vertical (\\texttt{VERTICAL-tramos.xlsx}): tipo (SPD/PTH), segundo grado de libertad (subtipo), variables conocidas e incógnitas y configuración aerodinámica BADA.',
@@ -161,7 +209,7 @@ for r in tr:
     rows.append([tex(r['tramo']) + mark, i0(r['h_ini_ft']), i0(r['h_fin_ft']), i0(r['cas_ini_kt']), i0(r['cas_fin_kt']),
                  i0(r['tas_ini_kt']), i0(r['tas_fin_kt']), f(r['M_fin'], 3), i0(r['vs_med_fpm']), f(r['FPA_deg'], 2),
                  f(r['Tr_med_pct'], 1), f(r['dist_NM'], 1), f(r['t_min'], 1), i0(r['fuel_kg']), i0(r['masa_fin_kg'])])
-foot = ' '.join(r'$^{%s}$\,%s.' % ('abc'[v-1], tex(k)) for k, v in notes.items())
+foot = ' '.join(r'$^{%s}$\,%s.' % ('abc'[v-1], tex(es(k))) for k, v in notes.items())
 write('tab_vert_num', longtable(['Tramo', '$h_i$ (ft)', '$h_f$ (ft)', 'IAS$_i$', 'IAS$_f$', 'TAS$_i$', 'TAS$_f$', '$M_f$', 'VS (fpm)', 'FPA (°)', '$T_r$ (\\%)', '$d$ (NM)', '$t$ (min)', 'Comb. (kg)', '$m_f$ (kg)'],
     'lrrrrrrrrrrrrrr', rows,
     'Parámetros de cada tramo (\\texttt{VERTICAL-tramos.xlsx}): altitud, IAS y TAS (kt) inicial y final, Mach final, velocidad vertical media, ángulo de trayectoria medio, empuje relativo medio $T_r=T/T_{\\max}$, distancia, duración, combustible y masa final. ' + foot,
@@ -183,6 +231,7 @@ N.update(vTOC=f(toc, 1), vTOD=f(tod, 1), vNlegs=len(tr), vNclb=len(clb), vNcru=l
          vTrKIIini=f(leg('K2')['Tr_max_pct'], 1), vTrKIIfin=f(leg('K2')['Tr_min_pct'], 1), vTrCII=f(leg('C2')['Tr_med_pct'], 1),
          vTrCIVmax=f(leg('C4')['Tr_max_pct'], 1), vTrIdle=f(leg('D4.1')['Tr_med_pct'], 2),
          vTrDIII=f(leg('D3')['Tr_med_pct'], 1), vTrDIIIV=f(leg('D2.4')['Tr_med_pct'], 1),
+         vTrDIIi=f(leg('D2.1')['Tr_med_pct'], 1), vFPADIIi=f(leg('D2.1')['FPA_deg'], 2),
          vVSCI=i0(leg('C1')['vs_med_fpm']), vVSDIVI=i0(leg('D4.1')['vs_med_fpm']), vVSDIVII=i0(leg('D4.2')['vs_med_fpm']),
          vFPADI=f(leg('D1')['FPA_deg'], 2), vFPADIII=f(leg('D3')['FPA_deg'], 2), vFPADIIIII=f(leg('D2.3')['FPA_deg'], 2),
          vMDVIIIIIIVh=i0(leg('C3.4')['h_fin_ft']), vMDOIVVIIIh=i0(leg('C3.2')['h_fin_ft']), vCruiseLen=f(num(leg('K2')['dist_NM']), 1),
@@ -214,7 +263,7 @@ rows = [[r['name'], f(r['d_NM'], 1), i0(r['h_ft']), i0(r['cas_kt']), i0(r['alt_m
          'sí' if r['ok'] == '1' else r'\textbf{NO}'] for r in ck]
 write('tab_comprobacion', longtable(['Fijo', '$D$ (NM)', '$h$ perfil (ft)', 'IAS perfil (kt)', 'Alt mín (ft)', 'Alt máx (ft)', 'IAS máx (kt)', 'Cumple'],
     'lrrrrrrc', rows,
-    'Comprobación del perfil vertical en los fijos de la ruta (\\texttt{VERTICAL-comprobacion.xlsx}): altitud e IAS interpoladas del perfil frente a los límites del estudio horizontal (-- = sin límite; los de las aerovías están pendientes de verificar).',
+    'Comprobación del perfil vertical en los fijos de la ruta (\\texttt{VERTICAL-comprobacion.xlsx}): altitud e IAS interpoladas del perfil frente a los límites del estudio horizontal (-- = sin límite; los límites de altitud de las aerovías no se incluyen, sección~\\ref{sec:enr-pendiente}).',
     'tab:chk', font=r'\scriptsize'))
 def fix(n): return next(r for r in ck if r['name'] == n)
 N.update(chkN=len(ck), chkOK=sum(1 for r in ck if r['ok'] == '1'),

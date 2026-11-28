@@ -1,0 +1,29 @@
+patron,reemplazo
+^End of RWY (\w+),Extremo de la pista \1
+"^CA leg (\d+) to (\d+) ft \(position computed, see below\)","Tramo CA \1° hasta \2 ft (posición calculada, véase el texto)"
+end of (\S+) min gradient,fin de la pendiente mínima del \1
+fly-over,sobrevuelo
+"^IF, ERREZ1A start","IF, inicio de la ERREZ1A"
+"^RF arc aux, brg (\d+) from centre","Auxiliar del arco RF, marcación \1°"
+"^Left turn aux, brg (\d+) from centre","Auxiliar del viraje, marcación \1°"
+"^End of left turn, DF (\w+)","Fin del viraje a la izquierda, DF a \1"
+"^CA (\d+)M to (\d+) ft \(([\d.]+) %\), turn LEFT","CA \1°M hasta \2 ft (\3 %), viraje a la izquierda"
+left turn,viraje a la izquierda
+right turn,viraje a la derecha
+then ATC / comm failure: direct (\w+),luego ATC (fallo de com.: directo a \1)
+^RWY (\w+) threshold,Umbral de la pista \1
+"link from (\w+) by ATC, assumed","enlace desde \1 por ATC, supuesto"
+"RF arc r=([\d.]+) NM, right","arco RF de radio \1 NM, a la derecha"
+missed approach,aproximación frustrada
+\bhold\b,espera
+\bmax\b,máx.
+\bmin\b,mín.
+^takeoff$,despegue
+^initialclimb$,ascenso inicial
+^climb$,ascenso
+^cruise$,crucero
+^descent$,descenso
+^approach$,aproximación
+^landing$,aterrizaje
+\(límite de la carta en el segmento intermedio\),"(máximo de la carta ILS en HADAS y DEMOV, aproximaciones iniciales a GALGA)"
+(\d)\.(\d),"\1,\2"

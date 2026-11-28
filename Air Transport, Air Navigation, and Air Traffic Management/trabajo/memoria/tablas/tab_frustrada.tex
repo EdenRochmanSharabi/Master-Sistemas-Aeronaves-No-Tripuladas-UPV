@@ -1,6 +1,6 @@
 \begingroup\scriptsize\setlength{\tabcolsep}{2.8pt}
 \begin{longtable}{rlrrrrrrrrr>{\raggedright\arraybackslash}p{3.4cm}}
-\caption{Aproximación frustrada ILS RWY 21 (\texttt{FRUSTRADA-ILS21.xlsx}), común a la RNP Y 21. $D$: distancia acumulada desde THR21. Se modela solo el tramo THR21 $\rightarrow$ GEMDA (suposición~17).}\label{tab:frustrada}\\
+\caption{Aproximación frustrada ILS RWY 21 (\texttt{FRUSTRADA-ILS21.xlsx}), común a la RNP Y 21. $D$: distancia acumulada desde THR21. CA1000: fin del ascenso en derrota 204°M (verdadera en la columna «Derrota») hasta 1\,000 ft con el gradiente del 4,5\,\%; MAT1--MAT17 y MATEND: puntos auxiliares del viraje a la izquierda a 190 kt, cada 10°; MATEND $\rightarrow$ GEMDA: directo al fijo de espera (suposición~17).}\label{tab:frustrada}\\
 \toprule
 N.º & Fijo & Lat (°) & Lon (°) & \makecell{Alt mín\\(ft)} & \makecell{Alt máx\\(ft)} & \makecell{IAS máx\\(kt)} & \makecell{Derrota\\(°)} & \makecell{$d$\\(NM)} & \makecell{$D$\\(NM)} & \makecell{Pend.\\(\%)} & Descripción (carta)\\
 \midrule
@@ -16,6 +16,25 @@ N.º & Fijo & Lat (°) & Lon (°) & \makecell{Alt mín\\(ft)} & \makecell{Alt m�
 \bottomrule
 \endlastfoot
 1 & THR21 & 32,0181 & 34,9002 & 183 & 40\,000 & 250 & 0,0 & 0,00 & 0,00 & -- & \scriptsize MAPt\\
-2 & GEMDA & 32,0572 & 34,9967 & 5\,000 & 5\,000 & 190 & 64,4 & 5,44 & 5,44 & -- & \scriptsize DF, missed approach, @5000\\
+2 & CA1000 & 31,9745 & 34,8720 & 1\,000 & 40\,000 & 250 & 208,7 & 2,99 & 2,99 & -- & \scriptsize CA 204°M hasta 1000 ft (4,5 \%), viraje a la izquierda\\
+3 & MAT1 & 31,9715 & 34,8705 & 1\,000 & 40\,000 & 190 & 203,7 & 0,20 & 3,18 & -- & \scriptsize Auxiliar del viraje, marcación 289°\\
+4 & MAT2 & 31,9683 & 34,8695 & 1\,000 & 40\,000 & 190 & 193,7 & 0,20 & 3,38 & -- & \scriptsize Auxiliar del viraje, marcación 279°\\
+5 & MAT3 & 31,9650 & 34,8693 & 1\,000 & 40\,000 & 190 & 183,7 & 0,20 & 3,58 & -- & \scriptsize Auxiliar del viraje, marcación 269°\\
+6 & MAT4 & 31,9618 & 34,8697 & 1\,000 & 40\,000 & 190 & 173,7 & 0,20 & 3,77 & -- & \scriptsize Auxiliar del viraje, marcación 259°\\
+7 & MAT5 & 31,9586 & 34,8708 & 1\,000 & 40\,000 & 190 & 163,7 & 0,20 & 3,97 & -- & \scriptsize Auxiliar del viraje, marcación 249°\\
+8 & MAT6 & 31,9557 & 34,8725 & 1\,000 & 40\,000 & 190 & 153,7 & 0,20 & 4,17 & -- & \scriptsize Auxiliar del viraje, marcación 239°\\
+9 & MAT7 & 31,9531 & 34,8748 & 1\,000 & 40\,000 & 190 & 143,7 & 0,20 & 4,36 & -- & \scriptsize Auxiliar del viraje, marcación 229°\\
+10 & MAT8 & 31,9508 & 34,8776 & 1\,000 & 40\,000 & 190 & 133,7 & 0,20 & 4,56 & -- & \scriptsize Auxiliar del viraje, marcación 219°\\
+11 & MAT9 & 31,9490 & 34,8808 & 1\,000 & 40\,000 & 190 & 123,7 & 0,20 & 4,76 & -- & \scriptsize Auxiliar del viraje, marcación 209°\\
+12 & MAT10 & 31,9477 & 34,8843 & 1\,000 & 40\,000 & 190 & 113,7 & 0,20 & 4,95 & -- & \scriptsize Auxiliar del viraje, marcación 199°\\
+13 & MAT11 & 31,9469 & 34,8881 & 1\,000 & 40\,000 & 190 & 103,7 & 0,20 & 5,15 & -- & \scriptsize Auxiliar del viraje, marcación 189°\\
+14 & MAT12 & 31,9467 & 34,8919 & 1\,000 & 40\,000 & 190 & 93,7 & 0,20 & 5,35 & -- & \scriptsize Auxiliar del viraje, marcación 179°\\
+15 & MAT13 & 31,9470 & 34,8958 & 1\,000 & 40\,000 & 190 & 83,7 & 0,20 & 5,54 & -- & \scriptsize Auxiliar del viraje, marcación 169°\\
+16 & MAT14 & 31,9479 & 34,8995 & 1\,000 & 40\,000 & 190 & 73,7 & 0,20 & 5,74 & -- & \scriptsize Auxiliar del viraje, marcación 159°\\
+17 & MAT15 & 31,9494 & 34,9029 & 1\,000 & 40\,000 & 190 & 63,7 & 0,20 & 5,94 & -- & \scriptsize Auxiliar del viraje, marcación 149°\\
+18 & MAT16 & 31,9513 & 34,9060 & 1\,000 & 40\,000 & 190 & 53,7 & 0,20 & 6,13 & -- & \scriptsize Auxiliar del viraje, marcación 139°\\
+19 & MAT17 & 31,9537 & 34,9087 & 1\,000 & 40\,000 & 190 & 43,7 & 0,20 & 6,33 & -- & \scriptsize Auxiliar del viraje, marcación 129°\\
+20 & MATEND & 31,9545 & 34,9094 & 1\,000 & 40\,000 & 190 & 37,2 & 0,06 & 6,39 & -- & \scriptsize Fin del viraje a la izquierda, DF a GEMDA\\
+21 & GEMDA & 32,0572 & 34,9967 & 5\,000 & 5\,000 & 190 & 35,7 & 7,60 & 13,99 & -- & \scriptsize DF, aproximación frustrada, @5000, espera\\
 \end{longtable}
 \endgroup

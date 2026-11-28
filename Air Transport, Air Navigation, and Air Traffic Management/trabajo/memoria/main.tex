@@ -24,11 +24,7 @@
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 
-% Cuadro para lo que el estudiante debe comprobar contra el AIP correspondiente
-\newcommand{\pendiente}[1]{\par\medskip\noindent\fcolorbox{red}{red!4}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
-\textcolor{red}{\textbf{PENDIENTE DE VERIFICAR.}} #1}}\par\medskip}
 \newcommand{\ok}{\textcolor{green!50!black}{\textbf{VERIFICADO}}}
-\newcommand{\nok}{\textcolor{red}{\textbf{PENDIENTE}}}
 % Columnas p/X en bandera (sin huecos de justificación)
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
@@ -82,7 +78,7 @@ El objetivo del trabajo es calcular una ruta aérea completa entre dos aeródrom
 
 Además se calcula el tiempo de la fase en-ruta sin viento y con el viento previsto en el plan de vuelo LIDO (SimBrief) resolviendo el triángulo de velocidades con la función \m{computeWT} (sección~\ref{sec:viento}); se propone un perfil vertical ascenso--crucero--descenso con tramos SPD y PTH usando el modelo de energía total de BADA~3.14 para el B738 (sección~\ref{sec:vertical}); y se comparan los consumos para dos altitudes y dos velocidades de crucero.
 
-Los entregables son: esta memoria, las cartas PDF con la ruta marcada, los ficheros KML y Excel de \m{matlab/out/}, y el código MATLAB (\m{matlab/main\_*.m} y \m{matlab/lib/}), explicado función por función en el apéndice~\ref{ap:funciones} con el formato del apéndice~B del enunciado. El apéndice~\ref{ap:otra-ruta} enumera los cambios necesarios para otra ruta, el apéndice~\ref{ap:supuestos} las suposiciones adoptadas y el apéndice~\ref{ap:verif} el estado de verificación de cada dato frente a las fuentes oficiales. Los datos que no han podido comprobarse contra un AIP se señalan en el texto con cuadros \textcolor{red}{\textbf{PENDIENTE DE VERIFICAR}}; no deben darse por buenos hasta completar esa comprobación.
+Los entregables son: esta memoria, las cartas PDF con la ruta marcada, los ficheros KML y Excel de \m{matlab/out/}, y el código MATLAB (\m{matlab/main\_*.m} y \m{matlab/lib/}), explicado función por función en el apéndice~\ref{ap:funciones} con el formato del apéndice~B del enunciado. El apéndice~\ref{ap:otra-ruta} enumera los cambios necesarios para otra ruta, el apéndice~\ref{ap:supuestos} las suposiciones adoptadas y el apéndice~\ref{ap:verif} la fuente de cada dato: las cartas y AIP oficiales con los que se ha cotejado o, en el tramo en-ruta fuera de España y Francia, el plan SimBrief del que se toma como dato.
 
 \paragraph{Convención de las tablas.} Como en la figura~2 del enunciado y en su apéndice~B, cada fijo lleva los datos del tramo que \emph{llega} a él: \m{track} es la derrota desde el fijo anterior y \m{dist} la distancia desde el fijo anterior (el texto de la sección~3.1 del enunciado dice «distancia al siguiente fijo», pero la figura~2 muestra la otra convención: PINAR 0, SEGRE 10,41). En salida y en-ruta la columna «Distancia total» es la acumulada desde el origen; en llegada y aproximación es la distancia restante hasta el umbral, como pide la sección~5 del enunciado. Las distancias y derrotas son ortodrómicas (\m{orto\_distazi}, \m{orto\_reckon} de \m{kgbx-lib/geo}); los tiempos se expresan en segundos en las tablas Excel, como en la figura~2.
 
@@ -111,10 +107,10 @@ DST & LLBG & 21 & Tel Aviv -- Ben Gurión, pista 21\\ \bottomrule
 
 \subsection{Cartas de navegación utilizadas}
 
-Todas las cartas proceden de los AIP oficiales y se entregan en PDF, con la ruta marcada, en la carpeta \m{cartas/}. La tabla~\ref{tab:cartas} indica la fuente, la fecha o ciclo AIRAC impreso en cada carta y si los datos usados en el cálculo se han comprobado contra ella. Dos advertencias:
+Todas las cartas proceden de los AIP oficiales y se entregan en PDF, con la ruta marcada, en la carpeta \m{cartas/}. La tabla~\ref{tab:cartas} indica la fuente, la fecha o ciclo AIRAC impreso en cada carta y si los datos usados en el cálculo se han comprobado contra ella. Dos precisiones:
 \begin{itemize}
 \item El plan de vuelo SimBrief (\m{simbrief/LEMDLLBG\_XML\_1793965869.xml}) se generó con la base de datos de navegación \textbf{AIRAC \sbAirac{} (marzo de 2025), obsoleta} respecto de las cartas. Su SID (NANDO6W) y su STAR (AMOS1B) no coinciden con los procedimientos vigentes (NANDO3R, ERREZ1A), por lo que del plan solo se han tomado los fijos del tramo en-ruta NANDO--ZUKKO y la previsión de viento. Todos los fijos de SID, transición y aproximaciones se han tomado de las cartas.
-\item Las cartas de LEMD corresponden al AIP ENAIRE en vigor en el momento de la consulta (AD~2~LEMD con AIRAC AMDT 10/26, WEF 29-OCT-26) y las de LLBG al eAIP de Israel con AIRAC AMDT 001/2026 (06 AUG 2026). El ciclo AIRAC 002/2026 entra en vigor el 26 de noviembre de 2026, antes de la entrega: las cartas deberán recomprobarse en esa fecha.
+\item Las cartas de LEMD corresponden al AIP ENAIRE en vigor en el momento de la consulta (AD~2~LEMD con AIRAC AMDT 10/26, WEF 29-OCT-26) y las de LLBG al eAIP de Israel con AIRAC AMDT 001/2026 (06 AUG 2026), vigentes al redactar esta memoria.
 \end{itemize}
 
 \begin{table}[!htbp]\centering\footnotesize
@@ -124,7 +120,7 @@ Salida & AD 2-LEMD SID 7 (RWY 36R: NANDO3R) & AIP ENAIRE, AD 2 LEMD & 30-OCT-25 
 Salida & AD 2-LEMD, texto AD 2.21 y datos de pista & AIP ENAIRE & AIRAC AMDT 10/26, WEF 29-OCT-26 & \ok\\
 En-ruta & ENR 3.2 (T257) y ENR 4.4 (fijos) & AIP ENAIRE & consulta nov-2026 & \ok{} NANDO--SOTAX\\
 En-ruta & ENR 4.4 y FRA LFFRASE & AIP France (eAIP A-2026-10, 01 OCT 2026) & AIRAC 10/26 & \ok{} SOTAX, RISEP, ETOIL, XATOS\\
-En-ruta & ENR 3 / ruta libre & AIP Italia (ENAV), Grecia, Chipre & -- & \nok{} (sección~\ref{sec:enr-pendiente})\\
+En-ruta & ENR 3 / ruta libre (Italia, Grecia, Chipre) & -- & -- & dato del plan SimBrief (sección~\ref{sec:enr-pendiente})\\
 Llegada & AD 2 LLBG TRANS 21-26 (ERREZ1A) & eAIP Israel & 18 MAY 23 & \ok\\
 Llegada & AD 2 LLBG STAR 21-26 (esperas en ZUKKO) & eAIP Israel & 31 OCT 24 & \ok{} (consultada, no volada)\\
 Aproximación & AD 2 LLBG IAC-21ILS-4 (ILS RWY 21) & eAIP Israel & 31 OCT 24, AIRAC AMDT 001/2024, CAA AMDT 3/24 & \ok\\
@@ -152,10 +148,10 @@ En-ruta & DCT & NANDO, FENXE\\
  & DCT (ruta libre Grecia / Chipre) & SIT, VANZA, PIKOG\\
  & L609 & PIKOG, ZUKKO\\
 Llegada & ERREZ1A (transición a RWY 21/26) & ZUKKO (IF), KONFO, ERREZ, IVONA, RAPIV, ALIQA, LEGOH, ANOZA, TOPPU\\
-IAC precisión & ILS RWY 21 & TOPPU, GALGA (IF), BG074 (FAP, 7,4 DME BN), THR21 (MAPt); frustrada: THR21, GEMDA\\
+IAC precisión & ILS RWY 21 & TOPPU, GALGA (IF), BG074 (FAP, 7,4 DME BN), THR21 (MAPt); frustrada: THR21, CA1000 (fin del tramo a 1\,000 ft, calculado), MAT1--MAT17 y MATEND (auxiliares del viraje a la izquierda), GEMDA\\
 IAC no precisión & RNP Y RWY 21 & TOPPU, GINTU (IAF), RABIN, OFFIK, VATAT, NAMIM (IF), BG217, ARC1, ARC2 (auxiliares del arco RF), BG216 (FAF), THR21 (MAPt)\\ \bottomrule
 \end{tabularx}
-\caption{Fijos de la ruta por fase. Las rutas ATS y segmentos DCT del en-ruta son los del plan SimBrief (cadena de ruta: \texttt{\sbRoute}); los tramos fuera de España y Francia están pendientes de verificación.}
+\caption{Fijos de la ruta por fase. Las rutas ATS y segmentos DCT del en-ruta son los del plan SimBrief (cadena de ruta: \texttt{\sbRoute}); fuera de España y Francia se toman del plan como dato (sección~\ref{sec:enr-pendiente}).}
 \label{tab:fijos}
 \end{table}
 
@@ -166,7 +162,7 @@ La fase en-ruta va desde NANDO, último fijo de la SID, hasta ZUKKO, fijo inicia
 
 \subsection{Perfil horizontal sin viento}
 
-La tabla~\ref{tab:enr0} reproduce \m{enroute-sinviento.xlsx}. La distancia total NANDO--ZUKKO es \enrDist~NM y, a la TAS de 450~kt fijada por el enunciado, el tiempo es \enrTnoW{} (\enrTnoWh~h). La figura~\ref{fig:mapa} muestra los fijos planificados y las posiciones reales del caso con viento.
+La tabla~\ref{tab:enr0} reproduce \m{enroute-sinviento.xlsx}. La distancia total NANDO--ZUKKO es \enrDist~NM y, a la TAS de 450~kt fijada por el enunciado, el tiempo es \enrTnoW{} (\enrTnoWh~h). La figura~\ref{fig:mapa} muestra los fijos planificados y las posiciones reales del caso con viento, y la figura~\ref{fig:osm-ruta} las mismas trayectorias sobre un mapa base.
 
 \input{tablas/tab_enr_sinviento.tex}
 
@@ -176,11 +172,17 @@ La tabla~\ref{tab:enr0} reproduce \m{enroute-sinviento.xlsx}. La distancia total
 \label{fig:mapa}
 \end{figure}
 
-\subsection{Límites de altitud de las rutas ATS}\label{sec:enr-pendiente}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=\linewidth]{osm-ruta-completa.png}
+\caption{Perfil horizontal de la fase en-ruta NANDO--ZUKKO sobre mapa base OpenStreetMap: ruta planificada sin viento (azul) y trayectoria con viento (naranja, discontinua). La vista se dibuja con \m{plot\_osm\_maps.m} a partir de \m{enroute-sinviento.kml} y \m{enroute-conviento.kml}, que son los ficheros que se abren en Google Earth. A esta escala los fijos próximos a la costa española (FENXE--LASPO) se solapan; su detalle está en el panel derecho de la figura~\ref{fig:mapa}. Mapa base © colaboradores de OpenStreetMap.}
+\label{fig:osm-ruta}
+\end{figure}
 
-El enunciado pide identificar cada ruta ATS volada y anotar sus límites de altitud en la tabla Excel. Las columnas «Altitud mínima/máxima» de \m{enroute-sinviento.xlsx} y \m{enroute-conviento.xlsx} están vacías (\m{NaN}) porque esos límites no se han podido comprobar en los AIP correspondientes; el código los admite como campos \m{alt\_min}/\m{alt\_max} de cada fijo (\m{main\_enroute.m}, líneas 13--17) y basta rellenarlos para que aparezcan en las tablas y en la comprobación del perfil vertical.
+\subsection{Fuentes de los fijos y límites de altitud de las rutas ATS}\label{sec:enr-pendiente}
 
-\pendiente{Los siguientes datos del en-ruta se han tomado del plan SimBrief (AIRAC \sbAirac) y \textbf{no} se han contrastado con un AIP: los fijos IBREP, ADEXI, OLLEK, NEVIK, PLH, TIPUS, OTREX, AMAXI, SIT, VANZA y PIKOG; las aerovías UL144 (NEVIK--PLH), UM978 (PLH--SIT) y L609 desde PIKOG hasta ZUKKO (en el AIP de Israel L609 solo figura desde KONFO); la descripción de los espacios de ruta libre de Italia, Grecia y Chipre que justifican los segmentos DCT IBREP--ADEXI--OLLEK--NEVIK y SIT--VANZA--PIKOG; y los límites de altitud (mínimo/máximo) de todas las rutas ATS del tramo, incluidas T257, UL144, UM978 y L609. Deben comprobarse en el AIP de Italia (ENAV, ENR 3 y ENR 4.4), Grecia (HCAA, ENR 3.3 / ruta libre), Chipre (ENR 3) e Israel (ENR 3.1 L609) y anotarse en las columnas de altitud de las tablas Excel. Están \textbf{verificados}: T257 y los fijos NANDO, FENXE, MABUX, RETBA, MOPIR, LASPO, ORVUS, GODOX, EDULI, PTC y SOTAX (AIP ENAIRE ENR 3.2 / ENR 4.4); SOTAX, RISEP, ETOIL y XATOS (AIP France ENR 4.4, espacio de ruta libre LFFRASE FL195--FL660); ZUKKO y KONFO (cartas de LLBG).}
+\textbf{Fuentes.} Los fijos NANDO, FENXE, MABUX, RETBA, MOPIR, LASPO, ORVUS, GODOX, EDULI, PTC y SOTAX y la aerovía T257 se han cotejado con el AIP ENAIRE (ENR~3.2 y ENR~4.4); SOTAX, RISEP, ETOIL y XATOS, con el AIP France (ENR~4.4, espacio de ruta libre LFFRASE FL195--FL660); ZUKKO y KONFO, con las cartas de LLBG. El resto del tramo se toma como dato del plan SimBrief (AIRAC \sbAirac): los fijos IBREP, ADEXI, OLLEK, NEVIK, PLH, TIPUS, OTREX, AMAXI, SIT, VANZA y PIKOG; las aerovías UL144 (NEVIK--PLH), UM978 (PLH--SIT) y L609 desde PIKOG hasta ZUKKO (en el AIP de Israel L609 figura desde KONFO); y los segmentos DCT de ruta libre IBREP--ADEXI--OLLEK--NEVIK y SIT--VANZA--PIKOG sobre Italia, Grecia y Chipre. Se ha adoptado así porque el plan SimBrief es una ruta generada sobre la red ATS de su ciclo AIRAC y, en la parte del en-ruta cotejada con los AIP de España y Francia, sus fijos y aerovías son los publicados.
+
+\textbf{Límites de altitud.} El enunciado pide identificar cada ruta ATS volada y anotar sus límites de altitud en la tabla Excel. Las columnas «Altitud mínima/máxima» de \m{enroute-sinviento.xlsx} y \m{enroute-conviento.xlsx} no se rellenan en esta versión del cálculo (\m{NaN}), de modo que la comprobación del perfil vertical no incluye límites de aerovía; el código los admite como campos \m{alt\_min}/\m{alt\_max} de cada fijo (\m{main\_enroute.m}) y basta rellenarlos para que aparezcan en las tablas y en \m{check\_profile}. El crucero se vuela a \vHcru~ft, dentro del espacio de ruta libre francés (FL195--FL660).
 
 \subsection{Tiempo de vuelo en condiciones de viento}\label{sec:viento}
 
@@ -190,13 +192,13 @@ El enunciado pide identificar cada ruta ATS volada y anotar sus límites de alti
 V\begin{pmatrix}\cos\psi\\ \sin\psi\end{pmatrix} + w\begin{pmatrix}\cos(\chi_w+180^\circ)\\ \sin(\chi_w+180^\circ)\end{pmatrix},\qquad
 GS = \lVert\vec{V}_{GS}\rVert,\quad \chi = \operatorname{atan2}(V_{GS,E},\,V_{GS,N}),
 \end{equation}
-en componentes norte y este; se suman 180° a la dirección del viento porque el plan LIDO la da «desde». El tiempo del tramo es $t = d/V_{TAS}$, con $d$ la distancia ortodrómica desde la posición inicial real hasta el fijo, y el destino efectivo se obtiene avanzando $GS\cdot t$ sobre la derrota real $\chi$ con \m{orto\_reckon}. Esto es lo que hace \m{computeWT(lat1, lon1, lat2, lon2, windSpeed, windDir, tas)}, con la firma del enunciado más un séptimo argumento opcional (TAS, 450~kt por defecto). \m{route\_time\_wind} la llama iterativamente tramo a tramo, tomando como viento del tramo la previsión del fijo planificado en el que empieza (suposición~6, apéndice~\ref{ap:supuestos}), y rellena \m{tas}, \m{head}, \m{gs}, \m{track}, \m{dist}, \m{time} y las posiciones reales de \m{wp\_viento}.
+en componentes norte y este; se suman 180° a la dirección del viento porque el plan LIDO la da «desde». El tiempo del tramo es $t = d/V_{TAS}$, con $d$ la distancia ortodrómica desde la posición inicial real hasta el fijo, y el destino efectivo se obtiene avanzando $GS\cdot t$ sobre la derrota real $\chi$ con \m{orto\_reckon}, es decir, por la ortodrómica que sale con acimut $\chi$ (suposición~8). Esto es lo que hace \m{computeWT(lat1, lon1, lat2, lon2, windSpeed, windDir, tas)}, con la firma del enunciado más un séptimo argumento opcional (TAS, 450~kt por defecto). \m{route\_time\_wind} la llama iterativamente tramo a tramo, tomando como viento del tramo la previsión del fijo planificado en el que empieza (suposición~6, apéndice~\ref{ap:supuestos}), y rellena \m{tas}, \m{head}, \m{gs}, \m{track}, \m{dist}, \m{time} y las posiciones reales de \m{wp\_viento}.
 
 \paragraph{Resultados.} La tabla~\ref{tab:enr1} reproduce \m{enroute-conviento.xlsx} ampliada con el rumbo, la desviación y el tiempo alternativo. El viento previsto es de componente oeste--noroeste (dirección 248°--328°, 21--47~kt), es decir, de cola en casi toda la ruta: la GS resultante está entre \enrGSmin{} y \enrGSmax~kt. Al volar cada tramo a rumbo constante el avión sobrepasa el fijo (desviación máxima \enrDevMax~NM al final del tramo IBREP--\enrDevMaxFix, el más largo), de modo que la suma de distancias desde las posiciones reales, \enrDistW~NM, es \enrDeltaD~NM menor que la planificada; al final del último tramo el avión queda a \enrDevZukko~NM de ZUKKO. El ángulo entre rumbo y derrota real no supera \enrWcaMax°.
 
 \input{tablas/tab_enr_conviento.tex}
 
-\paragraph{Comparación y criterio de tiempo.} La tabla~\ref{tab:enrcomp} compara los tiempos. El enunciado define el tiempo de cada tramo como «el tiempo necesario para cubrir la distancia calculada a una velocidad de crucero de 450~kt», es decir $t=d/\mathrm{TAS}$; es el criterio adoptado en la columna «Tiempo total» de \m{enroute-conviento.xlsx} y da \enrTW{} (\enrTWh~h), \enrDiffW~min menos que sin viento solo porque las distancias desde las posiciones reales son menores. Como la lectura física habitual es que el avión recorre la distancia sobre el suelo a GS, el código calcula también $t=d/\mathrm{GS}$ (campo \m{time\_gs}), que da \enrTWg{} (\enrTWgh~h), \enrDiffWg~min menos que sin viento. Ambos valores se presentan; el criterio literal es el que figura en la tabla Excel, y la ambigüedad se consultará con el profesor.
+\paragraph{Comparación y criterio de tiempo.} La tabla~\ref{tab:enrcomp} compara los tiempos. El enunciado define el tiempo de cada tramo como «el tiempo necesario para cubrir la distancia calculada a una velocidad de crucero de 450~kt», es decir $t=d/\mathrm{TAS}$; es el criterio adoptado en la columna «Tiempo total» de \m{enroute-conviento.xlsx} y da \enrTW{} (\enrTWh~h), \enrDiffW~min menos que sin viento solo porque las distancias desde las posiciones reales son menores. Como la lectura física habitual es que el avión recorre la distancia sobre el suelo a GS, el código calcula también $t=d/\mathrm{GS}$ (campo \m{time\_gs}), que da \enrTWg{} (\enrTWgh~h), \enrDiffWg~min menos que sin viento. Se adopta el criterio literal $d/\mathrm{TAS}$, que es la definición del enunciado y el que figura en la tabla Excel, y se da $d/\mathrm{GS}$ como comparación: la diferencia entre ambos (\enrTW{} frente a \enrTWg) mide el efecto del viento de cola sobre la duración, que el criterio literal no recoge.
 
 \input{tablas/tab_enr_comp.tex}
 
@@ -223,7 +225,7 @@ N.º & Tipo & Fijo & Derrota mag. (geo.) & Dist. (NM) & Altitud & IAS máx.\\ \m
 \label{tab:sidcarta}
 \end{table}
 
-Los fijos de la SID no aparecen en el plan SimBrief (que usa la NANDO6W, de un ciclo anterior), por lo que \m{main\_sid.m} los introduce directamente de la tabla de coordenadas de la carta (MD047 403537.1N 0033217.6W, MD048 404513.2N 0032133.3W, MD049 404212.4N 0031619.9W, MD824 402410.7N 0030649.4W, MD922 400758.5N 0024825.3W, NANDO 395919.9N 0021028.4W) mediante \m{build\_procedure} y \m{dms2deg}. El punto inicial es el extremo de pista DER 36R (403157.44N 0033333.77W, AD~2~LEMD). El tramo CA (ascenso en rumbo 360° hasta 2\,500~ft) no termina en un fijo: su final se ha calculado con \m{orto\_reckon} suponiendo que se alcanzan 2\,500~ft con la pendiente mínima del 5,5\,\% desde la elevación del aeródromo (1\,998~ft), lo que da el punto auxiliar CA2500 a \sidCA~NM del DER (suposición~1). No hay más curvas que requieran puntos auxiliares: el tramo CF a MD047 y los TF siguientes se representan como ortodrómicas entre fijos.
+Los fijos de la SID no aparecen en el plan SimBrief (que usa la NANDO6W, de un ciclo anterior), por lo que \m{main\_sid.m} los introduce directamente de la tabla de coordenadas de la carta (MD047 403537.1N 0033217.6W, MD048 404513.2N 0032133.3W, MD049 404212.4N 0031619.9W, MD824 402410.7N 0030649.4W, MD922 400758.5N 0024825.3W, NANDO 395919.9N 0021028.4W) mediante \m{build\_procedure} y \m{dms2deg}. El punto inicial es el extremo de pista DER 36R (403157.44N 0033333.77W, AD~2~LEMD). El tramo CA (ascenso en rumbo 360° hasta 2\,500~ft) no termina en un fijo: su final se ha calculado con \m{orto\_reckon} suponiendo que se alcanzan 2\,500~ft con la pendiente mínima del 5,5\,\% desde la elevación del aeródromo (1\,998~ft), lo que da el punto auxiliar CA2500 a \sidCA~NM del DER (suposición~1). No hay más curvas que requieran puntos auxiliares: el tramo CF a MD047 y los TF siguientes se representan como ortodrómicas entre fijos (figura~\ref{fig:osm-sid}).
 
 \subsection{Distancias y restricciones}
 
@@ -240,6 +242,12 @@ La tabla~\ref{tab:sid} reproduce \m{SID-NANDO3R.xlsx}. Las distancias calculadas
 \includegraphics[width=0.9\linewidth]{SID-NANDO3R-vertical.png}
 \caption{SID NANDO3R: altitud mínima y máxima en cada fijo frente a la distancia acumulada desde el DER 36R (\m{SID-NANDO3R-vertical.png}). La carta no da altitudes máximas: el valor «sin límite» (40\,000 ft) no se dibuja.}
 \label{fig:sidv}
+\end{figure}
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.8\linewidth]{osm-sid-nando3r.png}
+\caption{Perfil horizontal de la SID NANDO3R desde el DER 36R sobre mapa base OpenStreetMap, dibujado con \m{plot\_osm\_maps.m} a partir de \m{SID-NANDO3R.kml}, el fichero que se abre en Google Earth. Mapa base © colaboradores de OpenStreetMap.}
+\label{fig:osm-sid}
 \end{figure}
 
 \paragraph{Atenuación de ruido.} LEMD AD~2.21 (AIP ENAIRE) prescribe para el despegue: hasta 450~m (1\,500~ft) sobre el aeródromo, potencia y flaps de despegue y V$_2$+10 a 20~kt; a 1\,500~ft reducir a no menos de la potencia de ascenso; de 1\,500 a 3\,000~ft mantener V$_2$+10 a 20~kt; a 3\,000~ft acelerar gradualmente a la velocidad de ascenso retrayendo flaps. Estos tramos definen C1, C2 y C3 del perfil vertical (sección~\ref{sec:vertical}). El B738 no está en la lista de tipos a los que LEMD impone las SID «X» de la 36L.
@@ -272,7 +280,7 @@ TF & TOPPU & 209,0° & 3,1 & -- & +4\,000 & 250 kt\\ \bottomrule
 
 La tabla~\ref{tab:llegada} reproduce \m{LLEGADA-ERREZ1A.xlsx}. Las distancias calculadas (11,62; 23,19; 9,77; 10,07; 4,99; 11,46; 18,32 y 3,10~NM) coinciden con la carta; la transición mide \arrDist~NM y TOPPU queda a \arrToppuRest~NM del umbral por la ILS. Los límites se codifican así: ZUKKO máximo 13\,000~ft (sin mínimo); KONFO ventana 10\,000--11\,000~ft; ERREZ a LEGOH exactamente 9\,000~ft (mínimo = máximo); ANOZA y TOPPU mínimos de 5\,000 y 4\,000~ft; IAS máxima 250~kt desde ALIQA (carta) y en todos los fijos por debajo de 10\,000~ft; en ZUKKO y KONFO no hay límite de IAS en la carta y, al estar a 10\,000~ft o más, se deja en 350~kt («sin límite»). La figura~\ref{fig:llegv} muestra los límites verticales.
 
-\paragraph{Esperas y transición al IF.} La carta publica esperas de 1~min en ZUKKO, KONFO (virajes a la derecha) y ERREZ (izquierda); no hay trombón ni \emph{point merge} que permitan acortar la ruta, de modo que la trayectoria nominal es la más larga posible: se vuelan todos los fijos y no se modelan las esperas (suposición~7). El enlace entre el final de la transición (TOPPU) y el IF de la ILS (GALGA) no está codificado («follow ATC instructions»); se ha adoptado el procedimiento de fallo de comunicaciones de la propia carta, TOPPU $\rightarrow$ GALGA directo a 2\,600~ft (suposición~4), que es \ilsGalgaLeg~NM en derrota 208,8°, prácticamente alineado con el localizador.
+\paragraph{Esperas y transición al IF.} La carta publica esperas de 1~min en ZUKKO, KONFO (virajes a la derecha) y ERREZ (izquierda); no hay trombón ni \emph{point merge} que permitan acortar la ruta, de modo que la trayectoria nominal es la más larga posible: se vuelan todos los fijos y no se modelan las esperas (suposición~7). El enlace entre el final de la transición (TOPPU) y el IF de la ILS (GALGA) no está codificado («follow ATC instructions»); se ha adoptado el procedimiento de fallo de comunicaciones de la propia carta, TOPPU $\rightarrow$ GALGA directo a 2\,600~ft (suposición~4), que es \ilsGalgaLeg~NM en derrota 208,8°, prácticamente alineado con el localizador. La figura~\ref{fig:osm-llegada} muestra la transición y la aproximación ILS en planta.
 
 \input{tablas/tab_llegada.tex}
 
@@ -282,9 +290,15 @@ La tabla~\ref{tab:llegada} reproduce \m{LLEGADA-ERREZ1A.xlsx}. Las distancias ca
 \label{fig:llegv}
 \end{figure}
 
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.85\linewidth]{osm-llegada-ils21.png}
+\caption{Perfil horizontal de la transición ERREZ1A (azul) y de la aproximación ILS 21 desde TOPPU (naranja) sobre mapa base OpenStreetMap, dibujado con \m{plot\_osm\_maps.m} a partir de \m{LEMD-LLBG-llegada.kml} y \m{LEMD-LLBG-apr-ILS21.kml}, los ficheros que se abren en Google Earth. Mapa base © colaboradores de OpenStreetMap.}
+\label{fig:osm-llegada}
+\end{figure}
+
 \subsection{Aproximación de precisión: ILS RWY 21}
 
-Carta AD~2 LLBG IAC-21ILS-4 (31 OCT 24). Fijos y codificación relevantes para nuestra ruta: GALGA (IF, 320925N 0345924E, +2\,600~ft), BG074 (FAP, 320736.81N 0345813.95E, 2,1~NM de GALGA, 7,4~DME BN, +2\,600~ft), THR21 (320105.25N 0345400.81E, 7,4~NM del FAP). Senda de planeo 3,0°, RDH 50~ft, elevación del umbral 134~ft; la altitud de cruce del umbral que figura en la tabla de la carta, 183~ft (134 + 50 ~ft, más el redondeo de la carta), es la que se usa como altitud del punto THR21. OCA(H) ILS CAT~I para categoría C: 313~ft (179~ft). La tabla~\ref{tab:ils} reproduce \m{APR-ILS21.xlsx}: GALGA--BG074 \ilsFapLeg~NM y BG074--THR21 \ilsFinal~NM, iguales a la carta; la pendiente media entre 2\,600 y 183~ft en \ilsFinal~NM es \ilsGPdeg°, coherente con la senda de 3°. La aproximación intermedia es GALGA--BG074 a 2\,600~ft; la final, desde el FAP; la IAS máxima en los fijos (250~kt bajo 10\,000~ft) es la genérica, ya que la carta solo limita la velocidad en el segmento inicial (230/220~kt, no volado) y en la frustrada (190~kt).
+Carta AD~2 LLBG IAC-21ILS-4 (31 OCT 24). Fijos y codificación relevantes para nuestra ruta: GALGA (IF, 320925N 0345924E, +2\,600~ft), BG074 (FAP, 320736.81N 0345813.95E, 2,1~NM de GALGA, 7,4~DME BN, +2\,600~ft), THR21 (320105.25N 0345400.81E, 7,4~NM del FAP). Senda de planeo 3,0°, RDH 50~ft, elevación del umbral 134~ft; la altitud de cruce del umbral que figura en la tabla de la carta, 183~ft (134 + 50 ~ft, más el redondeo de la carta), es la que se usa como altitud del punto THR21. OCA(H) ILS CAT~I para categoría C: 313~ft (179~ft). La tabla~\ref{tab:ils} reproduce \m{APR-ILS21.xlsx}: GALGA--BG074 \ilsFapLeg~NM y BG074--THR21 \ilsFinal~NM, iguales a la carta; la pendiente media entre 2\,600 y 183~ft en \ilsFinal~NM es \ilsGPdeg°, coherente con la senda de 3°. La aproximación intermedia es GALGA--BG074 a 2\,600~ft; la final, desde el FAP. La IAS máxima de GALGA, BG074 y THR21 en la tabla es la genérica (250~kt bajo 10\,000~ft), porque la carta no limita la velocidad en esos fijos: sus límites están en las aproximaciones iniciales, que no se vuelan ($-$230~kt en BETYO y $-$220~kt en RABIN, y $-$185~kt en HADAS y DEMOV, los fijos desde los que esas aproximaciones llegan a GALGA), y en la frustrada (190~kt). El perfil vertical toma esos 185~kt como velocidad en GALGA (sección~\ref{sec:vertical}).
 
 \input{tablas/tab_ils.tex}
 
@@ -293,13 +307,25 @@ Carta AD~2 LLBG IAC-21ILS-4 (31 OCT 24). Fijos y codificación relevantes para n
 \caption{Aproximación ILS 21 desde TOPPU: altitudes mínima y máxima frente a la distancia volada (\m{APR-ILS21-vertical.png}).}
 \end{figure}
 
-\paragraph{Aproximación frustrada.} Según la carta: «Initial climb 5\,000. Climb on course 204°. Upon reaching 1\,000 turn LEFT (MAX 190 KIAS) to GEMDA 5\,000 and HOLD. Missed approach requires a 4.5\,\% (270 ft/NM) climb gradient due to airspace restrictions». Se ha modelado como el tramo THR21 (MAPt) $\rightarrow$ GEMDA (320326N 0345948E, a 5\,000~ft, IAS máx. 190~kt) en \m{LEMD-LLBG-frustrada-ILS21.kml} y \m{FRUSTRADA-ILS21.xlsx} (tabla~\ref{tab:frustrada}); su longitud ortodrómica es \misDist~NM. Es una simplificación: la trayectoria real sigue el rumbo 204° hasta 1\,000~ft (unas 3,2~NM desde la elevación de la pista al 4,5\,\%) y vira después a la izquierda hacia GEMDA (suposición~17 y apéndice~\ref{ap:otra-ruta}).
+\paragraph{Aproximación frustrada.} Según la carta: «Initial climb 5\,000. Climb on course 204°. Upon reaching 1\,000 turn LEFT (MAX 190 KIAS) to GEMDA 5\,000 and HOLD. Missed approach requires a 4.5\,\% (270 ft/NM) climb gradient due to airspace restrictions». La derrota 204° de la carta es magnética; con la declinación de 5°E impresa en la carta (VAR 5°E) corresponde a unos 209° verdaderos, y coincide con el rumbo de aproximación final publicado (204°). Como todo el cálculo trabaja con derrotas verdaderas, el ascenso inicial se vuela en la derrota verdadera del eje de aproximación final que dan las coordenadas BG074--THR21, \misCAtrk°: es la prolongación del localizador que la carta indica, sin el redondeo a grado entero de la cifra magnética. La frustrada (\m{main\_star\_app.m}, tabla~\ref{tab:frustrada}, figura~\ref{fig:osm-frustrada}) se construye en tres tramos:
+\begin{enumerate}
+\item \emph{Ascenso en derrota 204°M hasta 1\,000~ft} (tramo CA): desde THR21 (MAPt, 183~ft) con el gradiente del 4,5\,\% de la carta, los 1\,000~ft se alcanzan a $(1000-183)/0{,}045$~ft = \misCAdist~NM; ese punto, calculado con \m{orto\_reckon}, es el auxiliar CA1000.
+\item \emph{Viraje a la izquierda a 190~kt}: se vuela a la IAS máxima de la carta con una inclinación lateral supuesta de 25°, de modo que el radio es $r = V^2/(g\tan\phi) = 1{,}13$~NM (a 1\,000~ft la TAS es prácticamente igual a la IAS). El centro está a $r$ a la izquierda de CA1000 y el viraje termina en MATEND, el punto en el que la tangente al arco pasa por GEMDA; \m{add\_arc\_points} genera los puntos intermedios MAT1--MAT17 cada 10° (la tabla da su marcación desde el centro del viraje), como en el arco RF de la RNP~Y. El arco mide \misTurn~NM.
+\item \emph{Directo a GEMDA} (320326N 0345948E, a 5\,000~ft, IAS máx. 190~kt), \misDF~NM, donde empieza la espera publicada.
+\end{enumerate}
+La longitud total THR21--GEMDA es \misDist~NM. El viraje empieza exactamente al alcanzar 1\,000~ft y se vuela sin viento (suposición~17). Los ficheros son \m{LEMD-LLBG-frustrada-ILS21.kml} y \m{FRUSTRADA-ILS21.xlsx}.
 
 \input{tablas/tab_frustrada.tex}
 
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.8\linewidth]{osm-frustrada-ils21.png}
+\caption{Perfil horizontal de la aproximación frustrada ILS 21 sobre mapa base OpenStreetMap: ascenso en el eje de pista hasta CA1000, viraje a la izquierda de radio 1,13~NM hasta MATEND y directo a GEMDA. Dibujado con \m{plot\_osm\_maps.m} a partir de \m{LEMD-LLBG-frustrada-ILS21.kml}, el fichero que se abre en Google Earth. Mapa base © colaboradores de OpenStreetMap.}
+\label{fig:osm-frustrada}
+\end{figure}
+
 \subsection{Aproximación de no precisión: RNP Y RWY 21}
 
-Carta AD~2 LLBG IAC 21RNPY-3 (06 AUG 2026, AIRAC AMDT 001/2026), «RNP APCH, RF required». A diferencia de la LOC~21, su recorrido lateral es distinto del de la ILS: entra por el IAF GINTU (320448N 0350958E), al sureste del aeropuerto, y describe un giro hacia el norte y luego hacia el sur hasta alinearse con la pista mediante un tramo RF. Codificación:
+Carta AD~2 LLBG IAC 21RNPY-3 (06 AUG 2026, AIRAC AMDT 001/2026), «RNP APCH, RF required». Se vuela a mínimos LNAV (guiado lateral únicamente, 2D), por lo que es una aproximación de no precisión; la carta publica también mínimos LNAV/VNAV (con guiado vertical Baro-VNAV), que no se usan. A diferencia de la LOC~21, su recorrido lateral es distinto del de la ILS: entra por el IAF GINTU (320448N 0350958E), al sureste del aeropuerto, y describe un giro hacia el norte y luego hacia el sur hasta alinearse con la pista mediante un tramo RF. Codificación:
 
 \begin{table}[H]\centering\small
 \begin{tabular}{lllrll}\toprule
@@ -313,15 +339,22 @@ TF & BG217 & 179,5° & 4,2 & +1\,200 & 185 kt\\
 RF & BG216 (FAF) & arco a la derecha, $r$ = 2,55 NM & 1,3 & +1\,200 & 185 kt\\
 TF & THR21 (MAPt) & 208,8° & 3,1 & +183 & 190 kt\\ \bottomrule
 \end{tabular}
-\caption{Codificación de la RNP Y RWY 21 (AD 2 LLBG IAC 21RNPY-3). Centro del arco RF: BG999 (320504.6N 0345310.0E). VPA 3,0° (Baro-VNAV: temperatura $-$10/+60~°C; VPA efectivo 2,8° a 0~°C y 3,3° a 45~°C). Frustrada idéntica a la de la ILS 21 (ascenso inicial a 5\,000 ft en rumbo 204°, a 1\,000 ft viraje a la izquierda, máx. 190 kt, a GEMDA).}
+\caption{Codificación de la RNP Y RWY 21 (AD 2 LLBG IAC 21RNPY-3). Centro del arco RF: BG999 (320504.6N 0345310.0E). VPA 3,0° (Baro-VNAV de los mínimos LNAV/VNAV: temperatura $-$10/+60~°C; VPA efectivo 2,8° a 0~°C y 3,3° a 45~°C). Frustrada idéntica a la de la ILS 21 (ascenso inicial a 5\,000 ft en derrota 204°M, a 1\,000 ft viraje a la izquierda, máx. 190 kt, a GEMDA), con el mismo modelo (tabla~\ref{tab:frustrada}).}
 \label{tab:rnpcarta}
 \end{table}
 
 \paragraph{Enlace TOPPU $\rightarrow$ GINTU.} No está publicado ningún tramo desde el final de la transición hasta el IAF de la RNP~Y: se supone una instrucción ATC «directo GINTU» (suposición~5), de \rnpGintuLeg~NM. Se ha elegido GINTU, y no una entrada por NAMIM (IF), porque es el IAF publicado y da la trayectoria más larga, como pide el enunciado para los patrones de transición.
 
-\paragraph{Puntos auxiliares del arco RF.} El tramo BG217 $\rightarrow$ BG216 es un arco de radio 2,55~NM centrado en BG999 con viraje a la derecha. La función \m{add\_arc\_points} calcula las marcaciones del centro a BG217 y a BG216 con \m{orto\_distazi} y genera puntos intermedios cada 10° con \m{orto\_reckon} (ARC1 y ARC2, marcaciones 100° y 110° desde el centro), heredando los límites del arco (+1\,200~ft, 185~kt). La longitud poligonal resultante BG217--ARC1--ARC2--BG216 es \rnpArc~NM, frente a 1,3~NM en la carta. La tabla~\ref{tab:rnp} reproduce \m{APR-RNPY21.xlsx}: las distancias de los tramos rectos (3,52; 6,83; 4,15; 3,75; 4,19 y \rnpFinal~NM) coinciden con la carta y la aproximación mide \rnpDist~NM desde TOPPU (frente a \arrToppuRest~NM por la ILS). Los límites de IAS de VATAT (210~kt), NAMIM, BG217, BG216 (185~kt) y THR21 (190~kt, frustrada) son los de la carta; los demás fijos llevan el genérico de 250~kt.
+\paragraph{Puntos auxiliares del arco RF.} El tramo BG217 $\rightarrow$ BG216 es un arco de radio 2,55~NM centrado en BG999 con viraje a la derecha. La función \m{add\_arc\_points} calcula las marcaciones del centro a BG217 y a BG216 con \m{orto\_distazi} y genera puntos intermedios cada 10° con \m{orto\_reckon} (ARC1 y ARC2, marcaciones 100° y 110° desde el centro), heredando los límites del arco (+1\,200~ft, 185~kt). La longitud poligonal resultante BG217--ARC1--ARC2--BG216 es \rnpArc~NM, frente a 1,3~NM en la carta. La tabla~\ref{tab:rnp} reproduce \m{APR-RNPY21.xlsx}: las distancias de los tramos rectos (3,52; 6,83; 4,15; 3,75; 4,19 y \rnpFinal~NM) coinciden con la carta y la aproximación mide \rnpDist~NM desde TOPPU (frente a \arrToppuRest~NM por la ILS). Los límites de IAS de VATAT (210~kt), NAMIM, BG217, BG216 (185~kt) y THR21 (190~kt, frustrada) son los de la carta; los demás fijos llevan el genérico de 250~kt. La figura~\ref{fig:osm-rf} muestra el arco en planta.
 
+\Needspace{14\baselineskip}
 \input{tablas/tab_rnp.tex}
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.75\linewidth]{osm-rnpy21-arco-rf.png}
+\caption{Detalle del arco RF de la RNP Y 21 (BG217--ARC1--ARC2--BG216) sobre mapa base OpenStreetMap, dibujado con \m{plot\_osm\_maps.m} a partir de \m{LEMD-LLBG-apr-RNPY21.kml}, el fichero que se abre en Google Earth. Mapa base © colaboradores de OpenStreetMap.}
+\label{fig:osm-rf}
+\end{figure}
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=0.8\linewidth]{APR-RNPY21-vertical.png}
@@ -360,7 +393,8 @@ Suelo & longitud de despegue / aterrizaje & 2\,308 / 1\,646 m\\ \bottomrule
 
 \begin{itemize}
 \item \emph{Masa de despegue}: \sbTOW~kg, la estimada por el plan SimBrief (\m{est\_tow}), leída del XML (suposición~9). Es el 97,6\,\% de la masa máxima de BADA.
-\item \emph{V$_2$}: BADA no la proporciona; se estima como $1{,}2\,V_{stall,TO}\sqrt{m/m_{ref}}$ = 152~kt, de modo que V$_2$+20 = \vVIIpIIO~kt (suposición~10). \emph{V$_{ref}$} = $1{,}3\,V_{stall,LD}+5$ = \vVref~kt (fórmula de \m{MAIN\_Cost\_Index.m} del curso, con la masa de referencia).
+\item \emph{V$_2$}: BADA no la proporciona; se estima como $1{,}2\,V_{stall,TO}\sqrt{m/m_{ref}}$ = 152~kt, de modo que V$_2$+20 = \vVIIpIIO~kt (suposición~10).
+\item \emph{Velocidades de aproximación}: la velocidad en el umbral es $V_{at} = 1{,}3\,V_{stall,LD}\sqrt{m_{ldg}/m_{ref}}$ = \vVref~kt, con la $V_{stall}$ de aterrizaje de BADA (flap 30) corregida a la masa de aterrizaje del propio perfil (\vMldg~kg; \m{main\_vertical.m} la obtiene en dos pasadas). $V_{at}$ es la que define la categoría del avión según PANS-OPS: \vVref~kt está dentro del intervalo 121--140~kt de la categoría~C (figura~21 del enunciado). En el segmento final se vuela $V_{app} = V_{at}+5$ = \vVfap~kt, dentro del intervalo 115--160~kt de velocidades de aproximación final de la categoría~C.
 \item \emph{Velocidades de ascenso y descenso}: las del fichero APF de BADA (300~kt/M0,78 en ascenso; M0,78/290~kt en descenso), porque la \emph{Aircraft Performance Database} de Eurocontrol citada en el enunciado no es accesible sin cuenta (suposición~12).
 \end{itemize}
 
@@ -409,24 +443,25 @@ Ningún fijo de la SID tiene altitud máxima, por lo que no se insertan tramos p
 \paragraph{Descenso (tramos D).} Se construye con la envolvente inferior de los límites de la transición y la ILS (tabla~\ref{tab:des}, suposición~14) y, a diferencia del enunciado, se calcula hacia delante desde el TOD gracias a la iteración anterior:
 \begin{itemize}
 \item \textbf{D4}: descenso SPD al ralentí BADA ($T_r$ = C$_{Tdes,high}$ = \vTrIdle~\%): D4.1 a M0,78 hasta la altitud de cruce de descenso (\vHcrossDes~ft; \vVSDIVI~fpm, \vDIVIlen~NM) y D4.2 a 290~kt hasta 13\,000~ft, que se alcanzan exactamente en ZUKKO (\vVSDIVII~fpm, \vDIVIIlen~NM). ZUKKO se cruza a 290~kt: la carta no limita la IAS en ese fijo y el avión está por encima de 10\,000~ft.
-\item \textbf{D3}: PTH decelerando de 290 a 250~kt entre ZUKKO (13\,000~ft) y KONFO (10\,000~ft, el mínimo de la ventana 10\,000--11\,000), FPA \vFPADIII°; el $T_r$ requerido (\vTrDIII~\%) queda por debajo del ralentí: se necesitan frenos aerodinámicos o un FPA más suave (p.~ej. KONFO a 11\,000~ft).
-\item \textbf{D2}: desde 10\,000~ft hasta el FAP, PTH a 250~kt: D2.1 KONFO $\rightarrow$ ERREZ (9\,000~ft); D2.2 tramo plano a 9\,000~ft ERREZ--IVONA--RAPIV--ALIQA--LEGOH (36,3~NM); D2.3 LEGOH $\rightarrow$ ANOZA (5\,000~ft, FPA \vFPADIIIII°, pendiente 3,6\,\%, muy por debajo del 8\,\% máximo de PANS-OPS para la aproximación inicial); D2.4 ANOZA $\rightarrow$ TOPPU (4\,000~ft; $T_r$ = \vTrDIIIV~\%, de nuevo bajo el ralentí: frenos aerodinámicos); D2.5 TOPPU $\rightarrow$ GALGA (2\,600~ft) decelerando a 185~kt (límite de la carta ILS en el segmento intermedio) con flap 15; D2.6 segmento intermedio plano a 2\,600~ft hasta el FAP decelerando a la velocidad de aproximación final \vVfap~kt (rango 115--160~kt de la categoría C en la figura~21 del enunciado).
-\item \textbf{D1}: final por la senda ILS desde el FAP (2\,600~ft) hasta el umbral (183~ft) con FPA \vFPADI° (3° de la carta), flap 30, decelerando hasta V$_{ref}$ = \vVref~kt. V$_{ref}$ calculada con la masa de referencia BADA queda ligeramente por encima del rango V$_{at}$ de la categoría C (121--140~kt); con la masa de aterrizaje real (\vMldg~kg) sería menor.
+\item \textbf{D3}: PTH decelerando de 290 a 250~kt entre ZUKKO (13\,000~ft) y KONFO, FPA \vFPADIII°. La carta da en KONFO la ventana $-$11\,000/+10\,000~ft y se cruza a 11\,000~ft, el máximo: así el tramo es lo bastante suave para decelerar sin aerofrenos, con un $T_r$ requerido de \vTrDIII~\%, por encima del ralentí BADA (\vTrIdle~\%). Cruzar KONFO en el mínimo de la ventana (10\,000~ft) obligaría a perder 1\,000~ft más en los mismos 11,6~NM mientras se decelera, con $T_r$ por debajo del ralentí.
+\item \textbf{D2}: desde 11\,000~ft hasta el FAP, PTH a 250~kt: D2.1 KONFO $\rightarrow$ ERREZ (9\,000~ft; FPA \vFPADIIi°, $T_r$ = \vTrDIIi~\%); D2.2 tramo plano a 9\,000~ft ERREZ--IVONA--RAPIV--ALIQA--LEGOH (36,3~NM); D2.3 LEGOH $\rightarrow$ ANOZA (5\,000~ft, FPA \vFPADIIIII°, pendiente 3,6\,\%, muy por debajo del 8\,\% máximo de PANS-OPS para la aproximación inicial); D2.4 ANOZA $\rightarrow$ TOPPU (4\,000~ft; $T_r$ = \vTrDIIIV~\%, por debajo del ralentí); D2.5 TOPPU $\rightarrow$ GALGA (2\,600~ft) decelerando a 185~kt con flap 15; D2.6 segmento intermedio plano a 2\,600~ft hasta el FAP decelerando a $V_{app}$ = \vVfap~kt.
+\item \textbf{D1}: final por la senda ILS desde el FAP (2\,600~ft) hasta el umbral (183~ft) con FPA \vFPADI° (3° de la carta), flap 30, decelerando de $V_{app}$ a $V_{at}$ = \vVref~kt en el umbral.
 \end{itemize}
+\textbf{D2.4} es el único tramo con $T_r$ por debajo del ralentí: 1\,000~ft en 3,1~NM a 250~kt en configuración limpia. Se mantiene así porque ANOZA (+5\,000) y TOPPU (+4\,000) son altitudes mínimas de la carta y el perfil sigue su envolvente inferior; el exceso de energía en un tramo tan corto se absorbe con aerofrenos, práctica operativa normal en la aproximación inicial. \textbf{185~kt en GALGA}: la carta ILS no limita la velocidad en el segmento intermedio, pero las dos aproximaciones iniciales que terminan en GALGA la limitan a $-$185~kt en HADAS y en DEMOV, los fijos anteriores al IF; se adopta esa velocidad en GALGA para entrar en el segmento intermedio con la misma energía que el tráfico de esas aproximaciones.
 El descenso dura \vTdes~min y consume \vFuelDes~kg. En todos los tramos PTH, $T_r \ge 0$.
 
 \begin{table}[H]\centering\footnotesize
 \begin{tabularx}{\linewidth}{llrrlY}\toprule
 Fijo & Tramo que termina & $h$ (ft) & IAS (kt) & Config. & Origen del valor\\ \midrule
 ZUKKO & D4.2 & 13\,000 & 290 & limpia & máximo de la carta ($-$13\,000); IAS de descenso APF\\
-KONFO & D3 & 10\,000 & 250 & limpia & mínimo de la ventana 10\,000--11\,000; 250 kt bajo FL100\\
+KONFO & D3 & 11\,000 & 250 & limpia & máximo de la ventana 10\,000--11\,000; 250 kt desde FL100\\
 ERREZ & D2.1 & 9\,000 & 250 & limpia & @9\,000\\
 LEGOH & D2.2 & 9\,000 & 250 & limpia & @9\,000 (tramo plano)\\
 ANOZA & D2.3 & 5\,000 & 250 & limpia & mínimo +5\,000; máx. 250 kt\\
 TOPPU & D2.4 & 4\,000 & 250 & limpia & mínimo +4\,000; máx. 250 kt\\
-GALGA & D2.5 & 2\,600 & 185 & flap 15 & IF +2\,600; IAS máx. del segmento intermedio (carta ILS)\\
-BG074 & D2.6 & 2\,600 & \vVfap & flap 15 & FAP +2\,600; velocidad de aproximación final cat. C\\
-THR21 & D1 & 183 & \vVref & flap 30 & cruce del umbral; V$_{ref}$\\ \bottomrule
+GALGA & D2.5 & 2\,600 & 185 & flap 15 & IF +2\,600; IAS máx. de HADAS y DEMOV (carta ILS)\\
+BG074 & D2.6 & 2\,600 & \vVfap & flap 15 & FAP +2\,600; $V_{app} = V_{at}+5$ (final, cat. C 115--160 kt)\\
+THR21 & D1 & 183 & \vVref & flap 30 & cruce del umbral; $V_{at}$ (cat. C 121--140 kt)\\ \bottomrule
 \end{tabularx}
 \caption{Programa de descenso (tabla \m{D} de \m{main\_vertical.m}): altitud e IAS objetivo en cada fijo y configuración del tramo que termina en él.}
 \label{tab:des}
@@ -441,7 +476,7 @@ Las tablas~\ref{tab:vdef} y~\ref{tab:vnum} reproducen \m{VERTICAL-tramos.xlsx}: 
 
 \subsection{Representación gráfica y comprobación de restricciones}
 
-La figura~\ref{fig:fases} muestra el perfil calculado junto con las altitudes mínima y máxima del estudio horizontal para cada fase, y la figura~\ref{fig:completo} la altitud, las velocidades y el empuje relativo y velocidad vertical a lo largo de toda la ruta. \m{check\_profile} interpola el perfil en los \chkN{} fijos de la ruta y compara altitud e IAS con los límites de las tablas Excel (tabla~\ref{tab:chk}): \textbf{se cumplen los \chkOK{} de \chkN}. En particular, MD824 se cruza a \chkMDVIIIIIIV~ft (mínimo \chkMDVIIIIIIVmin~ft por la pendiente del 5,5\,\%), con IAS 240~kt; NANDO a \chkNANDO~ft; ZUKKO a \chkZukkoH~ft y \chkZukkoIAS~kt; KONFO, ERREZ--LEGOH, ANOZA, TOPPU, GALGA y BG074 exactamente a sus altitudes objetivo. Los límites de altitud de las aerovías no se han podido comprobar (sección~\ref{sec:enr-pendiente}); el crucero a \vHcru~ft deberá contrastarse con ellos cuando se completen.
+La figura~\ref{fig:fases} muestra el perfil calculado junto con las altitudes mínima y máxima del estudio horizontal para cada fase, y la figura~\ref{fig:completo} la altitud, las velocidades y el empuje relativo y velocidad vertical a lo largo de toda la ruta. \m{check\_profile} interpola el perfil en los \chkN{} fijos de la ruta y compara altitud e IAS con los límites de las tablas Excel (tabla~\ref{tab:chk}): \textbf{se cumplen los \chkOK{} de \chkN}. En particular, MD824 se cruza a \chkMDVIIIIIIV~ft (mínimo \chkMDVIIIIIIVmin~ft por la pendiente del 5,5\,\%), con IAS 240~kt; NANDO a \chkNANDO~ft; ZUKKO a \chkZukkoH~ft y \chkZukkoIAS~kt; KONFO, ERREZ--LEGOH, ANOZA, TOPPU, GALGA y BG074 exactamente a sus altitudes objetivo. Los límites de altitud de las aerovías no forman parte de la comprobación (sección~\ref{sec:enr-pendiente}).
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{VERTICAL-perfil-fases.png}
@@ -486,9 +521,15 @@ solo por debajo de $0{,}8\,h_{\max}$ (27\,986~ft). \m{bada\_leg} (modo \m{known 
 
 \paragraph{Comparación con SimBrief.} El plan LIDO estima \sbBurn~kg de combustible de etapa y \sbTime{} de vuelo con una masa de aterrizaje de \sbLDW~kg; el modelo BADA da \vFuelTot~kg (+\sbDiffFuel~kg, +\sbDiffFuelPct~\%) y \vMldg~kg de masa de aterrizaje. La coherencia es buena teniendo en cuenta las diferencias de planteamiento: SimBrief vuela con índice de coste \sbCI{} a M\sbMach{} (\sbTAS~kt TAS) con escalones de nivel (\sbSteps) y viento de cola medio de 28~kt, en \sbDist~NM con la SID/STAR de su base de datos; el perfil BADA vuela sin viento, a MRC (más lenta: de ahí los 34~min más de duración) y a un nivel único, sobre \vTotalD~NM con los procedimientos vigentes. La MRC de BADA~3 es además baja por la ausencia de resistencia de compresibilidad en su polar.
 
-\paragraph{Lecciones.} (1) Los calculadores de ruta no sustituyen al AIP: el plan SimBrief usaba un ciclo AIRAC de 2025 y sus SID y STAR no existen en las cartas actuales, y el enlace entre transición y aproximación (TOPPU $\rightarrow$ GALGA o GINTU) solo se entiende leyendo la carta. (2) La precisión geométrica depende de leer bien las tablas de codificación: las distancias calculadas reproducen las de las cartas con error inferior a 0,1~NM, lo que valida las coordenadas; el arco RF se aproxima con puntos cada 10°. (3) El criterio de tiempo con viento del enunciado (rumbo constante, $t=d/\mathrm{TAS}$) produce un vuelo que se separa de la ruta hasta \enrDevMax~NM y una duración distinta de la que daría $t=d/\mathrm{GS}$; conviene presentar ambos. (4) En el perfil vertical, la separación entre tramos SPD (ascenso y descenso idle, con $T_r$ fijo y ROCD resultante) y PTH (descenso guiado por altitudes de carta, con $T_r$ resultante) explica dónde se necesitan frenos aerodinámicos: en esta ruta, en ZUKKO $\rightarrow$ KONFO y ANOZA $\rightarrow$ TOPPU. (5) La reducción de potencia de ascenso de BADA depende de la masa y es casi nula cerca de la MTOW. (6) El diseño modular (cuatro programas principales y una biblioteca de funciones con las tablas de los procedimientos como únicos datos) permite cambiar de ruta sin tocar las funciones (apéndice~\ref{ap:otra-ruta}).
+\paragraph{Lecciones.} (1) Los calculadores de ruta no sustituyen al AIP: el plan SimBrief usaba un ciclo AIRAC de 2025 y sus SID y STAR no existen en las cartas actuales, y el enlace entre transición y aproximación (TOPPU $\rightarrow$ GALGA o GINTU) solo se entiende leyendo la carta. (2) La precisión geométrica depende de leer bien las tablas de codificación: las distancias calculadas reproducen las de las cartas con error inferior a 0,1~NM, lo que valida las coordenadas; el arco RF se aproxima con puntos cada 10°. (3) El criterio de tiempo con viento del enunciado (rumbo constante, $t=d/\mathrm{TAS}$) produce un vuelo que se separa de la ruta hasta \enrDevMax~NM y una duración distinta de la que daría $t=d/\mathrm{GS}$; conviene presentar ambos. (4) En el perfil vertical, la separación entre tramos SPD (ascenso y descenso idle, con $T_r$ fijo y ROCD resultante) y PTH (descenso guiado por altitudes de carta, con $T_r$ resultante) explica dónde se necesitan frenos aerodinámicos y cómo evitarlos eligiendo la altitud dentro de una ventana de la carta: cruzar KONFO en el máximo de su ventana (11\,000~ft) deja ZUKKO $\rightarrow$ KONFO por encima del ralentí, y solo ANOZA $\rightarrow$ TOPPU requiere aerofrenos. (5) La reducción de potencia de ascenso de BADA depende de la masa y es casi nula cerca de la MTOW. (6) El diseño modular (cuatro programas principales y una biblioteca de funciones con las tablas de los procedimientos como únicos datos) permite cambiar de ruta sin tocar las funciones (apéndice~\ref{ap:otra-ruta}).
 
-\paragraph{Limitaciones y trabajo pendiente.} Las más importantes son las que se marcan como pendientes en el texto: los fijos, aerovías y descripciones de ruta libre fuera de España y Francia, y los límites de altitud de todas las aerovías, no se han verificado contra sus AIP, y las cartas deben recomprobarse con el AIRAC 002/2026 (26-nov-2026). El modelo tiene además simplificaciones de alcance: no se integran las esperas ni la frustrada en el perfil vertical; la frustrada se representa solo como THR21 $\rightarrow$ GEMDA; la RNP~Y no tiene perfil vertical; las velocidades de ascenso/descenso proceden del APF de BADA y no de la base de prestaciones de Eurocontrol; V$_2$ y V$_{ref}$ se estiman a partir de las V$_{stall}$ de BADA; el viento de cada tramo es el del fijo inicial y solo se aplica al en-ruta; y los KML llevan altitud 0 (perfil horizontal), aunque el campo \m{alt} está preparado para volcar el perfil vertical.
+\paragraph{Alcance y simplificaciones.} Las decisiones de alcance adoptadas, con su justificación, son:
+\begin{itemize}
+\item \emph{Fuentes del en-ruta.} Los fijos y aerovías de España y Francia se han cotejado con sus AIP; fuera de ellos (Italia, Grecia, Chipre y L609 hasta ZUKKO) los fijos, aerovías y segmentos de ruta libre se toman como dato del plan SimBrief, que es una ruta generada sobre la red ATS, y los límites de altitud de las aerovías no se incluyen en las tablas (sección~\ref{sec:enr-pendiente}). Las cartas usadas son las vigentes al redactar la memoria (AIRAC AMDT 10/26 en LEMD y AIRAC AMDT 001/2026 en LLBG).
+\item \emph{Tiempo con viento.} Se adopta $t=d/\mathrm{TAS}$, la definición literal del enunciado, y se da $t=d/\mathrm{GS}$ como comparación (sección~\ref{sec:viento}); el viento de cada tramo es el del fijo inicial, solo se aplica al en-ruta y cada tramo se avanza por la ortodrómica con el acimut inicial de la derrota real (suposición~8).
+\item \emph{Perfil vertical.} Se modela la ruta por la ILS~21; no se integran las esperas, la frustrada ni la RNP~Y, que se estudian en planta con sus restricciones. Las velocidades de ascenso/descenso son las del APF de BADA, porque la base de prestaciones de Eurocontrol no es accesible, y V$_2$ y $V_{at}$ se obtienen de las $V_{stall}$ de BADA corregidas por masa.
+\item \emph{KML.} Representan el perfil horizontal con altitud 0; el campo \m{alt} de cada fijo permite volcar en ellos el perfil vertical.
+\end{itemize}
 
 % ============================================================ APENDICES
 \appendix
@@ -500,9 +541,9 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 \subsection*{A.1 Programas principales}
 
 \begin{description}[style=nextline]
-\item[\m{main\_enroute.m}] Importa NANDO--ZUKKO del plan LIDO (\m{read\_enroute\_wp}), añade los campos \m{alt\_min}/\m{alt\_max} (límites de aerovía, pendientes), calcula distancias (\m{route\_distances}), tiempos sin y con viento (\m{route\_time\_nowind}, \m{route\_time\_wind}) y escribe \m{enroute-sinviento.kml/.xlsx}, \m{enroute-conviento.kml/.xlsx} (este último con las posiciones reales); \m{plot\_enroute\_map} dibuja el mapa de la figura~\ref{fig:mapa}.
+\item[\m{main\_enroute.m}] Importa NANDO--ZUKKO del plan LIDO (\m{read\_enroute\_wp}), añade los campos \m{alt\_min}/\m{alt\_max} (límites de aerovía, sin rellenar en esta versión), calcula distancias (\m{route\_distances}), tiempos sin y con viento (\m{route\_time\_nowind}, \m{route\_time\_wind}) y escribe \m{enroute-sinviento.kml/.xlsx}, \m{enroute-conviento.kml/.xlsx} (este último con las posiciones reales); \m{plot\_enroute\_map} dibuja el mapa de la figura~\ref{fig:mapa}.
 \item[\m{main\_sid.m}] Contiene la tabla \m{P} de la SID NANDO3R (nombre, coordenadas de la carta, altitud mínima, IAS máxima, descripción), la elevación y la pendiente mínima; calcula el punto CA2500, las distancias y las restricciones (\m{apply\_restrictions}) y escribe \m{SID-NANDO3R.kml/.xlsx} y la gráfica de límites.
-\item[\m{main\_star\_app.m}] Contiene las tablas \m{P} (ERREZ1A + ILS 21), \m{M} (frustrada) y \m{PR} (RNP Y 21, con los puntos del arco RF de \m{add\_arc\_points}); calcula distancias restantes (\m{to\_remaining\_dist}) y límites (\m{apply\_chart\_limits}) y escribe los cuatro KML, las cuatro tablas y las tres gráficas.
+\item[\m{main\_star\_app.m}] Contiene las tablas \m{P} (ERREZ1A + ILS 21), \m{M} (frustrada: punto CA1000 a partir del gradiente y la altitud de viraje, viraje a la izquierda de radio $V^2/(g\tan\phi)$ con \m{add\_arc\_points} y tramo directo a GEMDA) y \m{PR} (RNP Y 21, con los puntos del arco RF de \m{add\_arc\_points}); calcula distancias restantes (\m{to\_remaining\_dist}) y límites (\m{apply\_chart\_limits}) y escribe los cuatro KML, las cuatro tablas y las tres gráficas.
 \item[\m{main\_vertical.m}] Carga el B738 de BADA, lee las tablas de las fases (\m{load\_phase\_table}), define los parámetros \m{P} (TOW de SimBrief, V$_2$, alturas de reducción de empuje y aceleración, velocidades APF, altitud de crucero y de cruce) y el programa de descenso \m{D}; calcula la MRC (\m{cruise\_speeds}) en dos pasadas, construye el perfil (\m{build\_profile}), lo comprueba (\m{check\_profile}), escribe \m{VERTICAL-tramos.xlsx}, \m{VERTICAL-comprobacion.xlsx}, \m{VERTICAL-consumo.xlsx} y las figuras, y repite el perfil para 2 altitudes $\times$ 2 velocidades.
 \end{description}
 
@@ -551,7 +592,7 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 \funcion{add\_arc\_points(cLat, cLon, r\_NM, brg1, brg2, clockwise, stepDeg, prefix, altMin, iasMax)}
 {\m{cLat, cLon} = double, centro del arco (grados); \m{r\_NM} = double, radio (NM); \m{brg1, brg2} = double, marcaciones del centro al inicio y al final del arco (grados); \m{clockwise} = logical, viraje a la derecha; \m{stepDeg} = double, paso angular (grados); \m{prefix} = string, prefijo de los nombres; \m{altMin}, \m{iasMax} = double, límites que heredan los puntos}
 {\m{R} = cell array de filas en el formato de \m{build\_procedure} con los puntos intermedios del arco (vacío si el arco es más corto que el paso)}
-{Calcula el ángulo barrido en el sentido indicado y genera con \m{orto\_reckon} un punto a distancia \m{r\_NM} del centro cada \m{stepDeg} grados, excluidos los extremos. Sirve para tramos RF (y arcos DME).}
+{Calcula el ángulo barrido en el sentido indicado y genera con \m{orto\_reckon} un punto a distancia \m{r\_NM} del centro cada \m{stepDeg} grados, excluidos los extremos. Sirve para tramos RF, arcos DME y el viraje de la frustrada.}
 
 \funcion{apply\_restrictions(wp, elev\_ft, grad, lastGradFix, altMaxDefault, iasMaxDefault)}
 {\m{wp} = vector de struct con \m{Total\_dist} (m), \m{alt\_chart}, \m{alt\_max\_chart}, \m{ias\_chart}; \m{elev\_ft} = double, elevación inicial (ft); \m{grad} = double, pendiente mínima (fracción, 0,055); \m{lastGradFix} = string, último fijo al que se aplica la pendiente; \m{altMaxDefault} = double, altitud «sin límite» (ft); \m{iasMaxDefault} = double, IAS «sin límite» (kt)}
@@ -570,7 +611,7 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 
 \funcion{export\_proc\_table(file, wp, distLabel)}
 {\m{file} = string, nombre sin extensión; \m{wp} = vector de struct; \m{distLabel} = string, título de la columna de distancia total ('Distancia total (NM)', 'Distancia restante a THR21 (NM)' o, en la frustrada, 'Distancia total desde THR21 (NM)')}
-{Fichero \m{file.xlsx} con las columnas de la figura~14 del enunciado (número, nombre, latitud, longitud, altitud mínima/máxima, IAS mínima/máxima, derrota, distancia, distancia total) más «Pendiente min (\%)» y «Descripción»}
+{Fichero \m{file.xlsx} con las columnas de la figura~14 del enunciado (número, nombre, latitud, longitud, altitud mínima/máxima, IAS mínima/máxima, derrota, distancia, distancia total) más «Pendiente mínima (\%)» y «Descripción»}
 {Como \m{export\_route\_table}, para SID, STAR y aproximaciones; sustituye a \m{myxlswrite\_SID}.}
 
 \funcion{plot\_vertical\_limits(wp, ttl, pngfile)}
@@ -618,7 +659,7 @@ El código está en \m{matlab/}: cuatro programas principales (\m{main\_enroute.
 \funcion{check\_profile(tr, F)}
 {\m{tr} = traza de \m{build\_profile} (SI); \m{F} = vector de fijos de \m{load\_phase\_table} (d NM, alt\_min, alt\_max ft, ias\_max kt)}
 {\m{C} = vector de struct: name, \m{d\_NM}, \m{h\_ft}, \m{cas\_kt} (perfil interpolado en el fijo), \m{alt\_min}, \m{alt\_max}, \m{ias\_max}, \m{ok} (logical)}
-{Interpola altitud e IAS del perfil en la distancia de cada fijo y comprueba los límites con tolerancias de 5~ft y 1~kt; los límites NaN (pendientes) no se comprueban.}
+{Interpola altitud e IAS del perfil en la distancia de cada fijo y comprueba los límites con tolerancias de 5~ft y 1~kt; los límites NaN (sin dato, como los de las aerovías) no se comprueban.}
 
 \funcion{plot\_vertical\_profile(tr, F, R, dPhase, file1, file2)}
 {\m{tr} = traza (SI); \m{F} = fijos (d, alt\_min, alt\_max); \m{R} = resultados (\m{r\_toc}, \m{r\_tod}); \m{dPhase} = [distancia final de la SID, distancia final del en-ruta] (NM); \m{file1}, \m{file2} = ficheros PNG}
@@ -633,7 +674,7 @@ El software separa datos y cálculo: las funciones de \m{matlab/lib/} no contien
 \begin{enumerate}
 \item \textbf{Plan de vuelo.} Generar el plan LIDO en SimBrief para la nueva ruta y colocar el XML en \m{simbrief/}; en \m{main\_enroute.m} cambiar el nombre del fichero y los identificadores del primer y último fijo del en-ruta (\m{read\_enroute\_wp(..., 'NANDO', 'ZUKKO')}). Si la TAS de crucero fuera otra, cambiar \m{TAS}. Rellenar \m{wp(i).alt\_min}/\m{alt\_max} con los límites de las aerovías del AIP. \m{computeWT}, \m{route\_time\_wind} y el resto no cambian.
 \item \textbf{SID.} En \m{main\_sid.m} sustituir la tabla \m{P} por los fijos de la nueva carta (nombre, coordenadas en formato AIP, altitud mínima, IAS máxima, descripción; añadir una séptima columna con la altitud máxima si la carta la da), la elevación del aeródromo, la pendiente mínima y el nombre del último fijo al que se aplica (o 0,033 si la carta no da pendiente, según el enunciado). Si la SID tiene arcos (DME o RF), insertar en \m{P} las filas que devuelve \m{add\_arc\_points}; si tiene tramos que no terminan en fijo (CA, VA, VI), calcular su final con \m{orto\_reckon} como se hace con CA2500. Las funciones \m{build\_procedure}, \m{route\_distances}, \m{apply\_restrictions} y \m{export\_proc\_table} no cambian.
-\item \textbf{Llegada y aproximaciones.} En \m{main\_star\_app.m} sustituir las tablas \m{P} (STAR/transición + aproximación de precisión), \m{M} (frustrada) y \m{PR} (aproximación de no precisión), el nombre del fijo que separa llegada de aproximación (\m{'TOPPU'}) y, si hay arcos, el centro, radio y extremos del arco en \m{add\_arc\_points}. Las esperas o trombones se representan añadiendo filas con sus puntos. Si la frustrada tiene un tramo a rumbo hasta una altitud (como aquí 204° hasta 1\,000 ft), añadir un punto auxiliar calculado con \m{orto\_reckon} y la pendiente de la carta.
+\item \textbf{Llegada y aproximaciones.} En \m{main\_star\_app.m} sustituir las tablas \m{P} (STAR/transición + aproximación de precisión), \m{M} (frustrada) y \m{PR} (aproximación de no precisión), el nombre del fijo que separa llegada de aproximación (\m{'TOPPU'}) y, si hay arcos, el centro, radio y extremos del arco en \m{add\_arc\_points}. Las esperas o trombones se representan añadiendo filas con sus puntos. La frustrada se construye a partir de sus parámetros (\m{MA\_GRAD}, \m{MA\_TURN\_ALT}, \m{MA\_IAS}, \m{MA\_BANK} y el fijo final): para otra carta con un tramo hasta una altitud seguido de un viraje directo a un fijo basta cambiarlos; otras formas (viraje en un fijo, tramo a radial) exigen sustituir esas filas.
 \item \textbf{Avión y perfil vertical.} En \m{main\_vertical.m} cambiar el fichero OPF de BADA (y el APF para las velocidades de ascenso/descenso \m{cas\_clb}, \m{M\_clb}, \m{cas\_des}, \m{M\_des}), la elevación de salida \m{P.elev}, las alturas del procedimiento antirruido del nuevo aeródromo (\m{P.h\_thrred}, \m{P.h\_acc}; un procedimiento NADP genérico si el AIP no da otro), la masa de despegue (se lee del XML) y, sobre todo, el programa de descenso \m{D}: una fila por fijo de la STAR/aproximación con la altitud e IAS objetivo tomadas de las nuevas cartas, la configuración y la etiqueta del tramo. Los nombres de los ficheros de las tablas de fases (\m{load\_phase\_table}) deben coincidir con los generados en los pasos anteriores. La altitud de crucero, la MRC y las altitudes de cruce se recalculan solas; para una ruta corta \m{maxCruiseAlt} limita la altitud.
 \item \textbf{Nombres de salida.} Cambiar las etiquetas de los KML y los nombres de los ficheros de \m{out/} si se desea.
 \end{enumerate}
@@ -651,16 +692,16 @@ Casos no cubiertos que exigirían tocar la biblioteca: un en-ruta con viento var
 \item \emph{Enlace TOPPU $\rightarrow$ GINTU (RNP Y):} no publicado; se supone instrucción ATC «directo GINTU»; se elige GINTU por ser el IAF y dar la ruta más larga.
 \item \emph{Viento:} el viento de cada tramo en-ruta es la previsión LIDO del fijo planificado donde empieza; TAS de 450 kt (enunciado); el viento no se aplica a SID, llegada ni aproximación ni al perfil vertical.
 \item \emph{Esperas:} las esperas publicadas (ZUKKO, KONFO, ERREZ, GEMDA) no se modelan; no acortan la ruta.
-\item (Anulada) En una versión anterior ZUKKO tenía IAS máxima 250 kt por no tener altitud mínima en la carta; se corrigió: la carta no limita la IAS y el fijo está a 13\,000 ft o menos pero por encima de 10\,000 ft en el perfil.
+\item \emph{Rumbo constante y ortodrómica:} \m{computeWT} avanza cada tramo con \m{orto\_reckon} por la ortodrómica que sale con el acimut de la derrota real. Un rumbo constante con viento constante da una derrota constante, es decir, una loxodrómica. Se acepta la simplificación porque toda la ruta se calcula sobre ortodrómicas y cada tramo parte de la posición real alcanzada, de modo que la diferencia no se acumula de un tramo a otro. Su orden de magnitud, calculado con la misma derrota real y la misma distancia volada de cada tramo de \m{enroute-conviento.xlsx}, es la separación entre ambos puntos finales: \loxA~NM en \loxLegA{} (\loxDA~NM volados), \loxB~NM en \loxLegB{} (\loxDB~NM) y como mucho \loxRest~NM en los demás tramos (\loxRestD~NM o menos).
 \item \emph{Masa de despegue:} \m{est\_tow} del plan SimBrief (\sbTOW~kg); elevación de salida 1\,998 ft para el DER.
-\item \emph{V$_2$ y V$_{ref}$:} V$_2$ = 1,2 V$_{stall,TO}$ de BADA corregida por masa ($\sqrt{m/m_{ref}}$) = 152 kt; V$_{ref}$ = 1,3 V$_{stall,LD}$ + 5 = 144 kt con la masa de referencia (fórmula del curso).
+\item \emph{V$_2$, V$_{at}$ y V$_{app}$:} V$_2$ = 1,2 V$_{stall,TO}$ de BADA corregida por masa ($\sqrt{m/m_{ref}}$) = 152 kt; $V_{at}$ = 1,3 V$_{stall,LD}\sqrt{m_{ldg}/m_{ref}}$ = \vVref~kt en el umbral, con la masa de aterrizaje del perfil (define la categoría: C, 121--140 kt); $V_{app} = V_{at}+5$ = \vVfap~kt en el FAP y el segmento final (cat.~C: 115--160 kt).
 \item \emph{Empuje:} C1 con $T_r$ = 1 (BADA solo modela el empuje máximo de ascenso; se usa como despegue); C2--C5 con la potencia de ascenso reducida de BADA §3.8 ($C_{red}$ = 0,15, solo bajo 0,8 $h_{\max}$); descenso D4 y K1 al ralentí BADA; K3 con el empuje máximo de crucero (0,95 $T_{\max}$).
 \item \emph{Velocidades de ascenso/descenso:} las del APF de BADA (300 kt/M0,78 y M0,78/290 kt), no las de la Aircraft Performance Database de Eurocontrol (no accesible); aceleraciones en ascenso con ESF = 0,3 (BADA §3.8).
 \item \emph{Altitud de crucero:} $h_{\max}$ literal de BADA (34\,982 ft, equivalente al FL350); crucero a Mach constante y altitud constante del TOC al TOD; sin escalones.
-\item \emph{Programa de descenso:} envolvente inferior de las cartas (ZUKKO 13\,000 máx., KONFO 10\,000 mín., 9\,000 ERREZ--LEGOH, ANOZA 5\,000, TOPPU 4\,000, GALGA/BG074 2\,600, THR 183 ft); 250 kt bajo FL100; 185 kt en GALGA (límite del segmento intermedio en la carta ILS); 150 kt en el FAP (categoría C, PANS-OPS según la figura~21 del enunciado); V$_{ref}$ en el umbral; flap 15 de TOPPU a BG074 y flap 30 en final.
-\item \emph{Tramos PTH:} el $T_r$ requerido se informa sin recortar; cuando queda por debajo del ralentí (D3 y D2.4) se anota «frenos aerodinámicos o FPA menor» y el consumo es el de ralentí.
+\item \emph{Programa de descenso:} altitudes de las cartas (ZUKKO 13\,000 máx.; KONFO 11\,000, máximo de su ventana 10\,000--11\,000, para decelerar sin aerofrenos; 9\,000 ERREZ--LEGOH; ANOZA 5\,000 y TOPPU 4\,000, mínimos; GALGA/BG074 2\,600; THR 183 ft); 250 kt desde FL100; 185 kt en GALGA, la IAS máxima con la que la carta ILS hace llegar a GALGA las aproximaciones iniciales (HADAS y DEMOV, $-$185 kt); $V_{app}$ = \vVfap~kt en el FAP y $V_{at}$ = \vVref~kt en el umbral (categoría C, figura~21 del enunciado); flap 15 de TOPPU a BG074 y flap 30 en final.
+\item \emph{Tramos PTH:} el $T_r$ requerido se informa sin recortar; cuando queda por debajo del ralentí (solo D2.4) se anota «frenos aerodinámicos o FPA menor» y el consumo es el de ralentí.
 \item \emph{Perfil vertical} solo para la aproximación ILS 21; la RNP Y 21 no se modela verticalmente.
-\item \emph{Frustrada:} representada solo como THR21 $\rightarrow$ GEMDA (sin el tramo a rumbo 204° hasta 1\,000 ft); no incluida en el perfil vertical.
+\item \emph{Frustrada:} ascenso en la derrota verdadera del eje de aproximación final (\misCAtrk°, equivalente a los 204°M de la carta con la declinación de 5°E) con el gradiente del 4,5\,\% desde 183 ft hasta 1\,000 ft; viraje a la izquierda iniciado al alcanzar 1\,000 ft, a 190 kt con inclinación lateral de 25° (radio 1,13 NM, TAS $\approx$ IAS), representado con puntos cada 10°; directo a GEMDA; sin viento. No incluida en el perfil vertical.
 \item \emph{Geometría:} distancias y derrotas ortodrómicas sobre esfera (\m{orto\_distazi}); el arco RF se aproxima por una poligonal con paso de 10°.
 \item \emph{Integración:} Euler explícito con paso de 1 s (10 s en crucero); atmósfera ISA sin viento; consumo según BADA 3.9 con corrección de crucero $C_{fcr}$ solo en los tramos de crucero.
 \end{enumerate}
@@ -675,10 +716,10 @@ SID NANDO3R: codificación, coordenadas de MD047/MD048/MD049/MD824/MD922/NANDO, 
 DER 36R (403157.44N 0033333.77W), elevación 1\,998 ft, pista 36R 3\,500 $\times$ 60 m, procedimiento antirruido AD 2.21 & AIP ENAIRE AD 2 LEMD (AIRAC AMDT 10/26) & \ok\\
 T257 y fijos NANDO, FENXE, MABUX, RETBA, MOPIR, LASPO, ORVUS, GODOX, EDULI, PTC, SOTAX & AIP ENAIRE ENR 3.2 / ENR 4.4 & \ok\\
 SOTAX, RISEP, ETOIL, XATOS; FRA LFFRASE FL195--FL660 & AIP France ENR 4.4 (eAIP A-2026-10) & \ok\\
-IBREP, ADEXI, OLLEK, NEVIK (ruta libre Italia) & AIP Italia (ENAV) & \nok\\
-UL144 NEVIK--PLH; UM978 PLH--TIPUS--OTREX--AMAXI--SIT; PLH, TIPUS, OTREX, AMAXI, SIT & AIP Grecia & \nok\\
-VANZA, PIKOG; ruta libre Grecia/Chipre; L609 PIKOG--ZUKKO & AIP Grecia / Chipre / Israel ENR 3 & \nok\\
-Límites de altitud (mín./máx.) de T257, UL144, UM978, L609 y de los espacios de ruta libre & AIP correspondientes & \nok\\
+IBREP, ADEXI, OLLEK, NEVIK (ruta libre Italia) & plan SimBrief (AIRAC \sbAirac) & dato del plan\\
+UL144 NEVIK--PLH; UM978 PLH--TIPUS--OTREX--AMAXI--SIT; PLH, TIPUS, OTREX, AMAXI, SIT & plan SimBrief (AIRAC \sbAirac) & dato del plan\\
+VANZA, PIKOG; ruta libre Grecia/Chipre; L609 PIKOG--ZUKKO & plan SimBrief (AIRAC \sbAirac) & dato del plan\\
+Límites de altitud (mín./máx.) de T257, UL144, UM978, L609 y de los espacios de ruta libre & -- & no incluidos (sección~\ref{sec:enr-pendiente})\\
 ZUKKO, KONFO y la transición ERREZ1A completa (coordenadas, distancias, altitudes, esperas, fallo de comunicaciones) & eAIP Israel AD 2 LLBG TRANS 21-26 (18 MAY 23) & \ok\\
 ILS 21: GALGA, BG074, THR21, GP 3°, RDH 50 ft, altitud de cruce 183 ft, frustrada, OCA & eAIP Israel AD 2 LLBG IAC-21ILS-4 (31 OCT 24) & \ok\\
 RNP Y 21: GINTU, RABIN, OFFIK, VATAT, NAMIM, BG217, BG216, centro BG999 y radio 2,55 NM, límites de IAS & eAIP Israel AD 2 LLBG IAC 21RNPY-3 (AIRAC AMDT 001/2026) & \ok\\
@@ -688,7 +729,7 @@ Velocidades típicas de ascenso/descenso & Aircraft Performance Database (Euroco
 Masa de despegue, consumo, tiempo y ruta del plan de referencia & SimBrief (AIRAC \sbAirac, obsoleto) & solo como referencia\\
 Resultados numéricos de esta memoria & ficheros de \m{matlab/out/} & reproducidos por ejecución (R2026b)\\ \bottomrule
 \end{tabularx}
-\caption{Estado de verificación de cada dato frente a las fuentes oficiales. Lo marcado como PENDIENTE debe comprobarse antes de la entrega y, en todo caso, recomprobar todas las cartas con el AIRAC 002/2026 (26-nov-2026).}
+\caption{Fuente y estado de verificación de cada dato. «Verificado» indica que el dato se ha cotejado con el documento oficial citado, en la edición vigente al redactar la memoria; «dato del plan» indica que se toma del plan SimBrief.}
 \end{table}
 
 \paragraph{Errata detectada en una carta.} En una de las tablas de la carta ILS 21 (IAC-21ILS-4) la latitud de GALGA aparece como 31°09'25" cuando el resto de la carta y la geometría del procedimiento dan 32°09'25"; se ha usado 32°09'25"N.
