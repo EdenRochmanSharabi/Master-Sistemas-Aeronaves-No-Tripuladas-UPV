@@ -6,6 +6,7 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 
 Últimos archivos subidos (se actualiza solo en cada subida):
 
+- 2026-11-28 · [todo.md](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/todo.md>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo
 - 2026-11-28 · [tab_vert_num.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_vert_num.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
 - 2026-11-28 · [tab_vert_def.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_vert_def.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
 - 2026-11-28 · [tab_sid.tex](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas/tab_sid.tex>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/tablas
@@ -20,7 +21,6 @@ Apuntes de Eden R.S. para el máster de la Universitat Politècnica de València
 - 2026-11-28 · [main.pdf](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/main.pdf>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
 - 2026-11-28 · [gen_tablas.py](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/gen_tablas.py>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria
 - 2026-11-28 · [osm-sid-nando3r.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/osm-sid-nando3r.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
-- 2026-11-28 · [osm-ruta-completa.png](<Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig/osm-ruta-completa.png>) · Air Transport, Air Navigation, and Air Traffic Management/trabajo/memoria/fig
 
 ## Asignaturas
 
