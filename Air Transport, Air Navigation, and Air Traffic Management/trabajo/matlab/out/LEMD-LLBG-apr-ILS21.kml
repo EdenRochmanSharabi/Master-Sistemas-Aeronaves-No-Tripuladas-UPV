@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
-<name>/Users/edenrochman/Library/Mobile Documents/com~apple~CloudDocs/Universidad de Valencia/Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/LEMD-LLBG-apr-ILS21.kml</name>
+<name>LLBG ILS 21 aproximacion</name>
 <Style id="inline0">
 	<LineStyle>
 		<color>88333333</color>

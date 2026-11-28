@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
-<name>/Users/edenrochman/Library/Mobile Documents/com~apple~CloudDocs/Universidad de Valencia/Air Transport, Air Navigation, and Air Traffic Management/trabajo/matlab/out/LEMD-LLBG-frustrada-ILS21.kml</name>
+<name>LLBG ILS 21 frustrada</name>
 <Style id="inline0">
 	<LineStyle>
 		<color>88333333</color>
@@ -36,7 +36,7 @@
 	<MultiGeometry>
 		<Point>
 			<altitudeMode>absolute</altitudeMode>
-			<coordinates>34.900325,32.018225,0.000000</coordinates>
+			<coordinates>34.880896,31.949073,0.000000</coordinates>
 		</Point>
 		<LineString>
 			<extrude>0</extrude>
@@ -44,6 +44,25 @@
 			<altitudeMode>absolute</altitudeMode>
 			<coordinates>
 			34.900225,32.018125,0.000000 
+			34.872021,31.974483,0.000000 
+			34.870466,31.971482,0.000000 
+			34.869550,31.968300,0.000000 
+			34.869300,31.965032,0.000000 
+			34.869722,31.961776,0.000000 
+			34.870804,31.958632,0.000000 
+			34.872513,31.955696,0.000000 
+			34.874797,31.953055,0.000000 
+			34.877586,31.950792,0.000000 
+			34.880796,31.948973,0.000000 
+			34.884330,31.947655,0.000000 
+			34.888079,31.946878,0.000000 
+			34.891931,31.946665,0.000000 
+			34.895768,31.947022,0.000000 
+			34.899473,31.947939,0.000000 
+			34.902934,31.949388,0.000000 
+			34.906047,31.951325,0.000000 
+			34.908716,31.953692,0.000000 
+			34.909419,31.954477,0.000000 
 			34.996667,32.057222,0.000000 
 			</coordinates>
 		</LineString>
@@ -59,8 +78,179 @@
 	</Point>
 </Placemark>
 <Placemark>
+	<name>CA1000</name>
+	<description>CA 204M to 1000 ft (4.5 %), turn LEFT</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.872021,31.974483,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT1</name>
+	<description>Left turn aux, brg 289 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.870466,31.971482,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT2</name>
+	<description>Left turn aux, brg 279 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.869550,31.968300,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT3</name>
+	<description>Left turn aux, brg 269 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.869300,31.965032,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT4</name>
+	<description>Left turn aux, brg 259 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.869722,31.961776,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT5</name>
+	<description>Left turn aux, brg 249 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.870804,31.958632,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT6</name>
+	<description>Left turn aux, brg 239 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.872513,31.955696,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT7</name>
+	<description>Left turn aux, brg 229 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.874797,31.953055,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT8</name>
+	<description>Left turn aux, brg 219 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.877586,31.950792,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT9</name>
+	<description>Left turn aux, brg 209 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.880796,31.948973,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT10</name>
+	<description>Left turn aux, brg 199 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.884330,31.947655,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT11</name>
+	<description>Left turn aux, brg 189 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.888079,31.946878,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT12</name>
+	<description>Left turn aux, brg 179 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.891931,31.946665,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT13</name>
+	<description>Left turn aux, brg 169 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.895768,31.947022,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT14</name>
+	<description>Left turn aux, brg 159 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.899473,31.947939,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT15</name>
+	<description>Left turn aux, brg 149 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.902934,31.949388,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT16</name>
+	<description>Left turn aux, brg 139 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.906047,31.951325,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MAT17</name>
+	<description>Left turn aux, brg 129 from centre</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.908716,31.953692,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
+	<name>MATEND</name>
+	<description>End of left turn, DF GEMDA</description>
+	<styleUrl>inline1</styleUrl>
+	<Point>
+		<altitudeMode>absolute</altitudeMode>
+		<coordinates>34.909419,31.954477,0.000000 </coordinates>
+	</Point>
+</Placemark>
+<Placemark>
 	<name>GEMDA</name>
-	<description>DF, missed approach, @5000</description>
+	<description>DF, missed approach, @5000, hold</description>
 	<styleUrl>inline1</styleUrl>
 	<Point>
 		<altitudeMode>absolute</altitudeMode>
